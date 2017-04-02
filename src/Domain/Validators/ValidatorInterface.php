@@ -1,7 +1,7 @@
 <?php
 namespace Blog\Domain\Validators;
 
-use Blog\Domain\Exceptions\ValidationException;
+use Blog\Domain\Exceptions\Validation\ValidationException;
 
 /**
  * Interface Validator

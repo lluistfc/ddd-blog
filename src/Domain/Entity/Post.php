@@ -8,6 +8,7 @@ namespace Blog\Domain\Entity;
  */
 class Post implements EntityInterface
 {
+    const ID            = 'id';
     const TITLE         = 'title';
     const CONTENT       = 'content';
     const STATE         = 'state';

@@ -3,6 +3,7 @@ namespace Blog\Tests\Domain\Collections;
 
 use Blog\Domain\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
+use Blog\Tests\Stubs\Post\TestPostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -28,7 +29,7 @@ class PostCollectionTest extends TestCase
     public function collectionStoresOnePost()
     {
         $collection = new PostCollection();
-        $post = $this->defaultPost();
+        $post = TestPostCreator::createPost();
 
         $collection->add($post);
 
@@ -45,7 +46,7 @@ class PostCollectionTest extends TestCase
         $collection = new PostCollection();
 
         for($i = 0; $i < $maxPosts ; $i++) {
-            $collection->add($this->defaultPost($i));
+            $collection->add(TestPostCreator::createPost($i));
         }
 
         $this->assertCount($maxPosts, $collection->getIterator());
@@ -56,8 +57,8 @@ class PostCollectionTest extends TestCase
      */
     public function collectionCanReturnItsFirstElement()
     {
-        $firstPost = $this->defaultPost();
-        $secondPost = $this->defaultPost(2);
+        $firstPost = TestPostCreator::createPost();
+        $secondPost = TestPostCreator::createPost(2);
         $collection = new PostCollection();
         $collection->add($firstPost);
         $collection->add($secondPost);
@@ -70,7 +71,7 @@ class PostCollectionTest extends TestCase
      */
     public function collectionReturnsSpecifiedPost()
     {
-        $post = $this->defaultPost(1337);
+        $post = TestPostCreator::createPost(1337);
         $collection = new PostCollection();
         $collection->add($post);
 
@@ -92,7 +93,7 @@ class PostCollectionTest extends TestCase
      */
     public function shiftWithOneElementLeavesCollectionEmpty()
     {
-        $post = $this->defaultPost(1337);
+        $post = TestPostCreator::createPost(1337);
         $collection = new PostCollection();
         $collection->add($post);
 
@@ -105,7 +106,7 @@ class PostCollectionTest extends TestCase
      */
     public function popWithOneElementLeavesCollectionEmpty()
     {
-        $post = $this->defaultPost(1337);
+        $post = TestPostCreator::createPost(1337);
         $collection = new PostCollection();
         $collection->add($post);
 
@@ -118,8 +119,8 @@ class PostCollectionTest extends TestCase
      */
     public function shiftRemovesFirstElement()
     {
-        $firstPost = $this->defaultPost();
-        $secondPost = $this->defaultPost(2);
+        $firstPost = TestPostCreator::createPost();
+        $secondPost = TestPostCreator::createPost(2);
         $collection = new PostCollection();
         $collection->add($firstPost);
         $collection->add($secondPost);
@@ -134,8 +135,8 @@ class PostCollectionTest extends TestCase
      */
     public function popRemovesLasElement()
     {
-        $firstPost = $this->defaultPost();
-        $secondPost = $this->defaultPost(2);
+        $firstPost = TestPostCreator::createPost();
+        $secondPost = TestPostCreator::createPost(2);
         $collection = new PostCollection();
         $collection->add($firstPost);
         $collection->add($secondPost);
@@ -150,8 +151,8 @@ class PostCollectionTest extends TestCase
      */
     public function collectionReturnsAllPosts()
     {
-        $firstPost = $this->defaultPost();
-        $secondPost = $this->defaultPost(2);
+        $firstPost = TestPostCreator::createPost();
+        $secondPost = TestPostCreator::createPost(2);
         $collection = new PostCollection();
         $collection->add($firstPost);
         $collection->add($secondPost);
@@ -169,18 +170,5 @@ class PostCollectionTest extends TestCase
             array(30),
             array(150)
         );
-    }
-    /**
-     * @param int $id
-     * @return Post
-     */
-    private function defaultPost($id = 1): Post
-    {
-        $post = new Post();
-        $post->setId($id);
-        $post->setTitle('Fake Title');
-        $post->setContent('fake content');
-
-        return $post;
     }
 }
