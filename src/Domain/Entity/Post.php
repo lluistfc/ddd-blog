@@ -74,6 +74,62 @@ class Post implements EntityInterface
     }
 
     /**
+     * @param string $title
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent(string $content)
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @param string $state
+     */
+    public function setState(string $state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @param bool $published
+     */
+    public function setPublished(bool $published)
+    {
+        $this->published = $published;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @param \DateTime $publishedAt
+     */
+    public function setPublishedAt(\DateTime $publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -90,27 +146,11 @@ class Post implements EntityInterface
     }
 
     /**
-     * @param string $title
-     */
-    public function setTitle(string $title)
-    {
-        $this->title = $title;
-    }
-
-    /**
      * @return string
      */
     public function getContent()
     {
         return $this->content;
-    }
-
-    /**
-     * @param string $content
-     */
-    public function setContent(string $content)
-    {
-        $this->content = $content;
     }
 
     /**
@@ -122,27 +162,11 @@ class Post implements EntityInterface
     }
 
     /**
-     * @param string $state
-     */
-    public function setState(string $state)
-    {
-        $this->state = $state;
-    }
-
-    /**
      * @return bool
      */
     public function isPublished()
     {
         return $this->published;
-    }
-
-    /**
-     * @param bool $published
-     */
-    public function setPublished(bool $published)
-    {
-        $this->published = $published;
     }
 
     /**
@@ -154,14 +178,6 @@ class Post implements EntityInterface
     }
 
     /**
-     * @param \DateTime $createdAt
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
      * @return \DateTime
      */
     public function getPublishedAt()
@@ -170,26 +186,10 @@ class Post implements EntityInterface
     }
 
     /**
-     * @param \DateTime $publishedAt
-     */
-    public function setPublishedAt(\DateTime $publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-    }
-
-    /**
      * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
     }
 }
