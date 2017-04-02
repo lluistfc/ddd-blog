@@ -18,7 +18,7 @@ class UserNameValidatorTest extends TestCase
      * @access public
      * @test
      */
-    public function personNameIsValid()
+    public function userNameIsValid()
     {
         $firstName = TestUserCreator::USER_NAME;
 
@@ -31,7 +31,7 @@ class UserNameValidatorTest extends TestCase
      * @test
      * @expectedException \Blog\Domain\Exceptions\Validation\FirstNameCannotBeEmptyInUserNameException
      */
-    public function personNameNeedsAtLeastFirstName()
+    public function userNameNeedsFirstName()
     {
         $firstName = BString::BLANK;
 
