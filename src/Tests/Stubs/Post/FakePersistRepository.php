@@ -4,14 +4,10 @@ namespace Blog\Tests\Stubs\Post;
 use Blog\Domain\Entity\EntityInterface;
 use Blog\Domain\Repository\PersistEntityRepository;
 
-class FakeRepository implements PersistEntityRepository
+class FakePersistRepository implements PersistEntityRepository
 {
     private $entityWasPersisted = false;
     private $entityWasUpdated = false;
-
-    public function findOneBy(EntityInterface $baseEntity)
-    {
-    }
 
     public function persistEntity(EntityInterface $baseEntity)
     {

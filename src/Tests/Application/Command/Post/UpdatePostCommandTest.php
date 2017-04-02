@@ -2,7 +2,7 @@
 namespace Blog\Tests\Application\Command\Post;
 
 use Blog\Application\Command\Post\UpdatePostCommand;
-use Blog\Tests\Stubs\Post\FakeRepository;
+use Blog\Tests\Stubs\Post\FakePersistRepository;
 use Blog\Tests\Stubs\Post\TestPostCreator;
 use PHPUnit\Framework\TestCase;
 
@@ -17,7 +17,7 @@ class UpdateTest extends TestCase
      */
     public function postWasUpdated()
     {
-        $repository = new FakeRepository();
+        $repository = new FakePersistRepository();
         (new UpdatePostCommand($repository, TestPostCreator::createPost()))->execute();
 
         $this->assertTrue($repository->getEntityWasUpdated());

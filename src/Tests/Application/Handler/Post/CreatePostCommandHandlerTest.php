@@ -6,7 +6,7 @@ use Blog\Application\Handler\CreatePostCommandHandler;
 use Blog\Domain\Entity\Post;
 use Blog\Domain\Exceptions\Validation\ValidationException;
 use Blog\Domain\Validators\Post\CreatePostValidator;
-use Blog\Tests\Stubs\Post\FakeRepository;
+use Blog\Tests\Stubs\Post\FakePersistRepository;
 use Blog\Tests\Stubs\Post\TestPostCreator;
 use PHPUnit\Framework\TestCase;
 
@@ -23,7 +23,7 @@ class CreatePostCommandHandlerTest extends TestCase
      */
     public function createPostCommandWasHandled()
     {
-        $fakeRepository = new FakeRepository();
+        $fakeRepository = new FakePersistRepository();
         $createPostCommand = new CreatePostCommand($fakeRepository, new Post());
         $createPostValidator = new CreatePostValidator(TestPostCreator::createPostDefaultArrayValues());
         $handler = new CreatePostCommandHandler($createPostCommand, $createPostValidator);
@@ -40,7 +40,7 @@ class CreatePostCommandHandlerTest extends TestCase
      */
     public function invalidDataThrowsValidationException()
     {
-        $fakeRepository = new FakeRepository();
+        $fakeRepository = new FakePersistRepository();
         $createPostCommand = new CreatePostCommand($fakeRepository, new Post());
         $createPostValidator = new CreatePostValidator(array());
         $handler = new CreatePostCommandHandler($createPostCommand, $createPostValidator);

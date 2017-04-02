@@ -2,7 +2,7 @@
 namespace Blog\Tests\Application\Command\Post;
 
 use Blog\Application\Command\Post\CreatePostCommand;
-use Blog\Tests\Stubs\Post\FakeRepository;
+use Blog\Tests\Stubs\Post\FakePersistRepository;
 use Blog\Tests\Stubs\Post\TestPostCreator;
 use PHPUnit\Framework\TestCase;
 
@@ -17,7 +17,7 @@ class CreateTest extends TestCase
      */
     public function postWasCreated()
     {
-        $repository = new FakeRepository();
+        $repository = new FakePersistRepository();
         (new CreatePostCommand($repository, TestPostCreator::createPost()))->execute();
 
         $this->assertTrue($repository->getEntityWasPersisted());

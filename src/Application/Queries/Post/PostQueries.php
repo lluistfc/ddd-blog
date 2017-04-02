@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Application\Query\Post;
+namespace Blog\Application\Queries\Post;
 
 use Blog\Domain\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
@@ -7,7 +7,7 @@ use Blog\Domain\Repository\PostQueriesRepository;
 
 /**
  * Class PostQueries
- * @package Blog\Application\Query\Post
+ * @package Blog\Application\Queries\Post
  */
 class PostQueries
 {
