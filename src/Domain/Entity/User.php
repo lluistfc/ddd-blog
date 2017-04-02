@@ -1,11 +1,13 @@
 <?php
-namespace Domain\Entity;
+namespace Blog\Domain\Entity;
 
+use Blog\Domain\DataObject\PersonName;
+use Blog\Domain\DataObject\UserName;
 
-use Blog\Domain\Entity\EntityInterface;
-use DataObject\PersonName;
-use DataObject\UserName;
-
+/**
+ * Class User
+ * @package Domain\Entity
+ */
 class User implements EntityInterface
 {
     /**
@@ -60,6 +62,34 @@ class User implements EntityInterface
     }
 
     /**
+     * User constructor.
+     * @access public
+     */
+    public function __construct()
+    {
+        $this->realName = PersonName::create();
+        $this->userName = UserName::create();
+    }
+
+    /**
+     * @access public
+     * @param PersonName $personName
+     */
+    public function setRealName(PersonName $personName)
+    {
+        $this->realName = $personName;
+    }
+
+    /**
+     * @access public
+     * @param UserName $userName
+     */
+    public function setUserName(UserName $userName)
+    {
+        $this->userName = $userName;
+    }
+
+    /**
      * @access public
      * @param \DateTime $createdAt
      */
@@ -84,6 +114,42 @@ class User implements EntityInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @access public
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->realName->getFullName();
+    }
+
+    /**
+     * @access public
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->realName->getFirstName();
+    }
+
+    /**
+     * @access public
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->realName->getLastName();
+    }
+
+    /**
+     * @access public
+     * @return string
+     */
+    public function getUserName()
+    {
+        return $this->userName->getFirstName();
     }
 
     /**

@@ -25,7 +25,7 @@ class PersonName extends Name
      * @param string $lastName
      * @return PersonName
      */
-    public static function create(string $firstName, string $lastName):PersonName
+    public static function create(string $firstName = '', string $lastName = ''):PersonName
     {
         return new PersonName($firstName, $lastName);
     }
