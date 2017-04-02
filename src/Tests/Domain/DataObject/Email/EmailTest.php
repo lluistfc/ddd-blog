@@ -12,13 +12,15 @@ use PHPUnit\Framework\TestCase;
  */
 class EmailTest extends TestCase
 {
+    const HOST = 'foo.bar';
+
     /**
      * @access public
      * @test
      */
     public function emailIsCreatedEmpty()
     {
-        $this->assertEquals('@', Email::create(UserName::create()));
+        $this->assertEmpty(Email::create(UserName::create())->get());
     }
 
     /**
@@ -28,7 +30,7 @@ class EmailTest extends TestCase
     public function emailIsCreatedWithUserNameAndHost()
     {
         $userName = UserName::create(TestUserCreator::USER_NAME);
-        $host = 'foo.bar';
+        $host = self::HOST;
         $expectedEmail = TestUserCreator::USER_NAME . '@' . $host;
 
         $this->assertEquals($expectedEmail, Email::create($userName, $host)->get());

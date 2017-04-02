@@ -85,7 +85,13 @@ class Email
      */
     public function get()
     {
-        return $this->getUserName().'@'.$this->getHost();
+        $email = '';
+
+        if ('' !== $this->getUserName() && '' !== $this->getHost()) {
+            $email = $this->getUserName().'@'.$this->getHost();
+        }
+
+        return $email;
     }
 
     public function __toString()

@@ -1,6 +1,7 @@
 <?php
 namespace Blog\Domain\Entity;
 
+use Blog\Domain\DataObject\Email\Email;
 use Blog\Domain\DataObject\Name\PersonName;
 use Blog\Domain\DataObject\Name\UserName;
 
@@ -36,7 +37,7 @@ class User implements EntityInterface
 
     /**
      * @access private
-     * @var
+     * @var Email
      */
     private $email;
 
@@ -69,6 +70,7 @@ class User implements EntityInterface
     {
         $this->realName = PersonName::create();
         $this->userName = UserName::create();
+        $this->email = Email::create($this->userName, '');
     }
 
     /**
@@ -87,6 +89,15 @@ class User implements EntityInterface
     public function setUserName(UserName $userName)
     {
         $this->userName = $userName;
+    }
+
+    /**
+     * @access public
+     * @param Email $email
+     */
+    public function setEmail(Email $email)
+    {
+        $this->email = $email;
     }
 
     /**
@@ -150,6 +161,11 @@ class User implements EntityInterface
     public function getUserName()
     {
         return $this->userName->getFirstName();
+    }
+
+    public function getEmail()
+    {
+        return $this->email->get();
     }
 
     /**
