@@ -4,6 +4,7 @@ namespace Blog\Domain\Entity;
 use Blog\Domain\DataObject\Email\Email;
 use Blog\Domain\DataObject\Name\PersonName;
 use Blog\Domain\DataObject\Name\UserName;
+use Blog\Domain\Helper\BString;
 
 /**
  * Class User
@@ -55,7 +56,7 @@ class User implements EntityInterface
     {
         $this->realName = PersonName::create();
         $this->userName = UserName::create();
-        $this->email = Email::create($this->userName, '');
+        $this->email = Email::create($this->userName, BString::BLANK);
     }
 
     /**

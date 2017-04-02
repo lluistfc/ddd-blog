@@ -1,6 +1,8 @@
 <?php
 namespace Blog\Domain\DataObject\Name;
 
+use Blog\Domain\Helper\BString;
+
 /**
  * Class UserName
  * @package Blog\Domain\DataObject\Name
@@ -18,7 +20,7 @@ class UserName extends Name
      * @param string $firstName
      * @return UserName
      */
-    public static function create(string $firstName = ''): UserName
+    public static function create(string $firstName = BString::BLANK): UserName
     {
         return new UserName($firstName);
     }

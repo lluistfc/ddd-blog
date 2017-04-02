@@ -2,6 +2,7 @@
 namespace Blog\Domain\DataObject\Email;
 
 use Blog\Domain\DataObject\Name\UserName;
+use Blog\Domain\Helper\BString;
 
 /**
  * Class Email
@@ -88,7 +89,7 @@ class Email
         $email = '';
 
         if ('' !== $this->getUserName() && '' !== $this->getHost()) {
-            $email = $this->getUserName().'@'.$this->getHost();
+            $email = $this->getUserName() . BString::AT . $this->getHost();
         }
 
         return $email;

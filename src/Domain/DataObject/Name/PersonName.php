@@ -1,6 +1,8 @@
 <?php
 namespace Blog\Domain\DataObject\Name;
 
+use Blog\Domain\Helper\BString;
+
 /**
  * Class Name
  * @package DataObject
@@ -25,7 +27,7 @@ class PersonName extends Name
      * @param string $lastName
      * @return PersonName
      */
-    public static function create(string $firstName = '', string $lastName = ''):PersonName
+    public static function create(string $firstName = BString::BLANK, string $lastName = BString::BLANK):PersonName
     {
         return new PersonName($firstName, $lastName);
     }
@@ -87,8 +89,8 @@ class PersonName extends Name
         $fullName = $this->getFirstName();
         $lastName = $this->getLastName();
 
-        if ($lastName !== '') {
-            $fullName .= ' ' . $this->getLastName();
+        if ($lastName !== BString::BLANK) {
+            $fullName .= BString::SPACE . $this->getLastName();
         }
 
         return $fullName;
