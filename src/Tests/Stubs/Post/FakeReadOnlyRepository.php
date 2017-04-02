@@ -1,6 +1,7 @@
 <?php
 namespace Blog\Tests\Stubs\Post;
 
+use Blog\Domain\Collections\PostCollection;
 use Blog\Domain\Repository\PostQueriesRepository;
 
 class FakeReadOnlyRepository extends PostQueriesRepository
@@ -20,11 +21,11 @@ class FakeReadOnlyRepository extends PostQueriesRepository
 
     public function findNewestPost()
     {
-        // TODO: Implement findNewestPost() method.
+        return TestPostCreator::createPost();
     }
 
     public function findAllPublishedPosts()
     {
-        // TODO: Implement findAllPublishedPosts() method.
+        return new PostCollection();
     }
 }

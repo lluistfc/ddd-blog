@@ -75,7 +75,7 @@ class PostCollectionTest extends TestCase
         $collection = new PostCollection();
         $collection->add($post);
 
-        $this->assertEquals($post, $collection->get(1337));
+        $this->assertEquals($post, $collection->getPost(1337));
     }
 
     /**
