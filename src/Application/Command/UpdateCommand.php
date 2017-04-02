@@ -2,17 +2,17 @@
 namespace Blog\Application\Command;
 
 /**
- * Class CreationCommand
+ * Class UpdateCommand
  * @package Blog\Application\Command
  */
-abstract class CreationCommand implements CommandInterface
+abstract class UpdateCommand implements CommandInterface
 {
     use BaseCommand;
 
     public function execute()
     {
-        $this->create();
+        $this->update();
     }
 
-    protected abstract function create();
+    protected abstract function update();
 }

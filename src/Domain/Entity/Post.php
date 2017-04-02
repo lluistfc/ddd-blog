@@ -6,7 +6,7 @@ namespace Blog\Domain\Entity;
  * Class Post
  * @package Blog\Domain\Entity
  */
-class Post extends BaseEntity
+class Post implements EntityInterface
 {
     const TITLE         = 'title';
     const CONTENT       = 'content';
@@ -16,25 +16,52 @@ class Post extends BaseEntity
     const PUBLISHED_AT  = 'publishedAt';
     const UPDATED_AT    = 'updatedAt';
 
-    /** @var  string */
+    /**
+     * @access private
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @access private
+     * @var string
+     */
     private $title;
 
-    /** @var  string */
+    /**
+     * @access private
+     * @var string
+     */
     private $content;
 
-    /** @var  string */
+    /**
+     * @access private
+     * @var string
+     */
     private $state;
 
-    /** @var  boolean */
+    /**
+     * @access private
+     * @var boolean
+     */
     private $published;
 
-    /** @var  \DateTime */
+    /**
+     * @access private
+     * @var \DateTime
+     */
     private $createdAt;
 
-    /** @var  \DateTime */
+    /**
+     * @access private
+     * @var \DateTime
+     */
     private $publishedAt;
 
-    /** @var  \DateTime */
+    /**
+     * @access private
+     * @var \DateTime
+     */
     private $updatedAt;
 
     /**

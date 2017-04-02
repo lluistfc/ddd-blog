@@ -1,7 +1,7 @@
 <?php
 namespace Blog\Domain\Repository;
 
-use Blog\Domain\Entity\BaseEntity;
+use Blog\Domain\Entity\EntityInterface;
 
 /**
  * Interface PersistEntityRepository
@@ -10,20 +10,20 @@ use Blog\Domain\Entity\BaseEntity;
 interface PersistEntityRepository
 {
     /**
-     * @param BaseEntity $baseEntity
+     * @param EntityInterface $baseEntity
      * @return void
      */
-    public function persistEntity(BaseEntity $baseEntity);
+    public function persistEntity(EntityInterface $baseEntity);
 
     /**
-     * @param BaseEntity $baseEntity
+     * @param EntityInterface $baseEntity
      * @return void
      */
-    public function removeEntity(BaseEntity $baseEntity);
+    public function removeEntity(EntityInterface $baseEntity);
 
     /**
-     * @param BaseEntity $baseEntity
+     * @param EntityInterface $baseEntity
      * @return void
      */
-    public function updateEntity(BaseEntity $baseEntity);
+    public function updateEntity(EntityInterface $baseEntity);
 }

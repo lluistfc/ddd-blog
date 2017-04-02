@@ -2,7 +2,7 @@
 namespace Blog\Application\Command\Post;
 
 use Blog\Application\Command\CreationCommand;
-use Blog\Domain\Entity\BaseEntity;
+use Blog\Domain\Entity\EntityInterface;
 
 /**
  * Class CreatePostCommand
@@ -10,8 +10,12 @@ use Blog\Domain\Entity\BaseEntity;
  */
 class CreatePostCommand extends CreationCommand
 {
-    public function create(BaseEntity $post)
+    /**
+     * @access protected
+     * @return void
+     */
+    protected function create()
     {
-        $this->entityRepository->persistEntity($post);
+        $this->entityRepository->persistEntity($this->entity);
     }
 }
