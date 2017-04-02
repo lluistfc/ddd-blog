@@ -4,6 +4,7 @@ namespace Blog\Tests\Application\Handler\Post;
 use Blog\Application\Command\Post\CreatePostCommand;
 use Blog\Application\Handler\CreatePostCommandHandler;
 use Blog\Domain\Entity\Post;
+use Blog\Domain\Exceptions\Validation\ValidationException;
 use Blog\Domain\Validators\Post\CreatePostValidator;
 use Blog\Tests\Stubs\Post\FakeRepository;
 use Blog\Tests\Stubs\Post\TestPostCreator;
@@ -30,5 +31,20 @@ class CreatePostCommandHandlerTest extends TestCase
         $handler->handle();
 
         $this->assertTrue($fakeRepository->getEntityWasPersisted());
+    }
+
+    /**
+     * @access public
+     * @test
+     * @expectedException \Blog\Domain\Exceptions\Validation\ValidationException
+     */
+    public function invalidDataThrowsValidationException()
+    {
+        $fakeRepository = new FakeRepository();
+        $createPostCommand = new CreatePostCommand($fakeRepository, new Post());
+        $createPostValidator = new CreatePostValidator(array());
+        $handler = new CreatePostCommandHandler($createPostCommand, $createPostValidator);
+
+        $handler->handle();
     }
 }
