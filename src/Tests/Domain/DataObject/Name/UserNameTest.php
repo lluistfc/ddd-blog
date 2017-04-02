@@ -1,9 +1,8 @@
 <?php
-namespace Blog\Tests\Domain\DataObject;
+namespace Blog\Tests\Domain\DataObject\Name;
 
 
-use Blog\Domain\DataObject\UserName;
-use Domain\Entity\User;
+use Blog\Domain\DataObject\Name\UserName;
 use PHPUnit\Framework\TestCase;
 
 /**

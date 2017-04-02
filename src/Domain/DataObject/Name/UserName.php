@@ -1,9 +1,9 @@
 <?php
-namespace Blog\Domain\DataObject;
+namespace Blog\Domain\DataObject\Name;
 
 /**
  * Class UserName
- * @package Blog\Domain\DataObject
+ * @package Blog\Domain\DataObject\Name
  */
 class UserName extends Name
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Domain\DataObject;
+namespace Blog\Domain\DataObject\Name;
 
 /**
  * Class Name
@@ -82,7 +82,7 @@ class PersonName extends Name
      * @access public
      * @return string
      */
-    public function getFullName():string
+    public function get():string
     {
         $fullName = $this->getFirstName();
         $lastName = $this->getLastName();
@@ -100,6 +100,6 @@ class PersonName extends Name
      */
     public function __toString()
     {
-        return $this->getFullName();
+        return $this->get();
     }
 }

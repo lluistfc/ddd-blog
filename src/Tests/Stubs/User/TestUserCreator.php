@@ -1,8 +1,8 @@
 <?php
 namespace Blog\Tests\Stubs\User;
 
-use Blog\Domain\DataObject\PersonName;
-use Blog\Domain\DataObject\UserName;
+use Blog\Domain\DataObject\Name\PersonName;
+use Blog\Domain\DataObject\Name\UserName;
 use Blog\Domain\Entity\User;
 
 /**

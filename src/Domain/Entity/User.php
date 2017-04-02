@@ -1,8 +1,8 @@
 <?php
 namespace Blog\Domain\Entity;
 
-use Blog\Domain\DataObject\PersonName;
-use Blog\Domain\DataObject\UserName;
+use Blog\Domain\DataObject\Name\PersonName;
+use Blog\Domain\DataObject\Name\UserName;
 
 /**
  * Class User
@@ -122,7 +122,7 @@ class User implements EntityInterface
      */
     public function getFullName()
     {
-        return $this->realName->getFullName();
+        return $this->realName->get();
     }
 
     /**

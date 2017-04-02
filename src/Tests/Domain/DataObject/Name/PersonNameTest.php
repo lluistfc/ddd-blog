@@ -1,7 +1,7 @@
 <?php
-namespace Blog\Tests\Domain\DataObject;
+namespace Blog\Tests\Domain\DataObject\Name;
 
-use Blog\Domain\DataObject\PersonName;
+use Blog\Domain\DataObject\Name\PersonName;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,7 +22,7 @@ class PersonNameTest extends TestCase
         $personName = PersonName::create($expectedName, '');
 
         $this->assertEquals($expectedName, $personName->getFirstName());
-        $this->assertEquals($expectedName, $personName->getFullName());
+        $this->assertEquals($expectedName, $personName->get());
     }
 
     /**
@@ -50,7 +50,7 @@ class PersonNameTest extends TestCase
 
         $person = PersonName::create($firstName, $lastName);
 
-        $this->assertEquals($expectedFullName, $person->getFullName());
+        $this->assertEquals($expectedFullName, $person->get());
     }
 
     /**

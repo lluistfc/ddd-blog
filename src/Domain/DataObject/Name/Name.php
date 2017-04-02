@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Domain\DataObject;
+namespace Blog\Domain\DataObject\Name;
 
 
 abstract class Name
