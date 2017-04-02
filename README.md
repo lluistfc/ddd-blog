@@ -1,10 +1,17 @@
 README
 ===
 ## Start enviroment
-``docker-compose build``
+```bash
+$ docker-compose build
+$ docker-compose up -d
+```
 
 ## Run composer install
-``docker-compose run --rm app install``
+```bash
+$ docker-compose exec app composer install
+```
 
 ## Run composer require
-``docker-compose run --rm app require phpunit/phpunit``
+```bash
+$ docker-compose exec app composer require phpunit/phpunit
+```

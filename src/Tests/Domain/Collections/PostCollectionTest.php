@@ -87,7 +87,7 @@ class PostCollectionTest extends TestCase
     public function collectionThrowsExceptionIfPostDoesNotExists()
     {
         $collection = new PostCollection();
-        $this->assertNull($collection->getPost(1337));
+        $collection->getPost(1337);
     }
 
     /**
