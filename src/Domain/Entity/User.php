@@ -31,12 +31,6 @@ class User implements EntityInterface
 
     /**
      * @access private
-     * @var
-     */
-    private $phone;
-
-    /**
-     * @access private
      * @var Email
      */
     private $email;
@@ -54,15 +48,6 @@ class User implements EntityInterface
     private $updatedAt;
 
     /**
-     * @access public
-     * @param $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
      * User constructor.
      * @access public
      */
@@ -71,6 +56,15 @@ class User implements EntityInterface
         $this->realName = PersonName::create();
         $this->userName = UserName::create();
         $this->email = Email::create($this->userName, '');
+    }
+
+    /**
+     * @access public
+     * @param $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
