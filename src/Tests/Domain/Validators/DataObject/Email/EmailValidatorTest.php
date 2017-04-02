@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Domain\Validators\DataObject;
+namespace Blog\Tests\Domain\Validators\DataObject\Email;
 
 use Blog\Domain\Helper\BString;
 use Blog\Domain\Validators\DataObject\Email\EmailValidator;
@@ -10,6 +10,8 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class EmailValidatorTest
  * @package Blog\Domain\Validators\DataObject
+ * @group domain
+ * @group domain_validator
  */
 class EmailValidatorTest extends TestCase
 {

@@ -1,7 +1,6 @@
 <?php
 namespace Blog\Tests\Domain\DataObject\Name;
 
-
 use Blog\Domain\DataObject\Name\UserName;
 use PHPUnit\Framework\TestCase;
 

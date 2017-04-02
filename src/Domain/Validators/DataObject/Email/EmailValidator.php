@@ -1,7 +1,6 @@
 <?php
 namespace Blog\Domain\Validators\DataObject\Email;
 
-
 use Blog\Domain\Exceptions\Validation\InvalidEmailFormatException;
 use Blog\Domain\Validators\ValidatorInterface;
 

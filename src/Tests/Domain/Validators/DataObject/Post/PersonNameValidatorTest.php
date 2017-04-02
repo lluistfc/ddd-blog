@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Tests\Domain\Validators\DataObject;
+namespace Blog\Tests\Domain\Validators\DataObject\Post;
 
 use Blog\Domain\Helper\BString;
 use Blog\Domain\Validators\DataObject\Name\PersonNameValidator;

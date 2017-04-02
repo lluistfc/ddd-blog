@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class EmailTest
  * @package Blog\Tests\Domain\DataObject\Email
+ * @group domain
+ * @group domain_dataObject
  */
 class EmailTest extends TestCase
 {
