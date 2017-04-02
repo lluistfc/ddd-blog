@@ -11,6 +11,8 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class PostQueriesTest
  * @package Application\Queries\Post
+ * @group application
+ * @group application_query
  */
 class PostQueriesTest extends TestCase
 {

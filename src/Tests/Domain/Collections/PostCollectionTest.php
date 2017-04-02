@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class PostCollectionTest
  * @package Blog\Tests\Domain\Collections
+ * @group domain
+ * @group domain_collection
  */
 class PostCollectionTest extends TestCase
 {

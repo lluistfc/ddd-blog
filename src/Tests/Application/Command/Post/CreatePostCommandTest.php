@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class CreatePostCommandTest
  * @package Blog\Tests\Application\Command
+ * @group application
+ * @group application_command
  */
 class CreateTest extends TestCase
 {

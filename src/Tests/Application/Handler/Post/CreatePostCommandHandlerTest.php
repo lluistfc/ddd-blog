@@ -14,6 +14,9 @@ use PHPUnit\Framework\TestCase;
  * Class CreatePostCommandHandlerTest
  * @access public
  * @package Blog\Tests\Application\Handler\Post
+ * @group application
+ * @group application_command
+ * @group application_command_handler
  */
 class CreatePostCommandHandlerTest extends TestCase
 {

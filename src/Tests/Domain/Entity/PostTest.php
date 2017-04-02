@@ -7,6 +7,8 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class PostTest
  * @package Blog\Tests\Domain
+ * @group domain
+ * @group domain_entity
  */
 class PostTest extends TestCase
 {

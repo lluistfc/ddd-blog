@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class CreatePostValidatorsTest
  * @package Blog\Tests\Domain\Validators\Post
+ * @group domain
+ * @group domain_validator
  */
 class CreatePostValidatorTest extends TestCase
 {
