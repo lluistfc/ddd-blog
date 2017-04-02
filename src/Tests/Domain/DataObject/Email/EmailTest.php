@@ -35,4 +35,17 @@ class EmailTest extends TestCase
 
         $this->assertEquals($expectedEmail, Email::create($userName, $host)->get());
     }
+
+    /**
+     * @access public
+     * @test
+     */
+    public function emailCanBePrinted()
+    {
+        $userName = UserName::create(TestUserCreator::USER_NAME);
+        $host = self::HOST;
+        $expectedEmail = TestUserCreator::USER_NAME . '@' . $host;
+
+        $this->assertEquals($expectedEmail, print_r((string) Email::create($userName, $host), true));
+    }
 }
