@@ -2,17 +2,17 @@
 namespace Blog\Tests\Domain\Validators\DataObject;
 
 use Blog\Domain\Helper\BString;
-use Blog\Domain\Validators\DataObject\Name\PersonNameValidator;
+use Blog\Domain\Validators\DataObject\Name\UserNameValidator;
 use Blog\Tests\Stubs\User\TestUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class PersonNameValidatorTest
+ * Class UserNameValidatorTest
  * @package Blog\Tests\Domain\Validators\DataObject
  * @group domain
  * @group domain_validator
  */
-class PersonNameValidatorTest extends TestCase
+class UserNameValidatorTest extends TestCase
 {
     /**
      * @access public
@@ -20,23 +20,21 @@ class PersonNameValidatorTest extends TestCase
      */
     public function personNameIsValid()
     {
-        $firstName = TestUserCreator::PERSON_FIRSTNAME;
-        $lastName = TestUserCreator::PERSON_LASTNAME;
+        $firstName = TestUserCreator::USER_NAME;
 
-        $validator = new PersonNameValidator($firstName, $lastName);
+        $validator = new UserNameValidator($firstName);
         $this->assertTrue($validator->validate());
     }
 
     /**
      * @access public
      * @test
-     * @expectedException \Blog\Domain\Exceptions\Validation\FirstNameCannotBeEmptyInPersonNameException
+     * @expectedException \Blog\Domain\Exceptions\Validation\FirstNameCannotBeEmptyInUserNameException
      */
     public function personNameNeedsAtLeastFirstName()
     {
         $firstName = BString::BLANK;
-        $lastName = TestUserCreator::PERSON_LASTNAME;
 
-        (new PersonNameValidator($firstName, $lastName))->validate();
+        (new UserNameValidator($firstName))->validate();
     }
 }
