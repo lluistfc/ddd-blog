@@ -87,9 +87,8 @@ class PersonName extends Name
     public function get():string
     {
         $fullName = $this->getFirstName();
-        $lastName = $this->getLastName();
 
-        if ($lastName !== BString::BLANK) {
+        if ($this->getLastName() !== BString::BLANK) {
             $fullName .= BString::SPACE . $this->getLastName();
         }
 
