@@ -1,6 +1,6 @@
 #######################################
 # PostgreSQL settings
-POSTGRES_USER=dev
-POSTGRES_PASSWORD=dev
-POSTGRES_DATABASE=dev
+POSTGRES_USER=sonarqube
+POSTGRES_PASSWORD=1234
+POSTGRES_DATABASE=sonarqube
 

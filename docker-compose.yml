@@ -9,16 +9,6 @@ services:
       - ./:/docker/
     volumes_from:
       - storage
-  postgres:
-    build:
-      context: docker/postgres/
-      dockerfile: Postgres-9.5.Dockerfile
-    ports:
-      - 15432:5432
-    volumes_from:
-      - storage
-    env_file:
-      - etc/environment.yml
   storage:
     build:
       context: docker/storage/
