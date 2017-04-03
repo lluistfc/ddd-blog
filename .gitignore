@@ -4,3 +4,4 @@ composer.lock
 coverage
 !coverage/.gitkeep
 /.scannerwork/
+/sonar-project.properties
