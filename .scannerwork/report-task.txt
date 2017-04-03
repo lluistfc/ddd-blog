@@ -1,5 +1,0 @@
-projectKey=ddd:blog
-serverUrl=http://localhost:9000
-dashboardUrl=http://localhost:9000/dashboard/index/ddd:blog
-ceTaskId=AVsykEDWeR9Zlq-z7TOa
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVsykEDWeR9Zlq-z7TOa
