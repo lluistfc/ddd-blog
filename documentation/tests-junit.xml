@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/opt/project/src/Tests" tests="56" assertions="82" errors="0" failures="0" skipped="0" time="0.098348">
+    <testsuite name="Blog\Tests\Application\Command\Post\CreateTest" file="/opt/project/src/Tests/Application/Command/Post/CreatePostCommandTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.011189">
+      <testcase name="postWasCreated" class="Blog\Tests\Application\Command\Post\CreateTest" classname="Blog.Tests.Application.Command.Post.CreateTest" file="/opt/project/src/Tests/Application/Command/Post/CreatePostCommandTest.php" line="20" assertions="1" time="0.011189"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Application\Command\Post\UpdateTest" file="/opt/project/src/Tests/Application/Command/Post/UpdatePostCommandTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.002246">
+      <testcase name="postWasUpdated" class="Blog\Tests\Application\Command\Post\UpdateTest" classname="Blog.Tests.Application.Command.Post.UpdateTest" file="/opt/project/src/Tests/Application/Command/Post/UpdatePostCommandTest.php" line="20" assertions="1" time="0.002246"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Application\Handler\Post\CreatePostCommandHandlerTest" file="/opt/project/src/Tests/Application/Handler/Post/CreatePostCommandHandlerTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.009929">
+      <testcase name="createPostCommandWasHandled" class="Blog\Tests\Application\Handler\Post\CreatePostCommandHandlerTest" classname="Blog.Tests.Application.Handler.Post.CreatePostCommandHandlerTest" file="/opt/project/src/Tests/Application/Handler/Post/CreatePostCommandHandlerTest.php" line="27" assertions="1" time="0.005994"/>
+      <testcase name="invalidDataThrowsValidationException" class="Blog\Tests\Application\Handler\Post\CreatePostCommandHandlerTest" classname="Blog.Tests.Application.Handler.Post.CreatePostCommandHandlerTest" file="/opt/project/src/Tests/Application/Handler/Post/CreatePostCommandHandlerTest.php" line="44" assertions="1" time="0.003935"/>
+    </testsuite>
+    <testsuite name="Application\Queries\Post\PostQueriesTest" file="/opt/project/src/Tests/Application/Queries/Post/PostQueriesTest.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.037376">
+      <testcase name="queryReturnsPostById" class="Application\Queries\Post\PostQueriesTest" classname="Application.Queries.Post.PostQueriesTest" file="/opt/project/src/Tests/Application/Queries/Post/PostQueriesTest.php" line="23" assertions="1" time="0.015588"/>
+      <testcase name="queryFoundNothingByTitle" class="Application\Queries\Post\PostQueriesTest" classname="Application.Queries.Post.PostQueriesTest" file="/opt/project/src/Tests/Application/Queries/Post/PostQueriesTest.php" line="33" assertions="1" time="0.001215"/>
+      <testcase name="queryReturnsEmptyCollectionWhenWeHaveNoPosts" class="Application\Queries\Post\PostQueriesTest" classname="Application.Queries.Post.PostQueriesTest" file="/opt/project/src/Tests/Application/Queries/Post/PostQueriesTest.php" line="43" assertions="1" time="0.018224"/>
+      <testcase name="queryReturnsNewestPost" class="Application\Queries\Post\PostQueriesTest" classname="Application.Queries.Post.PostQueriesTest" file="/opt/project/src/Tests/Application/Queries/Post/PostQueriesTest.php" line="54" assertions="1" time="0.002349"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\Collections\PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" tests="13" assertions="19" errors="0" failures="0" skipped="0" time="0.009369">
+      <testcase name="collectionCanOnlyStorePosts" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="21" assertions="1" time="0.001903"/>
+      <testcase name="collectionStoresOnePost" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="31" assertions="1" time="0.001494"/>
+      <testsuite name="Blog\Tests\Domain\Collections\PostCollectionTest::collectionStoresNPosts" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.001709">
+        <testcase name="collectionStoresNPosts with data set #0" assertions="1" time="0.000185"/>
+        <testcase name="collectionStoresNPosts with data set #1" assertions="1" time="0.000402"/>
+        <testcase name="collectionStoresNPosts with data set #2" assertions="1" time="0.001122"/>
+      </testsuite>
+      <testcase name="collectionCanReturnItsFirstElement" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="60" assertions="1" time="0.000187"/>
+      <testcase name="collectionReturnsSpecifiedPost" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="74" assertions="1" time="0.000179"/>
+      <testcase name="collectionThrowsExceptionIfPostDoesNotExists" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="87" assertions="1" time="0.001526"/>
+      <testcase name="shiftWithOneElementLeavesCollectionEmpty" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="96" assertions="2" time="0.001621"/>
+      <testcase name="popWithOneElementLeavesCollectionEmpty" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="109" assertions="2" time="0.000200"/>
+      <testcase name="shiftRemovesFirstElement" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="122" assertions="3" time="0.000234"/>
+      <testcase name="popRemovesLasElement" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="138" assertions="3" time="0.000170"/>
+      <testcase name="collectionReturnsAllPosts" class="Blog\Tests\Domain\Collections\PostCollectionTest" classname="Blog.Tests.Domain.Collections.PostCollectionTest" file="/opt/project/src/Tests/Domain/Collections/PostCollectionTest.php" line="154" assertions="1" time="0.000146"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\DataObject\Email\EmailTest" file="/opt/project/src/Tests/Domain/DataObject/Email/EmailTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.006592">
+      <testcase name="emailIsCreatedEmpty" class="Blog\Tests\Domain\DataObject\Email\EmailTest" classname="Blog.Tests.Domain.DataObject.Email.EmailTest" file="/opt/project/src/Tests/Domain/DataObject/Email/EmailTest.php" line="23" assertions="1" time="0.005585"/>
+      <testcase name="emailIsCreatedWithUserNameAndHost" class="Blog\Tests\Domain\DataObject\Email\EmailTest" classname="Blog.Tests.Domain.DataObject.Email.EmailTest" file="/opt/project/src/Tests/Domain/DataObject/Email/EmailTest.php" line="32" assertions="1" time="0.000827"/>
+      <testcase name="emailCanBePrinted" class="Blog\Tests\Domain\DataObject\Email\EmailTest" classname="Blog.Tests.Domain.DataObject.Email.EmailTest" file="/opt/project/src/Tests/Domain/DataObject/Email/EmailTest.php" line="45" assertions="1" time="0.000180"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\DataObject\Name\PersonNameTest" file="/opt/project/src/Tests/Domain/DataObject/Name/PersonNameTest.php" tests="4" assertions="5" errors="0" failures="0" skipped="0" time="0.001914">
+      <testcase name="personCanHaveOnlyFirstName" class="Blog\Tests\Domain\DataObject\Name\PersonNameTest" classname="Blog.Tests.Domain.DataObject.Name.PersonNameTest" file="/opt/project/src/Tests/Domain/DataObject/Name/PersonNameTest.php" line="19" assertions="2" time="0.001495"/>
+      <testcase name="personHasLastName" class="Blog\Tests\Domain\DataObject\Name\PersonNameTest" classname="Blog.Tests.Domain.DataObject.Name.PersonNameTest" file="/opt/project/src/Tests/Domain/DataObject/Name/PersonNameTest.php" line="32" assertions="1" time="0.000151"/>
+      <testcase name="personHasFullName" class="Blog\Tests\Domain\DataObject\Name\PersonNameTest" classname="Blog.Tests.Domain.DataObject.Name.PersonNameTest" file="/opt/project/src/Tests/Domain/DataObject/Name/PersonNameTest.php" line="45" assertions="1" time="0.000131"/>
+      <testcase name="personNameDataObjectCanBePrinted" class="Blog\Tests\Domain\DataObject\Name\PersonNameTest" classname="Blog.Tests.Domain.DataObject.Name.PersonNameTest" file="/opt/project/src/Tests/Domain/DataObject/Name/PersonNameTest.php" line="60" assertions="1" time="0.000137"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\DataObject\Name\UserNameTest" file="/opt/project/src/Tests/Domain/DataObject/Name/UserNameTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.000292">
+      <testcase name="userHasName" class="Blog\Tests\Domain\DataObject\Name\UserNameTest" classname="Blog.Tests.Domain.DataObject.Name.UserNameTest" file="/opt/project/src/Tests/Domain/DataObject/Name/UserNameTest.php" line="19" assertions="1" time="0.000158"/>
+      <testcase name="personNameDataObjectCanBePrinted" class="Blog\Tests\Domain\DataObject\Name\UserNameTest" classname="Blog.Tests.Domain.DataObject.Name.UserNameTest" file="/opt/project/src/Tests/Domain/DataObject/Name/UserNameTest.php" line="31" assertions="1" time="0.000134"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\Entity\PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" tests="9" assertions="16" errors="0" failures="0" skipped="0" time="0.002811">
+      <testcase name="postIsCreatedEmpty" class="Blog\Tests\Domain\Entity\PostTest" classname="Blog.Tests.Domain.Entity.PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" line="25" assertions="8" time="0.000188"/>
+      <testcase name="titleIsSet" class="Blog\Tests\Domain\Entity\PostTest" classname="Blog.Tests.Domain.Entity.PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" line="42" assertions="1" time="0.000127"/>
+      <testcase name="contentIsSet" class="Blog\Tests\Domain\Entity\PostTest" classname="Blog.Tests.Domain.Entity.PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" line="53" assertions="1" time="0.000118"/>
+      <testcase name="stateIsSet" class="Blog\Tests\Domain\Entity\PostTest" classname="Blog.Tests.Domain.Entity.PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" line="64" assertions="1" time="0.000139"/>
+      <testcase name="postIsPublished" class="Blog\Tests\Domain\Entity\PostTest" classname="Blog.Tests.Domain.Entity.PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" line="75" assertions="1" time="0.000161"/>
+      <testcase name="postIsNotPublished" class="Blog\Tests\Domain\Entity\PostTest" classname="Blog.Tests.Domain.Entity.PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" line="86" assertions="1" time="0.001607"/>
+      <testcase name="postCreatedAtIsSet" class="Blog\Tests\Domain\Entity\PostTest" classname="Blog.Tests.Domain.Entity.PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" line="97" assertions="1" time="0.000137"/>
+      <testcase name="postPublisheddAtIsSet" class="Blog\Tests\Domain\Entity\PostTest" classname="Blog.Tests.Domain.Entity.PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" line="108" assertions="1" time="0.000162"/>
+      <testcase name="postUpdatedAtIsSet" class="Blog\Tests\Domain\Entity\PostTest" classname="Blog.Tests.Domain.Entity.PostTest" file="/opt/project/src/Tests/Domain/Entity/PostTest.php" line="119" assertions="1" time="0.000172"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\Entity\UserTest" file="/opt/project/src/Tests/Domain/Entity/UserTest.php" tests="2" assertions="14" errors="0" failures="0" skipped="0" time="0.002018">
+      <testcase name="userIsCreatedEmpty" class="Blog\Tests\Domain\Entity\UserTest" classname="Blog.Tests.Domain.Entity.UserTest" file="/opt/project/src/Tests/Domain/Entity/UserTest.php" line="20" assertions="7" time="0.001744"/>
+      <testcase name="userHasAllFieldsFilled" class="Blog\Tests\Domain\Entity\UserTest" classname="Blog.Tests.Domain.Entity.UserTest" file="/opt/project/src/Tests/Domain/Entity/UserTest.php" line="36" assertions="7" time="0.000274"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\Validators\DataObject\Email\EmailValidatorTest" file="/opt/project/src/Tests/Domain/Validators/DataObject/Email/EmailValidatorTest.php" tests="8" assertions="8" errors="0" failures="0" skipped="0" time="0.005708">
+      <testcase name="emailIsValid" class="Blog\Tests\Domain\Validators\DataObject\Email\EmailValidatorTest" classname="Blog.Tests.Domain.Validators.DataObject.Email.EmailValidatorTest" file="/opt/project/src/Tests/Domain/Validators/DataObject/Email/EmailValidatorTest.php" line="22" assertions="1" time="0.003053"/>
+      <testsuite name="Blog\Tests\Domain\Validators\DataObject\Email\EmailValidatorTest::invalidEmailFormat" tests="7" assertions="7" errors="0" failures="0" skipped="0" time="0.002655">
+        <testcase name="invalidEmailFormat with data set #0" assertions="1" time="0.000993"/>
+        <testcase name="invalidEmailFormat with data set #1" assertions="1" time="0.000365"/>
+        <testcase name="invalidEmailFormat with data set #2" assertions="1" time="0.000267"/>
+        <testcase name="invalidEmailFormat with data set #3" assertions="1" time="0.000248"/>
+        <testcase name="invalidEmailFormat with data set #4" assertions="1" time="0.000347"/>
+        <testcase name="invalidEmailFormat with data set #5" assertions="1" time="0.000149"/>
+        <testcase name="invalidEmailFormat with data set #6" assertions="1" time="0.000286"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\Validators\DataObject\Post\PersonNameValidatorTest" file="/opt/project/src/Tests/Domain/Validators/DataObject/Post/PersonNameValidatorTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.004364">
+      <testcase name="personNameIsValid" class="Blog\Tests\Domain\Validators\DataObject\Post\PersonNameValidatorTest" classname="Blog.Tests.Domain.Validators.DataObject.Post.PersonNameValidatorTest" file="/opt/project/src/Tests/Domain/Validators/DataObject/Post/PersonNameValidatorTest.php" line="21" assertions="1" time="0.002658"/>
+      <testcase name="personNameNeedsAtLeastFirstName" class="Blog\Tests\Domain\Validators\DataObject\Post\PersonNameValidatorTest" classname="Blog.Tests.Domain.Validators.DataObject.Post.PersonNameValidatorTest" file="/opt/project/src/Tests/Domain/Validators/DataObject/Post/PersonNameValidatorTest.php" line="35" assertions="1" time="0.001706"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\Validators\DataObject\Post\UserNameValidatorTest" file="/opt/project/src/Tests/Domain/Validators/DataObject/Post/UserNameValidatorTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.002541">
+      <testcase name="userNameIsValid" class="Blog\Tests\Domain\Validators\DataObject\Post\UserNameValidatorTest" classname="Blog.Tests.Domain.Validators.DataObject.Post.UserNameValidatorTest" file="/opt/project/src/Tests/Domain/Validators/DataObject/Post/UserNameValidatorTest.php" line="21" assertions="1" time="0.001521"/>
+      <testcase name="userNameNeedsFirstName" class="Blog\Tests\Domain\Validators\DataObject\Post\UserNameValidatorTest" classname="Blog.Tests.Domain.Validators.DataObject.Post.UserNameValidatorTest" file="/opt/project/src/Tests/Domain/Validators/DataObject/Post/UserNameValidatorTest.php" line="34" assertions="1" time="0.001020"/>
+    </testsuite>
+    <testsuite name="Blog\Tests\Domain\Validators\Post\CreatePostValidatorTest" file="/opt/project/src/Tests/Domain/Validators/Post/CreatePostValidatorTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.001999">
+      <testcase name="createNewPost" class="Blog\Tests\Domain\Validators\Post\CreatePostValidatorTest" classname="Blog.Tests.Domain.Validators.Post.CreatePostValidatorTest" file="/opt/project/src/Tests/Domain/Validators/Post/CreatePostValidatorTest.php" line="20" assertions="1" time="0.000149"/>
+      <testcase name="postNeedsTitleToBeCreated" class="Blog\Tests\Domain\Validators\Post\CreatePostValidatorTest" classname="Blog.Tests.Domain.Validators.Post.CreatePostValidatorTest" file="/opt/project/src/Tests/Domain/Validators/Post/CreatePostValidatorTest.php" line="31" assertions="1" time="0.000210"/>
+      <testcase name="postNeedsContentToBeCreated" class="Blog\Tests\Domain\Validators\Post\CreatePostValidatorTest" classname="Blog.Tests.Domain.Validators.Post.CreatePostValidatorTest" file="/opt/project/src/Tests/Domain/Validators/Post/CreatePostValidatorTest.php" line="43" assertions="1" time="0.001640"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

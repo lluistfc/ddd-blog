@@ -1,11 +1,33 @@
-<phpunit colors="true" strict="true">
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false"
+         syntaxCheck="false"
+>
+    <logging>
+        <log type="coverage-clover"
+             target="./documentation/coverage.xml"/>
+        <log type="testdox-text"
+             target="./documentation/agileDocumentation.txt"/>
+    </logging>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src/</directory>
         </whitelist>
         <blacklist>
-            <directory suffix=".php">./vendor/</directory>
-            <directory>./documentation/</directory>
+            <directory suffix=".php">./vendor</directory>
+            <directory suffix=".php">./src/Tests/</directory>
         </blacklist>
     </filter>
+    <testsuites>
+        <testsuite name="Package Test Suite">
+            <directory suffix=".php">./src/Tests/</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>

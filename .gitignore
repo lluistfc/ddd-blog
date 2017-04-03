@@ -3,3 +3,4 @@ vendor
 composer.lock
 coverage
 !coverage/.gitkeep
+/.scannerwork/
