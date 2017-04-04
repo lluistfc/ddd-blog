@@ -14,3 +14,10 @@ services:
       context: docker/storage/
     volumes:
       - /storage
+  sonarqube:
+    build:
+      context: .
+      dockerfile: docker/sonarqube/Dockerfile
+    ports:
+      - "9000:9000"
+      - "443"
