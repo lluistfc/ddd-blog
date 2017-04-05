@@ -66,16 +66,12 @@ abstract class Collection extends \ArrayObject
     /**
      * @param EntityInterface $element
      * @return bool
-     * @throws ElementCouldNotBeAddedException
+     * @throws ElementDoesNotExistsInCollectionException
      */
     protected function add(EntityInterface $element)
     {
         $this->elements[$element->getId()] = $element;
-        try {
-            return $this->exists(($element->getId()));
-        } catch (ElementDoesNotExistsInCollectionException $e) {
-            throw new ElementCouldNotBeAddedException();
-        }
+        return $this->exists(($element->getId()));
     }
 
     /**
