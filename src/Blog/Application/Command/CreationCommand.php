@@ -5,10 +5,8 @@ namespace Blog\Application\Command;
  * Class CreationCommand
  * @package Blog\Application\Command
  */
-abstract class CreationCommand implements CommandInterface
+abstract class CreationCommand extends BaseCommand implements CommandInterface
 {
-    use BaseCommand;
-
     public function execute()
     {
         $this->create();

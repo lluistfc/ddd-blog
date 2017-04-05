@@ -8,7 +8,7 @@ use Blog\Domain\Repository\PersistEntityRepository;
  * Class BaseCommand
  * @package Blog\Application\Command
  */
-trait BaseCommand
+abstract class BaseCommand
 {
     /**
      * @var PersistEntityRepository

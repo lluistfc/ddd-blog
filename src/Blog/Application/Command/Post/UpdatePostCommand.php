@@ -6,8 +6,6 @@ use Blog\Application\Command\UpdateCommand;
 
 class UpdatePostCommand extends UpdateCommand
 {
-    use BaseCommand;
-
     /**
      * @access protected
      * @return void
