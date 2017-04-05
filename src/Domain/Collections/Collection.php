@@ -128,7 +128,7 @@ abstract class Collection extends \ArrayObject
     public function pop()
     {
         $element = $this->last();
-        $this->remove($element);
+        $this->remove($element->getId());
 
         return $element;
     }
@@ -145,7 +145,7 @@ abstract class Collection extends \ArrayObject
      * @param $index
      * @throws ElementDoesNotExistsInCollectionException
      */
-    private function checkIfElementExists($index): void
+    private function checkIfElementExists($index)
     {
         if (!$this->exists($index)) {
             throw new ElementDoesNotExistsInCollectionException();

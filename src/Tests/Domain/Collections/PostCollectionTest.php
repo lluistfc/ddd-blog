@@ -36,8 +36,7 @@ class PostCollectionTest extends TestCase
         $post = TestPostCreator::createPost();
 
         $collection->addPost($post);
-
-        $this->assertCount(1, $collection->getIterator());
+        $this->assertCount(1, $collection->getAllPosts());
     }
 
     /**
@@ -53,7 +52,7 @@ class PostCollectionTest extends TestCase
             $collection->addPost(TestPostCreator::createPost($i));
         }
 
-        $this->assertCount($maxPosts, $collection->getIterator());
+        $this->assertCount($maxPosts, $collection->getAllPosts());
     }
 
     /**
@@ -130,7 +129,7 @@ class PostCollectionTest extends TestCase
         $collection->addPost($secondPost);
 
         $this->assertEquals($firstPost, $collection->shift());
-        $this->assertCount(1, $collection->getIterator());
+        $this->assertCount(1, $collection->getAllPosts());
         $this->assertEquals($secondPost, $collection->getFirstPost());
     }
 
@@ -146,7 +145,7 @@ class PostCollectionTest extends TestCase
         $collection->addPost($secondPost);
 
         $this->assertEquals($secondPost, $collection->pop());
-        $this->assertCount(1, $collection->getIterator());
+        $this->assertCount(1, $collection->getAllPosts());
         $this->assertEquals($firstPost, $collection->getLastPost());
     }
 
