@@ -17,9 +17,9 @@ class CreatePostValidatorTest extends TestCase
     /**
      * @test
      */
-    public function createNewPost()
+    public function postIsValidated()
     {
-        $postValues = FakePostCreator::createPostDefaultArrayValues();
+        $postValues = FakePostCreator::createPost();
 
         $this->assertTrue((new CreatePostValidator($postValues))->validate());
     }
@@ -30,10 +30,8 @@ class CreatePostValidatorTest extends TestCase
      */
     public function postNeedsTitleToBeCreated()
     {
-        $postValues = FakePostCreator::createPostDefaultArrayValues();
-        unset($postValues[Post::TITLE]);
-
-        (new CreatePostValidator($postValues))->validate();
+        $post = new Post();
+        (new CreatePostValidator($post))->validate();
     }
 
     /**
@@ -42,9 +40,9 @@ class CreatePostValidatorTest extends TestCase
      */
     public function postNeedsContentToBeCreated()
     {
-        $postValues = FakePostCreator::createPostDefaultArrayValues();
-        unset($postValues[Post::CONTENT]);
+        $post = FakePostCreator::createPost();
+        $post->setContent('');
 
-        (new CreatePostValidator($postValues))->validate();
+        (new CreatePostValidator($post))->validate();
     }
 }

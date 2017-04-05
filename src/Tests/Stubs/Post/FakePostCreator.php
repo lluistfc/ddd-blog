@@ -16,6 +16,10 @@ class FakePostCreator
         $post->setId($id);
         $post->setTitle('Fake Title');
         $post->setContent('fake content');
+        $post->setPublished(true);
+        $post->setCreatedAt(new \DateTime());
+        $post->setPublishedAt(new \DateTime());
+        $post->setUpdatedAt(new \DateTime());
 
         return $post;
     }

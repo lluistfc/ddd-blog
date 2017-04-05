@@ -2,24 +2,23 @@
 namespace Blog\Application\Command;
 
 use Blog\Domain\Entity\EntityInterface;
-use Blog\Domain\Repository\PersistEntityRepository;
+use Blog\Domain\Repository\EntityPersistRepository;
 
 /**
- * Interface CommandInterface
+ * Class BaseCommand
  * @package Blog\Application\Command
  */
 interface CommandInterface
 {
     /**
      * CommandInterface constructor.
-     * @param PersistEntityRepository $entityRepository
-     * @param EntityInterface $entity
+     * @param EntityPersistRepository $entityRepository
      */
-    public function __construct(PersistEntityRepository $entityRepository, EntityInterface $entity);
+    public function __construct(EntityPersistRepository $entityRepository);
 
     /**
-     * @access private
+     * @param EntityInterface $entity
      * @return void
      */
-    public function execute();
+    public function execute(EntityInterface $entity);
 }

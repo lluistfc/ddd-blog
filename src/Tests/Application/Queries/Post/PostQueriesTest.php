@@ -2,7 +2,7 @@
 namespace Application\Queries\Post;
 
 use Blog\Application\Queries\Post\PostQueries;
-use Blog\Domain\Collections\PostCollection;
+use Blog\Application\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
 use Tests\Stubs\Post\FakeReadOnlyRepository;
 use Tests\Stubs\Post\FakePostCreator;

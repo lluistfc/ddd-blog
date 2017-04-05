@@ -20,7 +20,7 @@ class UpdateTest extends TestCase
     public function postWasUpdated()
     {
         $repository = new FakePersistRepository();
-        (new UpdatePostCommand($repository, FakePostCreator::createPost()))->execute();
+        (new UpdatePostCommand($repository))->execute(FakePostCreator::createPost());
 
         $this->assertTrue($repository->getEntityWasUpdated());
     }

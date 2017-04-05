@@ -1,7 +1,7 @@
 <?php
 namespace Blog\Application\Queries\Post;
 
-use Blog\Domain\Collections\PostCollection;
+use Blog\Application\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
 use Blog\Domain\Repository\PostQueriesRepository;
 

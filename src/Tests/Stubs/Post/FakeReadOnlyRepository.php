@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Stubs\Post;
 
-use Blog\Domain\Collections\PostCollection;
+use Blog\Application\Collections\PostCollection;
 use Blog\Domain\Repository\PostQueriesRepository;
 
 class FakeReadOnlyRepository extends PostQueriesRepository

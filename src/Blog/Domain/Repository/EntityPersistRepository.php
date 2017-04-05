@@ -4,10 +4,10 @@ namespace Blog\Domain\Repository;
 use Blog\Domain\Entity\EntityInterface;
 
 /**
- * Interface PersistEntityRepository
+ * Interface EntityPersistRepository
  * @package Blog\Domain\Repository
  */
-interface PersistEntityRepository
+interface EntityPersistRepository
 {
     /**
      * @param EntityInterface $baseEntity

@@ -1,17 +1,18 @@
 <?php
 namespace Blog\Application\Command\Post;
 
-use Blog\Application\Command\BaseCommand;
-use Blog\Application\Command\UpdateCommand;
+use Blog\Application\Command\Command;
+use Blog\Domain\Entity\EntityInterface;
 
-class UpdatePostCommand extends UpdateCommand
+class UpdatePostCommand extends Command
 {
     /**
-     * @access protected
+     * @access public
+     * @param EntityInterface $entity
      * @return void
      */
-    protected function update()
+    public function execute(EntityInterface $entity)
     {
-        $this->entityRepository->updateEntity($this->entity);
+        $this->entityRepository->updateEntity($entity);
     }
 }

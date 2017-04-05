@@ -1,10 +1,9 @@
 <?php
-namespace Blog\Domain\Collections;
+namespace Blog\Application\Collections;
 
 use Blog\Domain\Entity\EntityInterface;
 use Blog\Domain\Exceptions\Collection\ElementDoesNotExistsInCollectionException;
-use Blog\Domain\Exceptions\Collections\ElementCouldNotBeAddedException;
-use Blog\Domain\Validators\Collection\CollectionCreationValidator;
+use Blog\Application\Validators\Collection\CollectionCreationValidator;
 
 /**
  * Class Collection

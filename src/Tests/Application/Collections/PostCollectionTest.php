@@ -1,15 +1,15 @@
 <?php
-namespace Tests\Domain\Collections;
+namespace Tests\Application\Collections;
 
-use Blog\Domain\Collections\PostCollection;
+use Blog\Application\Collections\PostCollection;
 use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class PostCollectionTest
  * @package Tests\Domain\Collections
- * @group domain
- * @group domain_collection
+ * @group application
+ * @group application_collection
  */
 class PostCollectionTest extends TestCase
 {

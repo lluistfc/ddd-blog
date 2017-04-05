@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Domain\Collections;
+namespace Blog\Application\Collections;
 
 use Blog\Domain\Entity\EntityInterface;
 use Blog\Domain\Entity\Post;
@@ -7,7 +7,7 @@ use Blog\Domain\Exceptions\Collection\ElementDoesNotExistsInCollectionException;
 
 /**
  * Class PostCollection
- * @package Blog\Domain\Collections
+ * @package Blog\Application\Collections
  */
 class PostCollection extends Collection
 {

@@ -2,9 +2,9 @@
 namespace Tests\Stubs\Post;
 
 use Blog\Domain\Entity\EntityInterface;
-use Blog\Domain\Repository\PersistEntityRepository;
+use Blog\Domain\Repository\EntityPersistRepository;
 
-class FakePersistRepository implements PersistEntityRepository
+class FakePersistRepository implements EntityPersistRepository
 {
     private $entityWasPersisted = false;
     private $entityWasUpdated = false;

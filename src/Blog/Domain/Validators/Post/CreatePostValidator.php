@@ -13,12 +13,14 @@ use Blog\Domain\Validators\ValidatorInterface;
  */
 class CreatePostValidator implements ValidatorInterface
 {
+    /**
+     * @var Post
+     */
+    private $newPostToValidate;
 
-    private $dataToValidate;
-
-    public function __construct(array $dataToValidate)
+    public function __construct(Post $newPostToValidate)
     {
-        $this->dataToValidate = $dataToValidate;
+        $this->newPostToValidate = $newPostToValidate;
     }
 
     /**
@@ -27,11 +29,11 @@ class CreatePostValidator implements ValidatorInterface
      */
     public function validate()
     {
-        if (empty($this->dataToValidate[Post::TITLE])) {
+        if (empty($this->newPostToValidate->getTitle())) {
             throw new PostNeedsTitleException();
         }
 
-        if (empty($this->dataToValidate[Post::CONTENT])) {
+        if (empty($this->newPostToValidate->getContent())) {
             throw new PostNeedsContentException();
         }
 

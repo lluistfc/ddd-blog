@@ -2,6 +2,7 @@
 namespace Blog\Application\CommandHandler;
 
 use Blog\Application\Command\CommandInterface;
+use Blog\Domain\Entity\EntityInterface;
 use Blog\Domain\Validators\ValidatorInterface;
 
 /**
@@ -14,13 +15,13 @@ Interface CommandHandlerInterface
      * CommandHandlerInterface constructor.
      * @access public
      * @param CommandInterface $command
-     * @param ValidatorInterface $validator
      */
-    public function __construct(CommandInterface $command, ValidatorInterface $validator);
+    public function __construct(CommandInterface $command);
 
     /**
      * @access public
+     * @param  $entity
      * @return void
      */
-    public function handle();
+    public function handle($entity);
 }

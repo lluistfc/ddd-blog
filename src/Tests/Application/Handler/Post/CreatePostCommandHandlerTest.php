@@ -27,11 +27,12 @@ class CreatePostCommandHandlerTest extends TestCase
     public function createPostCommandWasHandled()
     {
         $fakeRepository = new FakePersistRepository();
-        $createPostCommand = new CreatePostCommand($fakeRepository, new Post());
-        $createPostValidator = new CreatePostValidator(FakePostCreator::createPostDefaultArrayValues());
+        $createPostCommand = new CreatePostCommand($fakeRepository);
+        $newPostToValidate = FakePostCreator::createPost();
+        $createPostValidator = new CreatePostValidator($newPostToValidate);
         $handler = new CreatePostCommandHandler($createPostCommand, $createPostValidator);
 
-        $handler->handle();
+        $handler->handle($newPostToValidate);
 
         $this->assertTrue($fakeRepository->getEntityWasPersisted());
     }
@@ -45,9 +46,10 @@ class CreatePostCommandHandlerTest extends TestCase
     {
         $fakeRepository = new FakePersistRepository();
         $createPostCommand = new CreatePostCommand($fakeRepository, new Post());
-        $createPostValidator = new CreatePostValidator(array());
+        $newPostToValidate = new Post();
+        $createPostValidator = new CreatePostValidator($newPostToValidate);
         $handler = new CreatePostCommandHandler($createPostCommand, $createPostValidator);
 
-        $handler->handle();
+        $handler->handle($newPostToValidate);
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Domain\Validators\Collection;
+namespace Blog\Application\Validators\Collection;
 
 use Blog\Domain\Entity\EntityInterface;
 use Blog\Domain\Exceptions\Collection\InvalidElementInCollectionException;

@@ -20,7 +20,7 @@ class CreateTest extends TestCase
     public function postWasCreated()
     {
         $repository = new FakePersistRepository();
-        (new CreatePostCommand($repository, FakePostCreator::createPost()))->execute();
+        (new CreatePostCommand($repository))->execute(FakePostCreator::createPost());
 
         $this->assertTrue($repository->getEntityWasPersisted());
     }
