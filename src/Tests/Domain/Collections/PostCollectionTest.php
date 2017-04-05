@@ -16,13 +16,15 @@ class PostCollectionTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \Blog\Domain\Exceptions\Collection\InvalidElementInCollectionException
      */
     public function collectionCanOnlyStorePosts()
     {
         $collection = new PostCollection();
-
-        $collection->add(new class {});
+        try {
+            $collection->addPost(new class {});
+        } catch (\Error $e) {
+            $this->assertInstanceOf(\Error::class, $e);
+        }
     }
 
     /**
@@ -33,7 +35,7 @@ class PostCollectionTest extends TestCase
         $collection = new PostCollection();
         $post = TestPostCreator::createPost();
 
-        $collection->add($post);
+        $collection->addPost($post);
 
         $this->assertCount(1, $collection->getIterator());
     }
@@ -48,7 +50,7 @@ class PostCollectionTest extends TestCase
         $collection = new PostCollection();
 
         for($i = 0; $i < $maxPosts ; $i++) {
-            $collection->add(TestPostCreator::createPost($i));
+            $collection->addPost(TestPostCreator::createPost($i));
         }
 
         $this->assertCount($maxPosts, $collection->getIterator());
@@ -62,10 +64,10 @@ class PostCollectionTest extends TestCase
         $firstPost = TestPostCreator::createPost();
         $secondPost = TestPostCreator::createPost(2);
         $collection = new PostCollection();
-        $collection->add($firstPost);
-        $collection->add($secondPost);
+        $collection->addPost($firstPost);
+        $collection->addPost($secondPost);
 
-        $this->assertEquals($firstPost, $collection->getFirst());
+        $this->assertEquals($firstPost, $collection->getFirstPost());
     }
 
     /**
@@ -75,7 +77,7 @@ class PostCollectionTest extends TestCase
     {
         $post = TestPostCreator::createPost(1337);
         $collection = new PostCollection();
-        $collection->add($post);
+        $collection->addPost($post);
 
         $this->assertEquals($post, $collection->getPost(1337));
     }
@@ -97,10 +99,10 @@ class PostCollectionTest extends TestCase
     {
         $post = TestPostCreator::createPost(1337);
         $collection = new PostCollection();
-        $collection->add($post);
+        $collection->addPost($post);
 
         $this->assertEquals($post, $collection->shift());
-        $this->assertEmpty($collection->getAll());
+        $this->assertEmpty($collection->getAllPosts());
     }
 
     /**
@@ -110,10 +112,10 @@ class PostCollectionTest extends TestCase
     {
         $post = TestPostCreator::createPost(1337);
         $collection = new PostCollection();
-        $collection->add($post);
+        $collection->addPost($post);
 
         $this->assertEquals($post, $collection->pop());
-        $this->assertEmpty($collection->getAll());
+        $this->assertEmpty($collection->getAllPosts());
     }
 
     /**
@@ -124,12 +126,12 @@ class PostCollectionTest extends TestCase
         $firstPost = TestPostCreator::createPost();
         $secondPost = TestPostCreator::createPost(2);
         $collection = new PostCollection();
-        $collection->add($firstPost);
-        $collection->add($secondPost);
+        $collection->addPost($firstPost);
+        $collection->addPost($secondPost);
 
         $this->assertEquals($firstPost, $collection->shift());
         $this->assertCount(1, $collection->getIterator());
-        $this->assertEquals($secondPost, $collection->getFirst());
+        $this->assertEquals($secondPost, $collection->getFirstPost());
     }
 
     /**
@@ -140,12 +142,12 @@ class PostCollectionTest extends TestCase
         $firstPost = TestPostCreator::createPost();
         $secondPost = TestPostCreator::createPost(2);
         $collection = new PostCollection();
-        $collection->add($firstPost);
-        $collection->add($secondPost);
+        $collection->addPost($firstPost);
+        $collection->addPost($secondPost);
 
         $this->assertEquals($secondPost, $collection->pop());
         $this->assertCount(1, $collection->getIterator());
-        $this->assertEquals($firstPost, $collection->getLast());
+        $this->assertEquals($firstPost, $collection->getLastPost());
     }
 
     /**
@@ -156,10 +158,10 @@ class PostCollectionTest extends TestCase
         $firstPost = TestPostCreator::createPost();
         $secondPost = TestPostCreator::createPost(2);
         $collection = new PostCollection();
-        $collection->add($firstPost);
-        $collection->add($secondPost);
+        $collection->addPost($firstPost);
+        $collection->addPost($secondPost);
 
-        $this->assertCount(2, $collection->getAll());
+        $this->assertCount(2, $collection->getAllPosts());
     }
 
     /**
