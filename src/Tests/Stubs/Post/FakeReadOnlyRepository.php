@@ -2,9 +2,9 @@
 namespace Tests\Stubs\Post;
 
 use Blog\Application\Collections\PostCollection;
-use Blog\Domain\Repository\PostQueriesRepository;
+use Blog\Domain\Repository\PostQueriesInterface;
 
-class FakeReadOnlyRepository extends PostQueriesRepository
+class FakeReadOnlyRepository implements PostQueriesInterface
 {
     public function findOneById(int $id)
     {

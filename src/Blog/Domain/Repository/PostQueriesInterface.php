@@ -1,7 +1,7 @@
 <?php
 namespace Blog\Domain\Repository;
 
-use Blog\Domain\Collections\PostCollection;
+use Blog\Application\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
 
 /**

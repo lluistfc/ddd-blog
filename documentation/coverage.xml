@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1491430628">
-  <project timestamp="1491430628">
+<coverage generated="1491431163">
+  <project timestamp="1491431163">
     <package name="Blog\Application\Collections">
       <file name="/opt/project/src/Blog/Application/Collections/Collection.php">
         <class name="Collection" namespace="Blog\Application\Collections" fullPackage="Blog" package="Blog">
@@ -432,14 +432,6 @@
     <file name="/opt/project/src/Blog/Domain/Repository/PostQueriesInterface.php">
       <metrics loc="37" ncloc="15" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <package name="Blog\Domain\Repository">
-      <file name="/opt/project/src/Blog/Domain/Repository/PostQueriesRepository.php">
-        <class name="PostQueriesRepository" namespace="Blog\Domain\Repository" fullPackage="Blog" package="Blog">
-          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-        </class>
-        <metrics loc="9" ncloc="5" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
-      </file>
-    </package>
     <package name="Blog\Domain\Validators\DataObject\Email">
       <file name="/opt/project/src/Blog/Domain/Validators/DataObject/Email/EmailValidator.php">
         <class name="EmailValidator" namespace="Blog\Domain\Validators\DataObject\Email">
@@ -504,6 +496,6 @@
     <file name="/opt/project/src/Blog/Domain/Validators/ValidatorInterface.php">
       <metrics loc="16" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="38" loc="1519" ncloc="876" classes="19" methods="93" coveredmethods="93" conditionals="0" coveredconditionals="0" statements="164" coveredstatements="164" elements="257" coveredelements="257"/>
+    <metrics files="37" loc="1510" ncloc="871" classes="19" methods="93" coveredmethods="93" conditionals="0" coveredconditionals="0" statements="164" coveredstatements="164" elements="257" coveredelements="257"/>
   </project>
 </coverage>

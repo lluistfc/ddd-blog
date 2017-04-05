@@ -3,7 +3,7 @@ namespace Blog\Application\Queries\Post;
 
 use Blog\Application\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
-use Blog\Domain\Repository\PostQueriesRepository;
+use Blog\Domain\Repository\PostQueriesInterface;
 
 /**
  * Class PostQueries
@@ -13,16 +13,16 @@ class PostQueries
 {
     /**
      * @access private
-     * @var PostQueriesRepository
+     * @var PostQueriesInterface
      */
     private $entityRepository;
 
     /**
      * PostQueries constructor.
      * @access public
-     * @param PostQueriesRepository $entityRepository
+     * @param PostQueriesInterface $entityRepository
      */
-    public function __construct(PostQueriesRepository $entityRepository)
+    public function __construct(PostQueriesInterface $entityRepository)
     {
         $this->entityRepository = $entityRepository;
     }
