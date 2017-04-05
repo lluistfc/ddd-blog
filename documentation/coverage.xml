@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1491415319">
-  <project timestamp="1491415319">
+<coverage generated="1491417310">
+  <project timestamp="1491417310">
     <package name="Blog\Application\Command">
       <file name="/opt/project/src/Blog/Application/Command/BaseCommand.php">
         <class name="BaseCommand" namespace="Blog\Application\Command" fullPackage="Blog" package="Blog">
