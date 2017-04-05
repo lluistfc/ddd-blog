@@ -1,5 +1,9 @@
 README
 ===
+## SonarQube
+
+Dockerfiles and enviroment for sonarqube are working only for SonarServer, still working on scaner-script
+
 ## Start enviroment
 ```bash
 $ docker-compose build
