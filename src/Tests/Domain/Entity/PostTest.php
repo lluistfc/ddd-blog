@@ -1,12 +1,12 @@
 <?php
-namespace Blog\Tests\Domain\Entity;
+namespace Tests\Domain\Entity;
 
 use Blog\Domain\Entity\Post;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class PostTest
- * @package Blog\Tests\Domain
+ * @package Tests\Domain
  * @group domain
  * @group domain_entity
  */

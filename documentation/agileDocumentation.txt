@@ -1,10 +1,10 @@
-Blog\Tests\Application\Command\Post\Create
+s\Application\Command\Post\Create
  [x] Post was created
 
-Blog\Tests\Application\Command\Post\Update
+s\Application\Command\Post\Update
  [x] Post was updated
 
-Blog\Tests\Application\Handler\Post\CreatePostCommandHandler
+s\Application\Handler\Post\CreatePostCommandHandler
  [x] Create post command was handled
  [x] Invalid data throws validation exception
 
@@ -14,7 +14,7 @@ Application\Queries\Post\PostQueries
  [x] Query returns empty collection when we have no posts
  [x] Query returns newest post
 
-Blog\Tests\Domain\Collections\PostCollection
+s\Domain\Collections\PostCollection
  [x] Collection can only store posts
  [x] Collection stores one post
  [x] Collection stores n posts 
@@ -26,23 +26,27 @@ Blog\Tests\Domain\Collections\PostCollection
  [x] Shift removes first element
  [x] Pop removes las element
  [x] Collection returns all posts
+ [x] Collection returns next element
+ [x] Collection next element does not exist
+ [x] Collection returns prev element
+ [x] Collection prev element does not exist
 
-Blog\Tests\Domain\DataObject\Email\Email
- [x] Email is created empty
+s\Domain\DataObject\Email\Email
+ [x] Empty email returns only at symbol
  [x] Email is created with user name and host
- [x] Email can be printed
+ [x] Email data object can be printed
 
-Blog\Tests\Domain\DataObject\Name\PersonName
+s\Domain\DataObject\Name\PersonName
  [x] Person can have only first name
  [x] Person has last name
  [x] Person has full name
  [x] Person name data object can be printed
 
-Blog\Tests\Domain\DataObject\Name\UserName
+s\Domain\DataObject\Name\UserName
  [x] User has name
  [x] Person name data object can be printed
 
-Blog\Tests\Domain\Entity\Post
+s\Domain\Entity\Post
  [x] Post is created empty
  [x] Title is set
  [x] Content is set
@@ -53,23 +57,23 @@ Blog\Tests\Domain\Entity\Post
  [x] Post publishedd at is set
  [x] Post updated at is set
 
-Blog\Tests\Domain\Entity\User
+s\Domain\Entity\User
  [x] User is created empty
  [x] User has all fields filled
 
-Blog\Tests\Domain\Validators\DataObject\Email\EmailValidator
+s\Domain\Validators\DataObject\Email\EmailValidator
  [x] Email is valid
  [x] Invalid email format 
 
-Blog\Tests\Domain\Validators\DataObject\Post\PersonNameValidator
+s\Domain\Validators\DataObject\Post\PersonNameValidator
  [x] Person name is valid
  [x] Person name needs at least first name
 
-Blog\Tests\Domain\Validators\DataObject\Post\UserNameValidator
+s\Domain\Validators\DataObject\Post\UserNameValidator
  [x] User name is valid
  [x] User name needs first name
 
-Blog\Tests\Domain\Validators\Post\CreatePostValidator
+s\Domain\Validators\Post\CreatePostValidator
  [x] Create new post
  [x] Post needs title to be created
  [x] Post needs content to be created

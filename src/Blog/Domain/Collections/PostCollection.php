@@ -54,5 +54,19 @@ class PostCollection extends Collection
         return $this->last();
     }
 
+    /**
+     * @return Post|EntityInterface|bool
+     */
+    public function getNextPost()
+    {
+        return $this->next();
+    }
 
+    /**
+     * @return Post|EntityInterface|bool
+     */
+    public function getPrevPost()
+    {
+        return $this->prev();
+    }
 }

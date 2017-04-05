@@ -4,8 +4,8 @@ namespace Application\Queries\Post;
 use Blog\Application\Queries\Post\PostQueries;
 use Blog\Domain\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
-use Blog\Tests\Stubs\Post\FakeReadOnlyRepository;
-use Blog\Tests\Stubs\Post\FakePostCreator;
+use Tests\Stubs\Post\FakeReadOnlyRepository;
+use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**

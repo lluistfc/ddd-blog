@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Tests\Stubs\Post;
+namespace Tests\Stubs\Post;
 
 use Blog\Domain\Collections\PostCollection;
 use Blog\Domain\Repository\PostQueriesRepository;

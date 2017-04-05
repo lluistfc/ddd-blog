@@ -18,7 +18,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Blog\\": "src/"
+      "Blog\\": "src/Blog",
+      "Tests\\": "src/Tests"
     }
   },
   "minimum-stability": "dev"

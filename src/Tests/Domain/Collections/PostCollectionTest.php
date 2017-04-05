@@ -1,14 +1,13 @@
 <?php
-namespace Blog\Tests\Domain\Collections;
+namespace Tests\Domain\Collections;
 
 use Blog\Domain\Collections\PostCollection;
-use Blog\Domain\Entity\Post;
-use Blog\Tests\Stubs\Post\FakePostCreator;
+use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class PostCollectionTest
- * @package Blog\Tests\Domain\Collections
+ * @package Tests\Domain\Collections
  * @group domain
  * @group domain_collection
  */
@@ -161,6 +160,64 @@ class PostCollectionTest extends TestCase
         $collection->addPost($secondPost);
 
         $this->assertCount(2, $collection->getAllPosts());
+    }
+
+    /**
+     * @access public
+     * @test
+     */
+    public function collectionReturnsNextElement()
+    {
+        $firstPost = FakePostCreator::createPost();
+        $secondPost = FakePostCreator::createPost(2);
+        $collection = new PostCollection();
+        $collection->addPost($firstPost);
+        $collection->addPost($secondPost);
+
+        $this->assertEquals($secondPost, $collection->getNextPost());
+    }
+
+    /**
+     * @access public
+     * @test
+     */
+    public function collectionNextElementDoesNotExist()
+    {
+        $firstPost = FakePostCreator::createPost();
+        $collection = new PostCollection();
+        $collection->addPost($firstPost);
+
+        $this->assertFalse($collection->getNextPost());
+    }
+
+    /**
+     * @access public
+     * @test
+     */
+    public function collectionReturnsPrevElement()
+    {
+        $firstPost = FakePostCreator::createPost();
+        $secondPost = FakePostCreator::createPost(2);
+        $collection = new PostCollection();
+        $collection->addPost($firstPost);
+        $collection->addPost($secondPost);
+
+        $collection->getNextPost();
+
+        $this->assertEquals($firstPost, $collection->getPrevPost());
+    }
+
+    /**
+     * @access public
+     * @test
+     */
+    public function collectionPrevElementDoesNotExist()
+    {
+        $firstPost = FakePostCreator::createPost();
+        $collection = new PostCollection();
+        $collection->addPost($firstPost);
+
+        $this->assertFalse($collection->getPrevPost());
     }
 
     /**

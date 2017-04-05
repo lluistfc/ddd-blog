@@ -1,15 +1,15 @@
 <?php
-namespace Blog\Tests\Domain\Entity;
+namespace Tests\Domain\Entity;
 
 use Blog\Domain\Entity\User;
-use Blog\Tests\Stubs\User\FakeUserCreator;
+use Tests\Stubs\User\FakeUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class UserTest
  * @group domain
  * @group domain_entity
- * @package Blog\Tests\Domain\Entity
+ * @package Tests\Domain\Entity
  */
 class UserTest extends TestCase
 {

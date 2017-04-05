@@ -1,309 +1,26 @@
 {
     "summary": {
-        "total": 54,
-        "kills": 31,
-        "escapes": 12,
-        "errors": 1,
+        "total": 18,
+        "kills": 18,
+        "escapes": 0,
+        "errors": 0,
         "timeouts": 0,
-        "notests": 10,
-        "covered_score": 73,
-        "combined_score": 59,
-        "mutation_coverage": 81
+        "notests": 0,
+        "covered_score": 100,
+        "combined_score": 100,
+        "mutation_coverage": 100
     },
-    "uncovered": [
-        {
-            "file": "src\/Domain\/Collections\/Collection.php",
-            "mutator": "\\Humbug\\Mutator\\ReturnValue\\FunctionCall",
-            "class": "\\Blog\\Domain\\Collections\\Collection",
-            "method": "next",
-            "line": 47
-        },
-        {
-            "file": "src\/Domain\/Collections\/Collection.php",
-            "mutator": "\\Humbug\\Mutator\\ReturnValue\\FunctionCall",
-            "class": "\\Blog\\Domain\\Collections\\Collection",
-            "method": "prev",
-            "line": 56
-        },
-        {
-            "file": "src\/Domain\/Collections\/Collection.php",
-            "mutator": "\\Humbug\\Mutator\\ReturnValue\\BracketedStatement",
-            "class": "\\Blog\\Domain\\Collections\\Collection",
-            "method": "validateInput",
-            "line": 161
-        },
-        {
-            "file": "src\/Domain\/Validators\/Collection\/CollectionCreationValidator.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\LogicalNot",
-            "class": "\\Domain\\Validators\\Collection\\CollectionCreationValidator",
-            "method": "validate",
-            "line": 29
-        },
-        {
-            "file": "src\/Domain\/Validators\/Collection\/CollectionCreationValidator.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
-            "class": "\\Domain\\Validators\\Collection\\CollectionCreationValidator",
-            "method": "validate",
-            "line": 34
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "nPostCreatorProvider",
-            "line": 172
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "nPostCreatorProvider",
-            "line": 173
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "nPostCreatorProvider",
-            "line": 174
-        },
-        {
-            "file": "src\/Tests\/Domain\/Validators\/DataObject\/Email\/EmailValidatorTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Validators\\DataObject\\Email\\EmailValidatorTest",
-            "method": "invalidEmailsProvider",
-            "line": 50
-        },
-        {
-            "file": "src\/Tests\/Domain\/Validators\/DataObject\/Email\/EmailValidatorTest.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
-            "class": "\\Blog\\Tests\\Domain\\Validators\\DataObject\\Email\\EmailValidatorTest",
-            "method": "invalidEmailsProvider",
-            "line": 51
-        }
-    ],
-    "escaped": [
-        {
-            "file": "src\/Domain\/Collections\/Collection.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
-            "class": "\\Blog\\Domain\\Collections\\Collection",
-            "method": "add",
-            "line": 76,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $this->elements[$element->getId()] = $element;\n-        return true;\n+        return false;\n     }\n \n     \/**\n      * @access protected\n      * @param $index\n      * @return EntityInterface",
-            "tests": {
-                "0": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresOnePost",
-                "1": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresNPosts",
-                "4": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionCanReturnItsFirstElement",
-                "5": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsSpecifiedPost",
-                "6": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftWithOneElementLeavesCollectionEmpty",
-                "7": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popWithOneElementLeavesCollectionEmpty",
-                "8": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftRemovesFirstElement",
-                "9": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popRemovesLasElement",
-                "10": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsAllPosts"
-            },
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Domain\/DataObject\/Email\/Email.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\LogicalAnd",
-            "class": "\\Blog\\Domain\\DataObject\\Email\\Email",
-            "method": "get",
-            "line": 91,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ('' !== $this->getUserName() && '' !== $this->getHost()) {\n+        if ('' !== $this->getUserName() || '' !== $this->getHost()) {\n             $email = $this->getUserName() . BString::AT . $this->getHost();\n         }\n \n         return $email;\n     }\n ",
-            "tests": [
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedEmpty",
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedWithUserNameAndHost",
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailCanBePrinted",
-                "Blog\\Tests\\Domain\\Entity\\UserTest::userIsCreatedEmpty"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Application\/Queries\/Post\/PostQueriesTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Application\\Queries\\Post\\PostQueriesTest",
-            "method": "queryReturnsPostById",
-            "line": 26,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $postQuery = new PostQueries(new FakeReadOnlyRepository());\n-        $this->assertInstanceOf(Post::class, $postQuery->findPostById(1));\n+        $this->assertInstanceOf(Post::class, $postQuery->findPostById(0));\n     }\n \n     \/**\n      * @access public\n      * @test\n      *\/",
-            "tests": [
-                "Application\\Queries\\Post\\PostQueriesTest::queryReturnsPostById"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionCanReturnItsFirstElement",
-            "line": 64,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $firstPost = FakePostCreator::createPost();\n-        $secondPost = FakePostCreator::createPost(2);\n+        $secondPost = FakePostCreator::createPost(3);\n         $collection = new PostCollection();\n         $collection->addPost($firstPost);\n         $collection->addPost($secondPost);\n \n         $this->assertEquals($firstPost, $collection->getFirstPost());\n     }",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionCanReturnItsFirstElement"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionThrowsExceptionIfPostDoesNotExists",
-            "line": 91,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $collection = new PostCollection();\n-        $collection->getPost(1337);\n+        $collection->getPost(1338);\n     }\n \n     \/**\n      * @test\n      *\/\n     public function shiftWithOneElementLeavesCollectionEmpty()",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionThrowsExceptionIfPostDoesNotExists"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "shiftWithOneElementLeavesCollectionEmpty",
-            "line": 99,
-            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        $post = FakePostCreator::createPost(1337);\n+        $post = FakePostCreator::createPost(1338);\n         $collection = new PostCollection();\n         $collection->addPost($post);\n \n         $this->assertEquals($post, $collection->shift());\n         $this->assertEmpty($collection->getAllPosts());\n     }",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftWithOneElementLeavesCollectionEmpty"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "popWithOneElementLeavesCollectionEmpty",
-            "line": 112,
-            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        $post = FakePostCreator::createPost(1337);\n+        $post = FakePostCreator::createPost(1338);\n         $collection = new PostCollection();\n         $collection->addPost($post);\n \n         $this->assertEquals($post, $collection->pop());\n         $this->assertEmpty($collection->getAllPosts());\n     }",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popWithOneElementLeavesCollectionEmpty"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "shiftRemovesFirstElement",
-            "line": 126,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $firstPost = FakePostCreator::createPost();\n-        $secondPost = FakePostCreator::createPost(2);\n+        $secondPost = FakePostCreator::createPost(3);\n         $collection = new PostCollection();\n         $collection->addPost($firstPost);\n         $collection->addPost($secondPost);\n \n         $this->assertEquals($firstPost, $collection->shift());\n         $this->assertCount(1, $collection->getAllPosts());",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftRemovesFirstElement"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "popRemovesLasElement",
-            "line": 142,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $firstPost = FakePostCreator::createPost();\n-        $secondPost = FakePostCreator::createPost(2);\n+        $secondPost = FakePostCreator::createPost(3);\n         $collection = new PostCollection();\n         $collection->addPost($firstPost);\n         $collection->addPost($secondPost);\n \n         $this->assertEquals($secondPost, $collection->pop());\n         $this->assertCount(1, $collection->getAllPosts());",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popRemovesLasElement"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionReturnsAllPosts",
-            "line": 158,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $firstPost = FakePostCreator::createPost();\n-        $secondPost = FakePostCreator::createPost(2);\n+        $secondPost = FakePostCreator::createPost(3);\n         $collection = new PostCollection();\n         $collection->addPost($firstPost);\n         $collection->addPost($secondPost);\n \n         $this->assertCount(2, $collection->getAllPosts());\n     }",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsAllPosts"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Stubs\/Post\/FakePostCreator.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Stubs\\Post\\FakePostCreator",
-            "method": "createPostDefaultArrayValues",
-            "line": 30,
-            "diff": "--- Original\n+++ New\n@@ @@\n         return [\n-            Post::ID => 1,\n+            Post::ID => 0,\n             Post::TITLE => 'Fake Title',\n             Post::CONTENT => 'fake content',\n             Post::PUBLISHED => true,\n             Post::CREATED_AT => new \\DateTime(),\n             Post::PUBLISHED_AT => new \\DateTime(),\n             Post::UPDATED_AT => new \\DateTime()",
-            "tests": [
-                "Blog\\Tests\\Application\\Handler\\Post\\CreatePostCommandHandlerTest::createPostCommandWasHandled",
-                "Blog\\Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::createNewPost",
-                "Blog\\Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::postNeedsTitleToBeCreated",
-                "Blog\\Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::postNeedsContentToBeCreated"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Stubs\/Post\/FakePostCreator.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
-            "class": "\\Blog\\Tests\\Stubs\\Post\\FakePostCreator",
-            "method": "createPostDefaultArrayValues",
-            "line": 33,
-            "diff": "--- Original\n+++ New\n@@ @@\n             Post::CONTENT => 'fake content',\n-            Post::PUBLISHED => true,\n+            Post::PUBLISHED => false,\n             Post::CREATED_AT => new \\DateTime(),\n             Post::PUBLISHED_AT => new \\DateTime(),\n             Post::UPDATED_AT => new \\DateTime()\n         ];\n     }\n }",
-            "tests": [
-                "Blog\\Tests\\Application\\Handler\\Post\\CreatePostCommandHandlerTest::createPostCommandWasHandled",
-                "Blog\\Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::createNewPost",
-                "Blog\\Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::postNeedsTitleToBeCreated",
-                "Blog\\Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::postNeedsContentToBeCreated"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        }
-    ],
-    "errored": [
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Increment\\Increment",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionStoresNPosts",
-            "line": 51,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        for($i = 0; $i < $maxPosts ; $i++) {\n+        for($i = 0; $i < $maxPosts ; $i--) {\n             $collection->addPost(FakePostCreator::createPost($i));\n         }\n \n         $this->assertCount($maxPosts, $collection->getAllPosts());\n     }\n ",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresNPosts"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        }
-    ],
+    "uncovered": [],
+    "escaped": [],
+    "errored": [],
     "timeouts": [],
     "killed": [
-        {
-            "file": "src\/Domain\/Collections\/Collection.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\LogicalNot",
-            "class": "\\Blog\\Domain\\Collections\\Collection",
-            "method": "__construct",
-            "line": 25,
-            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (!empty($elements)) {\n+        if (empty($elements)) {\n             $this->validateInput($elements);\n         }\n \n         $this->elements = $elements;\n     }\n ",
-            "tests": {
-                "0": "Application\\Queries\\Post\\PostQueriesTest::queryReturnsEmptyCollectionWhenWeHaveNoPosts",
-                "1": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionCanOnlyStorePosts",
-                "2": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresOnePost",
-                "3": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresNPosts",
-                "6": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionCanReturnItsFirstElement",
-                "7": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsSpecifiedPost",
-                "8": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionThrowsExceptionIfPostDoesNotExists",
-                "9": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftWithOneElementLeavesCollectionEmpty",
-                "10": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popWithOneElementLeavesCollectionEmpty",
-                "11": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftRemovesFirstElement",
-                "12": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popRemovesLasElement",
-                "13": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsAllPosts"
-            },
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
         {
             "file": "src\/Domain\/Collections\/Collection.php",
             "mutator": "\\Humbug\\Mutator\\ReturnValue\\FunctionCall",
             "class": "\\Blog\\Domain\\Collections\\Collection",
             "method": "first",
-            "line": 38,
+            "line": 36,
             "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return reset($this->elements);\n+        reset($this->elements); return null;\n     }\n \n     \/**\n      * @access protected\n      * @return EntityInterface|bool\n      *\/",
             "tests": [
                 "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionCanReturnItsFirstElement",
@@ -317,9 +34,38 @@
             "file": "src\/Domain\/Collections\/Collection.php",
             "mutator": "\\Humbug\\Mutator\\ReturnValue\\FunctionCall",
             "class": "\\Blog\\Domain\\Collections\\Collection",
+            "method": "next",
+            "line": 45,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return next($this->elements);\n+        next($this->elements); return null;\n     }\n \n     \/**\n      * @access protected\n      * @return EntityInterface|bool\n      *\/",
+            "tests": [
+                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsNextElement",
+                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionNextElementDoesNotExist",
+                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsPrevElement"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13"
+        },
+        {
+            "file": "src\/Domain\/Collections\/Collection.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\FunctionCall",
+            "class": "\\Blog\\Domain\\Collections\\Collection",
+            "method": "prev",
+            "line": 54,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return prev($this->elements);\n+        prev($this->elements); return null;\n     }\n \n     \/**\n      * @access protected\n      * @return EntityInterface\n      *\/",
+            "tests": [
+                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsPrevElement",
+                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionPrevElementDoesNotExist"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13"
+        },
+        {
+            "file": "src\/Domain\/Collections\/Collection.php",
+            "mutator": "\\Humbug\\Mutator\\ReturnValue\\FunctionCall",
+            "class": "\\Blog\\Domain\\Collections\\Collection",
             "method": "last",
-            "line": 65,
-            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return end($this->elements);\n+        end($this->elements); return null;\n     }\n \n     \/**\n      * @access protected\n      * @param $element\n      * @return bool",
+            "line": 63,
+            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return end($this->elements);\n+        end($this->elements); return null;\n     }\n \n     \/**\n      * @param EntityInterface $element\n      * @return bool\n      * @throws ElementCouldNotBeAddedException",
             "tests": [
                 "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popWithOneElementLeavesCollectionEmpty",
                 "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popRemovesLasElement"
@@ -332,16 +78,24 @@
             "mutator": "\\Humbug\\Mutator\\Boolean\\LogicalNot",
             "class": "\\Blog\\Domain\\Collections\\Collection",
             "method": "exists",
-            "line": 98,
+            "line": 100,
             "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return !empty($this->elements[$index]);\n+        return empty($this->elements[$index]);\n     }\n \n     \/**\n      * @access protected\n      * @param int|string $index\n      * @throws ElementDoesNotExistsInCollectionException",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsSpecifiedPost",
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionThrowsExceptionIfPostDoesNotExists",
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftWithOneElementLeavesCollectionEmpty",
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popWithOneElementLeavesCollectionEmpty",
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftRemovesFirstElement",
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popRemovesLasElement"
-            ],
+            "tests": {
+                "0": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresOnePost",
+                "1": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresNPosts",
+                "4": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionCanReturnItsFirstElement",
+                "5": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsSpecifiedPost",
+                "6": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionThrowsExceptionIfPostDoesNotExists",
+                "7": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftWithOneElementLeavesCollectionEmpty",
+                "8": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popWithOneElementLeavesCollectionEmpty",
+                "9": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftRemovesFirstElement",
+                "10": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popRemovesLasElement",
+                "11": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsAllPosts",
+                "12": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsNextElement",
+                "13": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionNextElementDoesNotExist",
+                "14": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsPrevElement",
+                "15": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionPrevElementDoesNotExist"
+            },
             "stderr": "",
             "stdout": "TAP version 13"
         },
@@ -350,7 +104,7 @@
             "mutator": "\\Humbug\\Mutator\\Boolean\\LogicalNot",
             "class": "\\Blog\\Domain\\Collections\\Collection",
             "method": "checkIfElementExists",
-            "line": 150,
+            "line": 152,
             "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        if (!$this->exists($index)) {\n+        if ($this->exists($index)) {\n             throw new ElementDoesNotExistsInCollectionException();\n         }\n     }\n \n     \/**\n      * @param $elements",
             "tests": [
                 "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsSpecifiedPost",
@@ -368,46 +122,14 @@
             "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
             "class": "\\Blog\\Domain\\DataObject\\Email\\Email",
             "method": "create",
-            "line": 32,
+            "line": 33,
             "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new Email($userName, $host);\n+        new Email($userName, $host); return null;\n     }\n \n     \/**\n      * Email constructor.\n      * @access private\n      * @param UserName $userName",
             "tests": [
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedEmpty",
+                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emptyEmailReturnsOnlyAtSymbol",
                 "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedWithUserNameAndHost",
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailCanBePrinted",
+                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailDataObjectCanBePrinted",
                 "Blog\\Tests\\Domain\\Entity\\UserTest::userIsCreatedEmpty",
                 "Blog\\Tests\\Domain\\Entity\\UserTest::userHasAllFieldsFilled"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Domain\/DataObject\/Email\/Email.php",
-            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\NotIdentical",
-            "class": "\\Blog\\Domain\\DataObject\\Email\\Email",
-            "method": "get",
-            "line": 91,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ('' !== $this->getUserName() && '' !== $this->getHost()) {\n+        if ('' === $this->getUserName() && '' !== $this->getHost()) {\n             $email = $this->getUserName() . BString::AT . $this->getHost();\n         }\n \n         return $email;\n     }\n ",
-            "tests": [
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedEmpty",
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedWithUserNameAndHost",
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailCanBePrinted",
-                "Blog\\Tests\\Domain\\Entity\\UserTest::userIsCreatedEmpty"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Domain\/DataObject\/Email\/Email.php",
-            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\NotIdentical",
-            "class": "\\Blog\\Domain\\DataObject\\Email\\Email",
-            "method": "get",
-            "line": 91,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        if ('' !== $this->getUserName() && '' !== $this->getHost()) {\n+        if ('' !== $this->getUserName() && '' === $this->getHost()) {\n             $email = $this->getUserName() . BString::AT . $this->getHost();\n         }\n \n         return $email;\n     }\n ",
-            "tests": [
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedEmpty",
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedWithUserNameAndHost",
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailCanBePrinted",
-                "Blog\\Tests\\Domain\\Entity\\UserTest::userIsCreatedEmpty"
             ],
             "stderr": "",
             "stdout": "TAP version 13"
@@ -455,14 +177,70 @@
             "line": 25,
             "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new UserName($firstName);\n+        new UserName($firstName); return null;\n     }\n \n     \/**\n      * UserName constructor.\n      * @access private\n      * @param string $firstName",
             "tests": [
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedEmpty",
+                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emptyEmailReturnsOnlyAtSymbol",
                 "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailIsCreatedWithUserNameAndHost",
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailCanBePrinted",
+                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailDataObjectCanBePrinted",
                 "Blog\\Tests\\Domain\\DataObject\\Name\\UserNameTest::userHasName",
                 "Blog\\Tests\\Domain\\DataObject\\Name\\UserNameTest::personNameDataObjectCanBePrinted",
                 "Blog\\Tests\\Domain\\Entity\\UserTest::userIsCreatedEmpty",
                 "Blog\\Tests\\Domain\\Entity\\UserTest::userHasAllFieldsFilled"
             ],
+            "stderr": "",
+            "stdout": "TAP version 13"
+        },
+        {
+            "file": "src\/Domain\/Entity\/User.php",
+            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\Identical",
+            "class": "\\Blog\\Domain\\Entity\\User",
+            "method": "getEmail",
+            "line": 168,
+            "diff": "--- Original\n+++ New\n@@ @@\n         $emailAddress = $this->email->get();\n-        return BString::AT === $emailAddress ? BString::BLANK : $emailAddress;\n+        return BString::AT !== $emailAddress ? BString::BLANK : $emailAddress;\n     }\n \n     \/**\n      * @access public\n      * @return \\DateTime\n      *\/",
+            "tests": [
+                "Blog\\Tests\\Domain\\Entity\\UserTest::userIsCreatedEmpty"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13"
+        },
+        {
+            "file": "src\/Domain\/Validators\/Collection\/CollectionCreationValidator.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\LogicalNot",
+            "class": "\\Blog\\Domain\\Validators\\Collection\\CollectionCreationValidator",
+            "method": "validate",
+            "line": 29,
+            "diff": "--- Original\n+++ New\n@@ @@\n         foreach ($this->elements as $element) {\n-            if (!array_search(EntityInterface::class, class_implements($element))) {\n+            if (array_search(EntityInterface::class, class_implements($element))) {\n                 throw new InvalidElementInCollectionException();\n             }\n         }\n \n         return true;\n     }",
+            "tests": [
+                "Blog\\Tests\\Domain\\Validators\\Collection\\CollectionCreationValidatorTest::collectionCreationtValidatesInput",
+                "Blog\\Tests\\Domain\\Validators\\Collection\\CollectionCreationValidatorTest::collectionThrowsExceptionIfInvalidElementsInInput"
+            ],
+            "stderr": "",
+            "stdout": "TAP version 13"
+        },
+        {
+            "file": "src\/Domain\/Validators\/Collection\/CollectionCreationValidator.php",
+            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
+            "class": "\\Blog\\Domain\\Validators\\Collection\\CollectionCreationValidator",
+            "method": "validate",
+            "line": 34,
+            "diff": "--- Original\n+++ New\n@@ @@\n \n-        return true;\n+        return false;\n     }\n }\n",
+            "tests": {
+                "0": "Application\\Queries\\Post\\PostQueriesTest::queryReturnsEmptyCollectionWhenWeHaveNoPosts",
+                "1": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionCanOnlyStorePosts",
+                "2": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresOnePost",
+                "3": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresNPosts",
+                "6": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionCanReturnItsFirstElement",
+                "7": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsSpecifiedPost",
+                "8": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionThrowsExceptionIfPostDoesNotExists",
+                "9": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftWithOneElementLeavesCollectionEmpty",
+                "10": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popWithOneElementLeavesCollectionEmpty",
+                "11": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftRemovesFirstElement",
+                "12": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popRemovesLasElement",
+                "13": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsAllPosts",
+                "14": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsNextElement",
+                "15": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionNextElementDoesNotExist",
+                "16": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsPrevElement",
+                "17": "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionPrevElementDoesNotExist",
+                "18": "Blog\\Tests\\Domain\\Validators\\Collection\\CollectionCreationValidatorTest::collectionCreationtValidatesInput"
+            },
             "stderr": "",
             "stdout": "TAP version 13"
         },
@@ -529,202 +307,6 @@
             "tests": [
                 "Blog\\Tests\\Application\\Handler\\Post\\CreatePostCommandHandlerTest::createPostCommandWasHandled",
                 "Blog\\Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::createNewPost"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionStoresOnePost",
-            "line": 39,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $collection->addPost($post);\n-        $this->assertCount(1, $collection->getAllPosts());\n+        $this->assertCount(0, $collection->getAllPosts());\n     }\n \n     \/**\n      * @test\n      * @dataProvider nPostCreatorProvider\n      * @param $maxPosts",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresOnePost"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionStoresNPosts",
-            "line": 51,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        for($i = 0; $i < $maxPosts ; $i++) {\n+        for($i = 1; $i < $maxPosts ; $i++) {\n             $collection->addPost(FakePostCreator::createPost($i));\n         }\n \n         $this->assertCount($maxPosts, $collection->getAllPosts());\n     }\n ",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresNPosts"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\ConditionalBoundary\\LessThan",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionStoresNPosts",
-            "line": 51,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        for($i = 0; $i < $maxPosts ; $i++) {\n+        for($i = 0; $i <= $maxPosts ; $i++) {\n             $collection->addPost(FakePostCreator::createPost($i));\n         }\n \n         $this->assertCount($maxPosts, $collection->getAllPosts());\n     }\n ",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresNPosts"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\ConditionalNegation\\LessThan",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionStoresNPosts",
-            "line": 51,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        for($i = 0; $i < $maxPosts ; $i++) {\n+        for($i = 0; $i >= $maxPosts ; $i++) {\n             $collection->addPost(FakePostCreator::createPost($i));\n         }\n \n         $this->assertCount($maxPosts, $collection->getAllPosts());\n     }\n ",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionStoresNPosts"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionReturnsSpecifiedPost",
-            "line": 77,
-            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        $post = FakePostCreator::createPost(1337);\n+        $post = FakePostCreator::createPost(1338);\n         $collection = new PostCollection();\n         $collection->addPost($post);\n \n         $this->assertEquals($post, $collection->getPost(1337));\n     }\n ",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsSpecifiedPost"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionReturnsSpecifiedPost",
-            "line": 81,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        $this->assertEquals($post, $collection->getPost(1337));\n+        $this->assertEquals($post, $collection->getPost(1338));\n     }\n \n     \/**\n      * @test\n      * @expectedException \\Blog\\Domain\\Exceptions\\Collection\\ElementDoesNotExistsInCollectionException\n      *\/",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsSpecifiedPost"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "shiftRemovesFirstElement",
-            "line": 132,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $this->assertEquals($firstPost, $collection->shift());\n-        $this->assertCount(1, $collection->getAllPosts());\n+        $this->assertCount(0, $collection->getAllPosts());\n         $this->assertEquals($secondPost, $collection->getFirstPost());\n     }\n \n     \/**\n      * @test\n      *\/",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::shiftRemovesFirstElement"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "popRemovesLasElement",
-            "line": 148,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $this->assertEquals($secondPost, $collection->pop());\n-        $this->assertCount(1, $collection->getAllPosts());\n+        $this->assertCount(0, $collection->getAllPosts());\n         $this->assertEquals($firstPost, $collection->getLastPost());\n     }\n \n     \/**\n      * @test\n      *\/",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::popRemovesLasElement"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/Collections\/PostCollectionTest.php",
-            "mutator": "\\Humbug\\Mutator\\Number\\IntegerValue",
-            "class": "\\Blog\\Tests\\Domain\\Collections\\",
-            "method": "collectionReturnsAllPosts",
-            "line": 163,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        $this->assertCount(2, $collection->getAllPosts());\n+        $this->assertCount(3, $collection->getAllPosts());\n     }\n \n     \/**\n      * @return array\n      *\/\n     public function nPostCreatorProvider()",
-            "tests": [
-                "Blog\\Tests\\Domain\\Collections\\PostCollectionTest::collectionReturnsAllPosts"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/DataObject\/Email\/EmailTest.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
-            "class": "\\Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest",
-            "method": "emailCanBePrinted",
-            "line": 51,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        $this->assertEquals($expectedEmail, print_r((string) Email::create($userName, $host), true));\n+        $this->assertEquals($expectedEmail, print_r((string) Email::create($userName, $host), false));\n     }\n }\n \n",
-            "tests": [
-                "Blog\\Tests\\Domain\\DataObject\\Email\\EmailTest::emailCanBePrinted"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/DataObject\/Name\/PersonNameTest.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
-            "class": "\\Blog\\Tests\\Domain\\DataObject\\Name\\PersonNameTest",
-            "method": "personNameDataObjectCanBePrinted",
-            "line": 68,
-            "diff": "--- Original\n+++ New\n@@ @@\n \n-        $this->assertEquals($expectedFullName, print_r((string) $personName, true));\n+        $this->assertEquals($expectedFullName, print_r((string) $personName, false));\n     }\n }\n \n",
-            "tests": [
-                "Blog\\Tests\\Domain\\DataObject\\Name\\PersonNameTest::personNameDataObjectCanBePrinted"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Domain\/DataObject\/Name\/UserNameTest.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
-            "class": "\\Blog\\Tests\\Domain\\DataObject\\Name\\UserNameTest",
-            "method": "personNameDataObjectCanBePrinted",
-            "line": 35,
-            "diff": "--- Original\n+++ New\n@@ @@\n         $userName = UserName::create($expectedName);\n-        $this->assertEquals($expectedName, print_r((string) $userName, true));\n+        $this->assertEquals($expectedName, print_r((string) $userName, false));\n     }\n }\n \n",
-            "tests": [
-                "Blog\\Tests\\Domain\\DataObject\\Name\\UserNameTest::personNameDataObjectCanBePrinted"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Stubs\/Post\/FakePersistRepository.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
-            "class": "\\Blog\\Tests\\Stubs\\Post\\FakePersistRepository",
-            "method": "persistEntity",
-            "line": 14,
-            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        $this->entityWasPersisted = true;\n+        $this->entityWasPersisted = false;\n     }\n \n     public function removeEntity(EntityInterface $baseEntity)\n     {\n     }\n ",
-            "tests": [
-                "Blog\\Tests\\Application\\Command\\Post\\CreateTest::postWasCreated",
-                "Blog\\Tests\\Application\\Handler\\Post\\CreatePostCommandHandlerTest::createPostCommandWasHandled"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Stubs\/Post\/FakePersistRepository.php",
-            "mutator": "\\Humbug\\Mutator\\Boolean\\TrueValue",
-            "class": "\\Blog\\Tests\\Stubs\\Post\\FakePersistRepository",
-            "method": "updateEntity",
-            "line": 23,
-            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        $this->entityWasUpdated = true;\n+        $this->entityWasUpdated = false;\n     }\n \n     public function getEntityWasPersisted()\n     {\n         return $this->entityWasPersisted;\n     }",
-            "tests": [
-                "Blog\\Tests\\Application\\Command\\Post\\UpdateTest::postWasUpdated"
-            ],
-            "stderr": "",
-            "stdout": "TAP version 13"
-        },
-        {
-            "file": "src\/Tests\/Stubs\/Post\/FakeReadOnlyRepository.php",
-            "mutator": "\\Humbug\\Mutator\\ReturnValue\\NewObject",
-            "class": "\\Blog\\Tests\\Stubs\\Post\\FakeReadOnlyRepository",
-            "method": "findAllPublishedPosts",
-            "line": 29,
-            "diff": "--- Original\n+++ New\n@@ @@\n     {\n-        return new PostCollection();\n+        new PostCollection(); return null;\n     }\n }\n",
-            "tests": [
-                "Application\\Queries\\Post\\PostQueriesTest::queryReturnsEmptyCollectionWhenWeHaveNoPosts"
             ],
             "stderr": "",
             "stdout": "TAP version 13"

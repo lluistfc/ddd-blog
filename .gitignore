@@ -6,3 +6,5 @@ coverage
 /.scannerwork/
 /sonar-project.properties
 /humbug.json
+/documentation/coverage-html/
+!/documentation/coverage-html/.gitkeep

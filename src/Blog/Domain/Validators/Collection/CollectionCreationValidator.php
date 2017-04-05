@@ -1,6 +1,5 @@
 <?php
-namespace Domain\Validators\Collection;
-
+namespace Blog\Domain\Validators\Collection;
 
 use Blog\Domain\Entity\EntityInterface;
 use Blog\Domain\Exceptions\Collection\InvalidElementInCollectionException;
@@ -21,12 +20,13 @@ class CollectionCreationValidator implements ValidatorInterface
     }
 
     /**
+     * @returns bool
      * @throws InvalidElementInCollectionException
      */
     public function validate()
     {
         foreach ($this->elements as $element) {
-            if (!$element instanceof EntityInterface) {
+            if (!array_search(EntityInterface::class, class_implements($element))) {
                 throw new InvalidElementInCollectionException();
             }
         }

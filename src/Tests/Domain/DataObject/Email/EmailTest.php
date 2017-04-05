@@ -1,14 +1,15 @@
 <?php
-namespace Blog\Tests\Domain\DataObject\Email;
+namespace Tests\Domain\DataObject\Email;
 
 use Blog\Domain\DataObject\Email\Email;
 use Blog\Domain\DataObject\Name\UserName;
-use Blog\Tests\Stubs\User\FakeUserCreator;
+use Blog\Domain\Exceptions\DataObject\Email\InvalidEmailHostException;
+use Tests\Stubs\User\FakeUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class EmailTest
- * @package Blog\Tests\Domain\DataObject\Email
+ * @package Tests\Domain\DataObject\Email
  * @group domain
  * @group domain_dataObject
  */
@@ -20,9 +21,10 @@ class EmailTest extends TestCase
      * @access public
      * @test
      */
-    public function emailIsCreatedEmpty()
+    public function emptyEmailReturnsOnlyAtSymbol()
     {
-        $this->assertEmpty(Email::create(UserName::create())->get());
+        $email = Email::create(UserName::create());
+        $this->assertEquals('@', $email->get());
     }
 
     /**
@@ -32,22 +34,20 @@ class EmailTest extends TestCase
     public function emailIsCreatedWithUserNameAndHost()
     {
         $userName = UserName::create(FakeUserCreator::USER_NAME);
-        $host = self::HOST;
-        $expectedEmail = FakeUserCreator::USER_NAME . '@' . $host;
+        $expectedEmail = FakeUserCreator::USER_NAME . '@' . self::HOST;
 
-        $this->assertEquals($expectedEmail, Email::create($userName, $host)->get());
+        $this->assertEquals($expectedEmail, Email::create($userName, self::HOST)->get());
     }
 
     /**
      * @access public
      * @test
      */
-    public function emailCanBePrinted()
+    public function emailDataObjectCanBePrinted()
     {
         $userName = UserName::create(FakeUserCreator::USER_NAME);
-        $host = self::HOST;
-        $expectedEmail = FakeUserCreator::USER_NAME . '@' . $host;
+        $expectedEmail = FakeUserCreator::USER_NAME . '@' . self::HOST;
 
-        $this->assertEquals($expectedEmail, print_r((string) Email::create($userName, $host), true));
+        $this->assertEquals($expectedEmail, print_r((string) Email::create($userName, self::HOST), true));
     }
 }

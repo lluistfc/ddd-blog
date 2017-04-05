@@ -2,6 +2,7 @@
 namespace Blog\Domain\DataObject\Email;
 
 use Blog\Domain\DataObject\Name\UserName;
+use Blog\Domain\Exceptions\DataObject\Email\InvalidEmailHostException;
 use Blog\Domain\Helper\BString;
 
 /**
@@ -54,8 +55,8 @@ class Email
     }
 
     /**
-     * @access private
      * @param string $host
+     * @throws InvalidEmailHostException
      */
     private function setHost(string $host)
     {
@@ -86,13 +87,7 @@ class Email
      */
     public function get()
     {
-        $email = '';
-
-        if ('' !== $this->getUserName() && '' !== $this->getHost()) {
-            $email = $this->getUserName() . BString::AT . $this->getHost();
-        }
-
-        return $email;
+        return $this->getUserName() . BString::AT . $this->getHost();
     }
 
     public function __toString()

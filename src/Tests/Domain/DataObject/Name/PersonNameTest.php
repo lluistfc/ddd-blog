@@ -1,12 +1,12 @@
 <?php
-namespace Blog\Tests\Domain\DataObject\Name;
+namespace Tests\Domain\DataObject\Name;
 
 use Blog\Domain\DataObject\Name\PersonName;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class PersonNameTest
- * @package Blog\Tests\Domain\DataObject
+ * @package Tests\Domain\DataObject
  * @group domain
  * @group domain_dataObject
  */

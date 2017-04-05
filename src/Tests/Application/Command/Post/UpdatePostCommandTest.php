@@ -1,14 +1,14 @@
 <?php
-namespace Blog\Tests\Application\Command\Post;
+namespace Tests\Application\Command\Post;
 
 use Blog\Application\Command\Post\UpdatePostCommand;
-use Blog\Tests\Stubs\Post\FakePersistRepository;
-use Blog\Tests\Stubs\Post\FakePostCreator;
+use Tests\Stubs\Post\FakePersistRepository;
+use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class UpdatePostCommandTest
- * @package Blog\Tests\Application\Command
+ * @package Tests\Application\Command
  * @group application
  * @group application_command
  */

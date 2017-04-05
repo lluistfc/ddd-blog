@@ -1,14 +1,14 @@
 <?php
-namespace Blog\Tests\Domain\Validators\DataObject\Post;
+namespace Tests\Domain\Validators\DataObject\Post;
 
 use Blog\Domain\Helper\BString;
 use Blog\Domain\Validators\DataObject\Name\PersonNameValidator;
-use Blog\Tests\Stubs\User\FakeUserCreator;
+use Tests\Stubs\User\FakeUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class PersonNameValidatorTest
- * @package Blog\Tests\Domain\Validators\DataObject
+ * @package Tests\Domain\Validators\DataObject
  * @group domain
  * @group domain_validator
  */

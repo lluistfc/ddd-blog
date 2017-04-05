@@ -1,14 +1,14 @@
 <?php
-namespace Blog\Tests\Domain\Validators\Post;
+namespace Tests\Domain\Validators\Post;
 
 use Blog\Domain\Entity\Post;
 use Blog\Domain\Validators\Post\CreatePostValidator;
-use Blog\Tests\Stubs\Post\FakePostCreator;
+use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class CreatePostValidatorsTest
- * @package Blog\Tests\Domain\Validators\Post
+ * @package Tests\Domain\Validators\Post
  * @group domain
  * @group domain_validator
  */

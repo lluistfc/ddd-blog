@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Tests\Domain\DataObject\Name;
+namespace Tests\Domain\DataObject\Name;
 
 use Blog\Domain\DataObject\Name\UserName;
 use PHPUnit\Framework\TestCase;
@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
  * Class UserNameTest
  * @group domain
  * @group domain_dataObject
- * @package Blog\Tests\Domain\DataObject
+ * @package Tests\Domain\DataObject
  */
 class UserNameTest extends TestCase
 {

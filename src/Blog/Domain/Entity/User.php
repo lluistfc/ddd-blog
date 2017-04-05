@@ -158,9 +158,14 @@ class User implements EntityInterface
         return $this->userName->getFirstName();
     }
 
+    /**
+     * @access public
+     * @return string
+     */
     public function getEmail()
     {
-        return $this->email->get();
+        $emailAddress = $this->email->get();
+        return BString::AT === $emailAddress ? BString::BLANK : $emailAddress;
     }
 
     /**

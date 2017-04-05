@@ -1,10 +1,10 @@
 <?php
-namespace Blog\Tests\Domain\Validators\DataObject\Email;
+namespace Tests\Domain\Validators\DataObject\Email;
 
 use Blog\Domain\Helper\BString;
 use Blog\Domain\Validators\DataObject\Email\EmailValidator;
-use Blog\Tests\Domain\DataObject\Email\EmailTest;
-use Blog\Tests\Stubs\User\FakeUserCreator;
+use Tests\Domain\DataObject\Email\EmailTest;
+use Tests\Stubs\User\FakeUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**

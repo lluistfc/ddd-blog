@@ -3,7 +3,8 @@ namespace Blog\Domain\Collections;
 
 use Blog\Domain\Entity\EntityInterface;
 use Blog\Domain\Exceptions\Collection\ElementDoesNotExistsInCollectionException;
-use Domain\Validators\Collection\CollectionCreationValidator;
+use Blog\Domain\Exceptions\Collections\ElementCouldNotBeAddedException;
+use Blog\Domain\Validators\Collection\CollectionCreationValidator;
 
 /**
  * Class Collection
@@ -22,10 +23,7 @@ abstract class Collection extends \ArrayObject
      */
     public function __construct(array $elements = array())
     {
-        if (!empty($elements)) {
-            $this->validateInput($elements);
-        }
-
+        $this->validateInput($elements);
         $this->elements = $elements;
     }
 
@@ -66,14 +64,18 @@ abstract class Collection extends \ArrayObject
     }
 
     /**
-     * @access protected
-     * @param $element
+     * @param EntityInterface $element
      * @return bool
+     * @throws ElementCouldNotBeAddedException
      */
     protected function add(EntityInterface $element)
     {
         $this->elements[$element->getId()] = $element;
-        return true;
+        try {
+            return $this->exists(($element->getId()));
+        } catch (ElementDoesNotExistsInCollectionException $e) {
+            throw new ElementCouldNotBeAddedException();
+        }
     }
 
     /**
@@ -158,6 +160,7 @@ abstract class Collection extends \ArrayObject
      */
     private function validateInput($elements)
     {
-        return (new CollectionCreationValidator($elements))->validate();
+        $validator = new CollectionCreationValidator($elements);
+        return $validator->validate();
     }
 }

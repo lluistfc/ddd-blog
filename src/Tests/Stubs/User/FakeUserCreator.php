@@ -1,16 +1,16 @@
 <?php
-namespace Blog\Tests\Stubs\User;
+namespace Tests\Stubs\User;
 
 use Blog\Domain\DataObject\Email\Email;
 use Blog\Domain\DataObject\Name\PersonName;
 use Blog\Domain\DataObject\Name\UserName;
 use Blog\Domain\Entity\User;
 use Blog\Domain\Helper\BString;
-use Blog\Tests\Domain\DataObject\Email\EmailTest;
+use Tests\Domain\DataObject\Email\EmailTest;
 
 /**
  * Class TestUserCreator
- * @package Blog\Tests\Stubs
+ * @package Tests\Stubs
  */
 class FakeUserCreator
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Tests\Stubs\Post;
+namespace Tests\Stubs\Post;
 
 use Blog\Domain\Entity\EntityInterface;
 use Blog\Domain\Repository\PersistEntityRepository;
