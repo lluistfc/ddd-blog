@@ -7,7 +7,7 @@ use Blog\Domain\Entity\Post;
 use Blog\Domain\Exceptions\Validation\ValidationException;
 use Blog\Domain\Validators\Post\CreatePostValidator;
 use Blog\Tests\Stubs\Post\FakePersistRepository;
-use Blog\Tests\Stubs\Post\TestPostCreator;
+use Blog\Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -28,7 +28,7 @@ class CreatePostCommandHandlerTest extends TestCase
     {
         $fakeRepository = new FakePersistRepository();
         $createPostCommand = new CreatePostCommand($fakeRepository, new Post());
-        $createPostValidator = new CreatePostValidator(TestPostCreator::createPostDefaultArrayValues());
+        $createPostValidator = new CreatePostValidator(FakePostCreator::createPostDefaultArrayValues());
         $handler = new CreatePostCommandHandler($createPostCommand, $createPostValidator);
 
         $handler->handle();

@@ -12,8 +12,9 @@
   ],
   "require": {
     "php": ">=7.0",
-    "phpunit/phpunit": "^6.0",
-    "doctrine/collections": "^1.4"
+    "phpunit/phpunit": "5.7.*",
+    "doctrine/collections": "^1.4",
+    "humbug/humbug": "^1.0@alpha"
   },
   "autoload": {
     "psr-4": {

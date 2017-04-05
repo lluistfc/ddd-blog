@@ -3,7 +3,7 @@ namespace Blog\Tests\Domain\Validators\Post;
 
 use Blog\Domain\Entity\Post;
 use Blog\Domain\Validators\Post\CreatePostValidator;
-use Blog\Tests\Stubs\Post\TestPostCreator;
+use Blog\Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,7 +19,7 @@ class CreatePostValidatorTest extends TestCase
      */
     public function createNewPost()
     {
-        $postValues = TestPostCreator::createPostDefaultArrayValues();
+        $postValues = FakePostCreator::createPostDefaultArrayValues();
 
         $this->assertTrue((new CreatePostValidator($postValues))->validate());
     }
@@ -30,7 +30,7 @@ class CreatePostValidatorTest extends TestCase
      */
     public function postNeedsTitleToBeCreated()
     {
-        $postValues = TestPostCreator::createPostDefaultArrayValues();
+        $postValues = FakePostCreator::createPostDefaultArrayValues();
         unset($postValues[Post::TITLE]);
 
         (new CreatePostValidator($postValues))->validate();
@@ -42,7 +42,7 @@ class CreatePostValidatorTest extends TestCase
      */
     public function postNeedsContentToBeCreated()
     {
-        $postValues = TestPostCreator::createPostDefaultArrayValues();
+        $postValues = FakePostCreator::createPostDefaultArrayValues();
         unset($postValues[Post::CONTENT]);
 
         (new CreatePostValidator($postValues))->validate();

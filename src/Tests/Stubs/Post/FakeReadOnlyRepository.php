@@ -8,7 +8,7 @@ class FakeReadOnlyRepository extends PostQueriesRepository
 {
     public function findOneById(int $id)
     {
-        return TestPostCreator::createPost($id);
+        return FakePostCreator::createPost($id);
     }
 
     /**
@@ -21,7 +21,7 @@ class FakeReadOnlyRepository extends PostQueriesRepository
 
     public function findNewestPost()
     {
-        return TestPostCreator::createPost();
+        return FakePostCreator::createPost();
     }
 
     public function findAllPublishedPosts()

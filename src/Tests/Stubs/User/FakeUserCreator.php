@@ -12,7 +12,7 @@ use Blog\Tests\Domain\DataObject\Email\EmailTest;
  * Class TestUserCreator
  * @package Blog\Tests\Stubs
  */
-class TestUserCreator
+class FakeUserCreator
 {
     const ID = 1;
     const PERSON_FIRSTNAME = 'John';

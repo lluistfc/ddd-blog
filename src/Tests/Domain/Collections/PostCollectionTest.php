@@ -3,7 +3,7 @@ namespace Blog\Tests\Domain\Collections;
 
 use Blog\Domain\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
-use Blog\Tests\Stubs\Post\TestPostCreator;
+use Blog\Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -33,7 +33,7 @@ class PostCollectionTest extends TestCase
     public function collectionStoresOnePost()
     {
         $collection = new PostCollection();
-        $post = TestPostCreator::createPost();
+        $post = FakePostCreator::createPost();
 
         $collection->addPost($post);
         $this->assertCount(1, $collection->getAllPosts());
@@ -49,7 +49,7 @@ class PostCollectionTest extends TestCase
         $collection = new PostCollection();
 
         for($i = 0; $i < $maxPosts ; $i++) {
-            $collection->addPost(TestPostCreator::createPost($i));
+            $collection->addPost(FakePostCreator::createPost($i));
         }
 
         $this->assertCount($maxPosts, $collection->getAllPosts());
@@ -60,8 +60,8 @@ class PostCollectionTest extends TestCase
      */
     public function collectionCanReturnItsFirstElement()
     {
-        $firstPost = TestPostCreator::createPost();
-        $secondPost = TestPostCreator::createPost(2);
+        $firstPost = FakePostCreator::createPost();
+        $secondPost = FakePostCreator::createPost(2);
         $collection = new PostCollection();
         $collection->addPost($firstPost);
         $collection->addPost($secondPost);
@@ -74,7 +74,7 @@ class PostCollectionTest extends TestCase
      */
     public function collectionReturnsSpecifiedPost()
     {
-        $post = TestPostCreator::createPost(1337);
+        $post = FakePostCreator::createPost(1337);
         $collection = new PostCollection();
         $collection->addPost($post);
 
@@ -96,7 +96,7 @@ class PostCollectionTest extends TestCase
      */
     public function shiftWithOneElementLeavesCollectionEmpty()
     {
-        $post = TestPostCreator::createPost(1337);
+        $post = FakePostCreator::createPost(1337);
         $collection = new PostCollection();
         $collection->addPost($post);
 
@@ -109,7 +109,7 @@ class PostCollectionTest extends TestCase
      */
     public function popWithOneElementLeavesCollectionEmpty()
     {
-        $post = TestPostCreator::createPost(1337);
+        $post = FakePostCreator::createPost(1337);
         $collection = new PostCollection();
         $collection->addPost($post);
 
@@ -122,8 +122,8 @@ class PostCollectionTest extends TestCase
      */
     public function shiftRemovesFirstElement()
     {
-        $firstPost = TestPostCreator::createPost();
-        $secondPost = TestPostCreator::createPost(2);
+        $firstPost = FakePostCreator::createPost();
+        $secondPost = FakePostCreator::createPost(2);
         $collection = new PostCollection();
         $collection->addPost($firstPost);
         $collection->addPost($secondPost);
@@ -138,8 +138,8 @@ class PostCollectionTest extends TestCase
      */
     public function popRemovesLasElement()
     {
-        $firstPost = TestPostCreator::createPost();
-        $secondPost = TestPostCreator::createPost(2);
+        $firstPost = FakePostCreator::createPost();
+        $secondPost = FakePostCreator::createPost(2);
         $collection = new PostCollection();
         $collection->addPost($firstPost);
         $collection->addPost($secondPost);
@@ -154,8 +154,8 @@ class PostCollectionTest extends TestCase
      */
     public function collectionReturnsAllPosts()
     {
-        $firstPost = TestPostCreator::createPost();
-        $secondPost = TestPostCreator::createPost(2);
+        $firstPost = FakePostCreator::createPost();
+        $secondPost = FakePostCreator::createPost(2);
         $collection = new PostCollection();
         $collection->addPost($firstPost);
         $collection->addPost($secondPost);

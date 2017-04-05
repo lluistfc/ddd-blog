@@ -3,7 +3,7 @@ namespace Blog\Tests\Domain\Validators\DataObject\Post;
 
 use Blog\Domain\Helper\BString;
 use Blog\Domain\Validators\DataObject\Name\UserNameValidator;
-use Blog\Tests\Stubs\User\TestUserCreator;
+use Blog\Tests\Stubs\User\FakeUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,7 +20,7 @@ class UserNameValidatorTest extends TestCase
      */
     public function userNameIsValid()
     {
-        $firstName = TestUserCreator::USER_NAME;
+        $firstName = FakeUserCreator::USER_NAME;
 
         $validator = new UserNameValidator($firstName);
         $this->assertTrue($validator->validate());

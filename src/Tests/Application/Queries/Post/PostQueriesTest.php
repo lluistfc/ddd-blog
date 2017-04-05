@@ -5,7 +5,7 @@ use Blog\Application\Queries\Post\PostQueries;
 use Blog\Domain\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
 use Blog\Tests\Stubs\Post\FakeReadOnlyRepository;
-use Blog\Tests\Stubs\Post\TestPostCreator;
+use Blog\Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -53,7 +53,7 @@ class PostQueriesTest extends TestCase
      */
     public function queryReturnsNewestPost()
     {
-        $expectedPost = TestPostCreator::createPost();
+        $expectedPost = FakePostCreator::createPost();
         $postQuery = new PostQueries(new FakeReadOnlyRepository());
         $this->assertEquals($expectedPost, $postQuery->findNewestPost());
     }

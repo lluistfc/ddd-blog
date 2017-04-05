@@ -4,7 +4,7 @@ namespace Blog\Tests\Domain\Validators\DataObject\Email;
 use Blog\Domain\Helper\BString;
 use Blog\Domain\Validators\DataObject\Email\EmailValidator;
 use Blog\Tests\Domain\DataObject\Email\EmailTest;
-use Blog\Tests\Stubs\User\TestUserCreator;
+use Blog\Tests\Stubs\User\FakeUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -21,7 +21,7 @@ class EmailValidatorTest extends TestCase
      */
     public function emailIsValid()
     {
-        $email = TestUserCreator::USER_NAME . BString::AT . EmailTest::HOST;
+        $email = FakeUserCreator::USER_NAME . BString::AT . EmailTest::HOST;
         $this->assertTrue((new EmailValidator($email))->validate());
     }
 

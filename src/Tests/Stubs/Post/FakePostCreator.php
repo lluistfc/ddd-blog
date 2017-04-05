@@ -2,9 +2,8 @@
 namespace Blog\Tests\Stubs\Post;
 
 use Blog\Domain\Entity\Post;
-use PHPUnit\Framework\TestCase;
 
-class TestPostCreator extends TestCase
+class FakePostCreator
 {
     /**
      * @access public

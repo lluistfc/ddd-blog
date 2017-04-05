@@ -3,7 +3,7 @@ namespace Blog\Tests\Domain\DataObject\Email;
 
 use Blog\Domain\DataObject\Email\Email;
 use Blog\Domain\DataObject\Name\UserName;
-use Blog\Tests\Stubs\User\TestUserCreator;
+use Blog\Tests\Stubs\User\FakeUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -31,9 +31,9 @@ class EmailTest extends TestCase
      */
     public function emailIsCreatedWithUserNameAndHost()
     {
-        $userName = UserName::create(TestUserCreator::USER_NAME);
+        $userName = UserName::create(FakeUserCreator::USER_NAME);
         $host = self::HOST;
-        $expectedEmail = TestUserCreator::USER_NAME . '@' . $host;
+        $expectedEmail = FakeUserCreator::USER_NAME . '@' . $host;
 
         $this->assertEquals($expectedEmail, Email::create($userName, $host)->get());
     }
@@ -44,9 +44,9 @@ class EmailTest extends TestCase
      */
     public function emailCanBePrinted()
     {
-        $userName = UserName::create(TestUserCreator::USER_NAME);
+        $userName = UserName::create(FakeUserCreator::USER_NAME);
         $host = self::HOST;
-        $expectedEmail = TestUserCreator::USER_NAME . '@' . $host;
+        $expectedEmail = FakeUserCreator::USER_NAME . '@' . $host;
 
         $this->assertEquals($expectedEmail, print_r((string) Email::create($userName, $host), true));
     }

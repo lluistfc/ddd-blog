@@ -3,7 +3,7 @@ namespace Blog\Tests\Domain\Validators\DataObject\Post;
 
 use Blog\Domain\Helper\BString;
 use Blog\Domain\Validators\DataObject\Name\PersonNameValidator;
-use Blog\Tests\Stubs\User\TestUserCreator;
+use Blog\Tests\Stubs\User\FakeUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,8 +20,8 @@ class PersonNameValidatorTest extends TestCase
      */
     public function personNameIsValid()
     {
-        $firstName = TestUserCreator::PERSON_FIRSTNAME;
-        $lastName = TestUserCreator::PERSON_LASTNAME;
+        $firstName = FakeUserCreator::PERSON_FIRSTNAME;
+        $lastName = FakeUserCreator::PERSON_LASTNAME;
 
         $validator = new PersonNameValidator($firstName, $lastName);
         $this->assertTrue($validator->validate());
@@ -35,7 +35,7 @@ class PersonNameValidatorTest extends TestCase
     public function personNameNeedsAtLeastFirstName()
     {
         $firstName = BString::BLANK;
-        $lastName = TestUserCreator::PERSON_LASTNAME;
+        $lastName = FakeUserCreator::PERSON_LASTNAME;
 
         (new PersonNameValidator($firstName, $lastName))->validate();
     }

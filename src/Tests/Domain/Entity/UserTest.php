@@ -2,7 +2,7 @@
 namespace Blog\Tests\Domain\Entity;
 
 use Blog\Domain\Entity\User;
-use Blog\Tests\Stubs\User\TestUserCreator;
+use Blog\Tests\Stubs\User\FakeUserCreator;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -35,13 +35,13 @@ class UserTest extends TestCase
      */
     public function userHasAllFieldsFilled()
     {
-        $user = TestUserCreator::create();
+        $user = FakeUserCreator::create();
 
-        $this->assertEquals(TestUserCreator::ID, $user->getId());
-        $this->assertEquals(TestUserCreator::PERSON_FIRSTNAME, $user->getFirstName());
-        $this->assertEquals(TestUserCreator::PERSON_LASTNAME, $user->getLastName());
-        $this->assertEquals(TestUserCreator::PERSON_FULLNAME, $user->getFullName());
-        $this->assertEquals(TestUserCreator::USER_NAME, $user->getUserName());
+        $this->assertEquals(FakeUserCreator::ID, $user->getId());
+        $this->assertEquals(FakeUserCreator::PERSON_FIRSTNAME, $user->getFirstName());
+        $this->assertEquals(FakeUserCreator::PERSON_LASTNAME, $user->getLastName());
+        $this->assertEquals(FakeUserCreator::PERSON_FULLNAME, $user->getFullName());
+        $this->assertEquals(FakeUserCreator::USER_NAME, $user->getUserName());
         $this->assertInstanceOf(\DateTime::class, $user->getCreatedAt());
         $this->assertInstanceOf(\DateTime::class, $user->getUpdatedAt());
     }
