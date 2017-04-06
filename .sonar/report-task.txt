@@ -1,0 +1,5 @@
+projectKey=ddd:blog
+serverUrl=http://172.17.0.1:9001
+dashboardUrl=http://172.17.0.1:9001/dashboard/index/ddd:blog
+ceTaskId=AVtEAuSaIFiXSDg2Ljhh
+ceTaskUrl=http://172.17.0.1:9001/api/ce/task?id=AVtEAuSaIFiXSDg2Ljhh

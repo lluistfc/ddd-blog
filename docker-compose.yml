@@ -5,10 +5,12 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./:/var/www/html
+      - ./:/opt/project/
       - ./:/docker/
     volumes_from:
       - storage
+    links:
+      - sonarqube
   storage:
     build:
       context: docker/storage/
@@ -16,8 +18,8 @@ services:
       - /storage
   sonarqube:
     build:
-      context: .
-      dockerfile: docker/sonarqube/Dockerfile
+      context: docker/sonarqube/
+      dockerfile: Dockerfile
     ports:
-      - "9000:9000"
+      - "9001:9000"
       - "443"
