@@ -1,7 +1,4 @@
 version: '2'
-networks:
-  prodnetwork:
-    driver: bridge
 services:
   app:
     build:
@@ -14,7 +11,6 @@ services:
       - storage
     links:
       - sonarqube
-      - sonar-scanner
   storage:
     build:
       context: docker/storage/
@@ -27,23 +23,3 @@ services:
     ports:
       - "9001:9000"
       - "443"
-    networks:
-      - prodnetwork
-#  sonar-scanner:
-#      build:
-#        context: docker/sonar-scanner/
-#        dockerfile: Dockerfile
-#      command: ["./wait-for-it.sh", "http://172.17.0.1:9001"]
-#      volumes:
-#        - ./:/opt/project/
-#      links:
-#        - sonarqube
-#      networks:
-#        - prodnetwork
-#      depends_on:
-#        - sonarqube
-#      environment:
-#       - SONAR_HOST_URL=http://172.17.0.1:9001
-#       - SONAR_PROJECT_KEY=ddd:blog
-#       - SONAR_PROJECT_NAME=DDDBlog
-#       - SONAR_PROJECT_VERSION=0.1.1
