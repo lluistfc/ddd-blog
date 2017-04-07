@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Application\CommandHandler;
+namespace Blog\Application\Handler;
 
 use Blog\Application\Command\CommandInterface;
 use Blog\Domain\Entity\EntityInterface;
@@ -9,19 +9,12 @@ use Blog\Domain\Validators\ValidatorInterface;
  * Class Handler
  * @package Blog\Application\Command
  */
-Interface CommandHandlerInterface
+Interface HandlerInterface
 {
     /**
-     * CommandHandlerInterface constructor.
      * @access public
      * @param CommandInterface $command
-     */
-    public function __construct(CommandInterface $command);
-
-    /**
-     * @access public
-     * @param  $entity
      * @return void
      */
-    public function handle($entity);
+    public function handle(CommandInterface $command);
 }

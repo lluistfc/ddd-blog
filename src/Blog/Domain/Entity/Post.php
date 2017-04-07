@@ -65,6 +65,20 @@ class Post implements EntityInterface
      */
     private $updatedAt;
 
+    public static function register(string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
+    {
+        return new Post($title, $content, $state, $published, $publishedAt);
+    }
+
+    private function __construct(string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
+    {
+        $this->setTitle($title);
+        $this->setContent($content);
+        $this->setState($state);
+        $this->setPublished($published);
+        $this->setPublishedAt($publishedAt);
+    }
+
     /**
      * @param int $id
      */

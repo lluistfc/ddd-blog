@@ -14,26 +14,18 @@ use Blog\Domain\Validators\ValidatorInterface;
 class CreatePostValidator implements ValidatorInterface
 {
     /**
-     * @var Post
-     */
-    private $newPostToValidate;
-
-    public function __construct(Post $newPostToValidate)
-    {
-        $this->newPostToValidate = $newPostToValidate;
-    }
-
-    /**
+     * @param $postValues
      * @return bool
-     * @throws ValidationException
+     * @throws PostNeedsContentException
+     * @throws PostNeedsTitleException
      */
-    public function validate()
+    public function validate($postValues)
     {
-        if (empty($this->newPostToValidate->getTitle())) {
+        if (empty($postValues[Post::TITLE])) {
             throw new PostNeedsTitleException();
         }
 
-        if (empty($this->newPostToValidate->getContent())) {
+        if (empty($postValues[Post::CONTENT])) {
             throw new PostNeedsContentException();
         }
 

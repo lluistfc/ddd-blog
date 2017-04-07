@@ -1,11 +1,8 @@
 <?php
 namespace Tests\Application\Handler\Post;
 
-use Blog\Application\Command\Post\CreatePostCommand;
-use Blog\Application\Handler\CreatePostCommandHandler;
-use Blog\Domain\Entity\Post;
-use Blog\Domain\Exceptions\Validation\ValidationException;
-use Blog\Domain\Validators\Post\CreatePostValidator;
+use Blog\Application\Command\Post\CreatePost;
+use Blog\Application\Handler\Post\CreatePostHandler;
 use Tests\Stubs\Post\FakePersistRepository;
 use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
@@ -27,12 +24,11 @@ class CreatePostCommandHandlerTest extends TestCase
     public function createPostCommandWasHandled()
     {
         $fakeRepository = new FakePersistRepository();
-        $createPostCommand = new CreatePostCommand($fakeRepository);
-        $newPostToValidate = FakePostCreator::createPost();
-        $createPostValidator = new CreatePostValidator($newPostToValidate);
-        $handler = new CreatePostCommandHandler($createPostCommand, $createPostValidator);
+        $createPostCommand = new CreatePost($fakeRepository);
+        $newPostToValidate = FakePostCreator::createPostDefaultArrayValues();
+        $handler = new CreatePostHandler($newPostToValidate);
 
-        $handler->handle($newPostToValidate);
+        $handler->handle($createPostCommand);
 
         $this->assertTrue($fakeRepository->getEntityWasPersisted());
     }
@@ -45,11 +41,9 @@ class CreatePostCommandHandlerTest extends TestCase
     public function invalidDataThrowsValidationException()
     {
         $fakeRepository = new FakePersistRepository();
-        $createPostCommand = new CreatePostCommand($fakeRepository, new Post());
-        $newPostToValidate = new Post();
-        $createPostValidator = new CreatePostValidator($newPostToValidate);
-        $handler = new CreatePostCommandHandler($createPostCommand, $createPostValidator);
+        $createPostCommand = new CreatePost($fakeRepository);
+        $handler = new CreatePostHandler(array());
 
-        $handler->handle($newPostToValidate);
+        $handler->handle($createPostCommand);
     }
 }

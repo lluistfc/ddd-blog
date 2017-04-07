@@ -1,8 +1,6 @@
 <?php
 namespace Blog\Domain\Validators;
 
-use Blog\Domain\Exceptions\Validation\ValidationException;
-
 /**
  * Interface Validator
  * @package Blog
@@ -10,8 +8,8 @@ use Blog\Domain\Exceptions\Validation\ValidationException;
 interface ValidatorInterface
 {
     /**
+     * @param $data
      * @return bool
-     * @throws ValidationException
      */
-    public function validate();
+    public function validate($data);
 }
