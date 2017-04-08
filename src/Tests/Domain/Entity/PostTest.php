@@ -3,6 +3,7 @@ namespace Tests\Domain\Entity;
 
 use Blog\Domain\Entity\Post;
 use PHPUnit\Framework\TestCase;
+use Tests\Stubs\Post\FakePostCreator;
 
 /**
  * Class PostTest
@@ -21,62 +22,35 @@ class PostTest extends TestCase
     /**
      * @access public
      * @test
+     * @dataProvider invalidDataProvider
+     * @expectedException \Exception
      */
-    public function postIsCreatedEmpty()
+    public function postCannotBeEmpty($invalidValues)
     {
-        $post = new Post();
-        $this->assertInstanceOf(Post::class, $post);
-        $this->assertEmpty($post->getTitle());
-        $this->assertEmpty($post->getContent());
-        $this->assertEmpty($post->getState());
-        $this->assertEmpty($post->isPublished());
-        $this->assertEmpty($post->getCreatedAt());
-        $this->assertEmpty($post->getUpdatedAt());
-        $this->assertEmpty($post->getPublishedAt());
+        try {
+            Post::register(...$invalidValues);
+        } catch (\Error $e) {
+            $this->assertInstanceOf(\Error::class, $e);
+            throw new \Exception('This exception is thrown to ensure that this test fails if Post::register() implementation changes');
+        }
     }
 
     /**
      * @access public
      * @test
      */
-    public function titleIsSet()
+    public function postAttributesAreSet()
     {
-        $post = new Post();
-        $post->setTitle(self::FAKE_TITLE);
+        $expectedDateFormat = (new \DateTime())->format('Y-m-d');
+        $postData = FakePostCreator::createPostDefaultArrayValues();
+        $post = FakePostCreator::createPostFromArray($postData);
         $this->assertEquals(self::FAKE_TITLE, $post->getTitle());
-    }
-
-    /**
-     * @access public
-     * @test
-     */
-    public function contentIsSet()
-    {
-        $post = new Post();
-        $post->setContent(self::FAKE_CONTENT);
         $this->assertEquals(self::FAKE_CONTENT, $post->getContent());
-    }
-
-    /**
-     * @access public
-     * @test
-     */
-    public function stateIsSet()
-    {
-        $post = new Post();
-        $post->setState(self::FAKE_STATE);
         $this->assertEquals(self::FAKE_STATE, $post->getState());
-    }
-
-    /**
-     * @access public
-     * @test
-     */
-    public function postIsPublished()
-    {
-        $post = new Post();
-        $post->setPublished(self::PUBLISHED);
         $this->assertTrue($post->isPublished());
+        $this->assertEquals($expectedDateFormat, $post->getCreatedAt());
+        $this->assertEquals($expectedDateFormat, $post->getPublishedAt());
+        $this->assertEquals($expectedDateFormat, $post->getUpdatedAt());
     }
 
     /**
@@ -85,41 +59,18 @@ class PostTest extends TestCase
      */
     public function postIsNotPublished()
     {
-        $post = new Post();
-        $post->setPublished(self::NOT_PUBLISHED);
+        $postData = FakePostCreator::createPostDefaultArrayValues();
+        $postData[Post::PUBLISHED] = false;
+        $post = FakePostCreator::createPostFromArray($postData);
         $this->assertFalse($post->isPublished());
     }
 
-    /**
-     * @access public
-     * @test
-     */
-    public function postCreatedAtIsSet()
+    public function invalidDataProvider()
     {
-        $post = new Post();
-        $post->setCreatedAt(new \DateTime());
-        $this->assertInstanceOf(\DateTime::class, $post->getCreatedAt());
-    }
-
-    /**
-     * @access public
-     * @test
-     */
-    public function postPublisheddAtIsSet()
-    {
-        $post = new Post();
-        $post->setPublishedAt(new \DateTime());
-        $this->assertInstanceOf(\DateTime::class, $post->getPublishedAt());
-    }
-
-    /**
-     * @access public
-     * @test
-     */
-    public function postUpdatedAtIsSet()
-    {
-        $post = new Post();
-        $post->setUpdatedAt(new \DateTime());
-        $this->assertInstanceOf(\DateTime::class, $post->getUpdatedAt());
+        return array(
+            array(array(null, null, null, null, null, null)),
+            array(array(false, false, false, false, false, false)),
+            array(array(true, true, true, true, true, true)),
+        );
     }
 }
