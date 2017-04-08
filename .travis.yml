@@ -28,7 +28,7 @@ addons:
           - develop
 script:
   # other script steps might be done before running the actual SonarQube analysis
-  - sonar-scanner -X
+  - sonar-scanner
 
 # configure notifications (email, IRC, campfire etc)
 notifications:
