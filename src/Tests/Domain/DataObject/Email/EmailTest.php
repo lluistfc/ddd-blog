@@ -20,11 +20,14 @@ class EmailTest extends TestCase
     /**
      * @access public
      * @test
+     * @dataProvider  invalidDataProvider
+     * @expectedException \Blog\Domain\Exceptions\Validation\InvalidEmailFormatException
+     * @param $userName
+     * @param $host
      */
-    public function emptyEmailReturnsOnlyAtSymbol()
+    public function invalidDataThrowsException($userName, $host)
     {
-        $email = Email::create(UserName::create());
-        $this->assertEquals('@', $email->get());
+        Email::create(UserName::create($userName), $host);
     }
 
     /**
@@ -49,5 +52,16 @@ class EmailTest extends TestCase
         $expectedEmail = FakeUserCreator::USER_NAME . '@' . self::HOST;
 
         $this->assertEquals($expectedEmail, print_r((string) Email::create($userName, self::HOST), true));
+    }
+
+    public function invalidDataProvider()
+    {
+        return array(
+            array('a', 'b'),
+            array('host.com', 'tete'),
+            array('tato', ''),
+            array('tito', 'tute'),
+            array('myname', '@host.com'),
+        );
     }
 }

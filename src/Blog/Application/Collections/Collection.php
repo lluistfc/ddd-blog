@@ -1,7 +1,7 @@
 <?php
 namespace Blog\Application\Collections;
 
-use Blog\Domain\Entity\EntityInterface;
+use Blog\Domain\Entity\Entity;
 use Blog\Domain\Exceptions\Collection\ElementDoesNotExistsInCollectionException;
 use Blog\Application\Validators\Collection\CollectionCreationValidator;
 
@@ -9,16 +9,16 @@ use Blog\Application\Validators\Collection\CollectionCreationValidator;
  * Class Collection
  * @package Blog\Domain\Collections
  */
-abstract class Collection extends \ArrayObject
+abstract class Collection
 {
     /**
-     * @var EntityInterface[]
+     * @var Entity[]
      */
     private $elements;
 
     /**
      * Collection constructor.
-     * @param EntityInterface[] $elements
+     * @param Entity[] $elements
      */
     public function __construct(array $elements = array())
     {
@@ -28,7 +28,7 @@ abstract class Collection extends \ArrayObject
 
     /**
      * @access protected
-     * @return EntityInterface|bool
+     * @return Entity|bool
      */
     protected function first()
     {
@@ -37,7 +37,7 @@ abstract class Collection extends \ArrayObject
 
     /**
      * @access protected
-     * @return EntityInterface|bool
+     * @return Entity|bool
      */
     protected function next()
     {
@@ -46,7 +46,7 @@ abstract class Collection extends \ArrayObject
 
     /**
      * @access protected
-     * @return EntityInterface|bool
+     * @return Entity|bool
      */
     protected function prev()
     {
@@ -55,7 +55,7 @@ abstract class Collection extends \ArrayObject
 
     /**
      * @access protected
-     * @return EntityInterface
+     * @return Entity
      */
     protected function last()
     {
@@ -63,11 +63,11 @@ abstract class Collection extends \ArrayObject
     }
 
     /**
-     * @param EntityInterface $element
+     * @param Entity $element
      * @return bool
      * @throws ElementDoesNotExistsInCollectionException
      */
-    protected function add(EntityInterface $element)
+    protected function add(Entity $element)
     {
         $this->elements[$element->getId()] = $element;
         return $this->exists(($element->getId()));
@@ -76,7 +76,7 @@ abstract class Collection extends \ArrayObject
     /**
      * @access protected
      * @param $index
-     * @return EntityInterface
+     * @return Entity
      * @throws ElementDoesNotExistsInCollectionException
      */
     protected function get($index)
@@ -108,7 +108,7 @@ abstract class Collection extends \ArrayObject
 
     /**
      * @access public
-     * @return EntityInterface
+     * @return Entity
      */
     public function shift()
     {
@@ -120,7 +120,7 @@ abstract class Collection extends \ArrayObject
 
     /**
      * @access public
-     * @return EntityInterface
+     * @return Entity
      */
     public function pop()
     {
@@ -131,7 +131,7 @@ abstract class Collection extends \ArrayObject
     }
 
     /**
-     * @return array|EntityInterface[]
+     * @return array|Entity[]
      */
     protected function toArray()
     {
@@ -153,9 +153,8 @@ abstract class Collection extends \ArrayObject
      * @param $elements
      * @return bool
      */
-    private function validateInput($elements)
+    private function validateInput($elements): bool
     {
-        $validator = new CollectionCreationValidator($elements);
-        return $validator->validate();
+        return (new CollectionCreationValidator())->validate($elements);
     }
 }

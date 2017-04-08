@@ -1,7 +1,7 @@
 <?php
 namespace Blog\Application\Collections;
 
-use Blog\Domain\Entity\EntityInterface;
+use Blog\Domain\Entity\Entity;
 use Blog\Domain\Entity\Post;
 use Blog\Domain\Exceptions\Collection\ElementDoesNotExistsInCollectionException;
 
@@ -22,7 +22,7 @@ class PostCollection extends Collection
 
     /**
      * @param $id
-     * @return Post|EntityInterface
+     * @return Post|Entity
      * @throws ElementDoesNotExistsInCollectionException
      */
     public function getPost($id)
@@ -39,7 +39,7 @@ class PostCollection extends Collection
     }
 
     /**
-     * @return Post|EntityInterface|bool
+     * @return Post|Entity|bool
      */
     public function getFirstPost()
     {
@@ -47,7 +47,7 @@ class PostCollection extends Collection
     }
 
     /**
-     * @return Post|EntityInterface|bool
+     * @return Post|Entity|bool
      */
     public function getLastPost()
     {
@@ -55,7 +55,7 @@ class PostCollection extends Collection
     }
 
     /**
-     * @return Post|EntityInterface|bool
+     * @return Post|Entity|bool
      */
     public function getNextPost()
     {
@@ -63,7 +63,7 @@ class PostCollection extends Collection
     }
 
     /**
-     * @return Post|EntityInterface|bool
+     * @return Post|Entity|bool
      */
     public function getPrevPost()
     {

@@ -1,9 +1,6 @@
 <?php
 namespace Blog\Application\Command;
 
-use Blog\Domain\Entity\EntityInterface;
-use Blog\Domain\Repository\EntityPersistRepository;
-
 /**
  * Class BaseCommand
  * @package Blog\Application\Command
@@ -11,14 +8,8 @@ use Blog\Domain\Repository\EntityPersistRepository;
 interface CommandInterface
 {
     /**
-     * CommandInterface constructor.
-     * @param EntityPersistRepository $entityRepository
-     */
-    public function __construct(EntityPersistRepository $entityRepository);
-
-    /**
-     * @param EntityInterface $entity
+     * @param $data
      * @return void
      */
-    public function execute(EntityInterface $entity);
+    public function execute($data);
 }

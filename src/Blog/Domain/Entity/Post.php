@@ -2,26 +2,20 @@
 
 namespace Blog\Domain\Entity;
 
+use Blog\Domain\Exceptions\Validation\InvalidArgumentException;
+use Blog\Domain\Validators\Post\CreatePostValidator;
+
 /**
  * Class Post
  * @package Blog\Domain\Entity
  */
-class Post implements EntityInterface
+class Post extends Entity
 {
-    const ID            = 'id';
     const TITLE         = 'title';
     const CONTENT       = 'content';
     const STATE         = 'state';
     const PUBLISHED     = 'published';
-    const CREATED_AT    = 'createdAt';
     const PUBLISHED_AT  = 'publishedAt';
-    const UPDATED_AT    = 'updatedAt';
-
-    /**
-     * @access private
-     * @var integer
-     */
-    private $id;
 
     /**
      * @access private
@@ -51,145 +45,104 @@ class Post implements EntityInterface
      * @access private
      * @var \DateTime
      */
-    private $createdAt;
-
-    /**
-     * @access private
-     * @var \DateTime
-     */
     private $publishedAt;
 
-    /**
-     * @access private
-     * @var \DateTime
-     */
-    private $updatedAt;
-
-    /**
-     * @param int $id
-     */
-    public function setId($id)
+    public static function publish($id, string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
     {
-        $this->id = $id;
+        (new CreatePostValidator())->validate(func_get_args());
+        return new Post($id, $title, $content, $state, $published, $publishedAt);
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title)
+    protected function __construct($id, string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
     {
-        $this->title = $title;
-    }
+        $this->setId($id);
+        $this->setTitle($title);
+        $this->setContent($content);
+        $this->setState($state);
+        $this->setPublished($published);
+        $this->setPublishedAt($publishedAt);
 
-    /**
-     * @param string $content
-     */
-    public function setContent(string $content)
-    {
-        $this->content = $content;
-    }
-
-    /**
-     * @param string $state
-     */
-    public function setState(string $state)
-    {
-        $this->state = $state;
-    }
-
-    /**
-     * @param bool $published
-     */
-    public function setPublished(bool $published)
-    {
-        $this->published = $published;
-    }
-
-    /**
-     * @param \DateTime $createdAt
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * @param \DateTime $publishedAt
-     */
-    public function setPublishedAt(\DateTime $publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
-    }
-
-    /**
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
+        parent::__construct();
     }
 
     /**
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
     /**
+     * @param string $title
+     */
+    private function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    /**
      * @return string
      */
-    public function getContent()
+    public function getContent(): string
     {
         return $this->content;
     }
 
     /**
+     * @param string $content
+     */
+    private function setContent(string $content)
+    {
+        $this->content = $content;
+    }
+
+    /**
      * @return string
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }
 
     /**
+     * @param string $state
+     */
+    private function setState(string $state)
+    {
+        $this->state = $state;
+    }
+
+    /**
      * @return bool
      */
-    public function isPublished()
+    public function isPublished(): bool
     {
         return $this->published;
     }
 
     /**
-     * @return \DateTime
+     * @param bool $published
      */
-    public function getCreatedAt()
+    private function setPublished(bool $published)
     {
-        return $this->createdAt;
+        $this->published = $published;
     }
 
     /**
-     * @return \DateTime
+     * @param string $format
+     * @return string
      */
-    public function getPublishedAt()
+    public function getPublishedAt($format = 'Y-m-d'): string
     {
-        return $this->publishedAt;
+        return $this->publishedAt->format($format);
     }
 
     /**
-     * @return \DateTime
+     * @param \DateTime $publishedAt
      */
-    public function getUpdatedAt()
+    private function setPublishedAt(\DateTime $publishedAt)
     {
-        return $this->updatedAt;
+        $this->publishedAt = $publishedAt;
     }
 }

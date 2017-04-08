@@ -28,7 +28,7 @@ class UserNameTest extends TestCase
      * @access public
      * @test
      */
-    public function personNameDataObjectCanBePrinted()
+    public function userNameDataObjectCanBePrinted()
     {
         $expectedName = 'bettyboom';
         $userName = UserName::create($expectedName);
