@@ -47,7 +47,7 @@ class PostCollectionTest extends TestCase
     {
         $collection = new PostCollection();
 
-        for($i = 0; $i < $maxPosts ; $i++) {
+        for($i = 1; $i <= $maxPosts; $i++) {
             $collection->addPost(FakePostCreator::createPost($i));
         }
 

@@ -2,6 +2,7 @@
 namespace Tests\Stubs\Post;
 
 use Blog\Domain\Entity\Post;
+use Tests\Domain\Entity\PostTest;
 
 class FakePostCreator
 {
@@ -12,32 +13,42 @@ class FakePostCreator
      */
     public static function createPost($id = 1): Post
     {
-        $post = new Post();
-        $post->setId($id);
-        $post->setTitle('Fake Title');
-        $post->setContent('fake content');
-        $post->setPublished(true);
-        $post->setCreatedAt(new \DateTime());
-        $post->setPublishedAt(new \DateTime());
-        $post->setUpdatedAt(new \DateTime());
-
-        return $post;
+        return Post::publish(
+            $id,
+            'Fake Title',
+            'fake content',
+            'published',
+            true,
+            new \DateTime()
+        );
     }
 
     /**
      * @access public
+     * @param int $id
      * @return array
      */
-    public static function createPostDefaultArrayValues(): array
+    public static function createPostDefaultArrayValues($id = 1): array
     {
         return [
-            Post::ID => 1,
-            Post::TITLE => 'Fake Title',
-            Post::CONTENT => 'fake content',
-            Post::PUBLISHED => true,
-            Post::CREATED_AT => new \DateTime(),
+            Post::ID => $id,
+            Post::TITLE => PostTest::FAKE_TITLE,
+            Post::CONTENT => PostTest::FAKE_CONTENT,
+            Post::STATE => PostTest::FAKE_STATE,
+            Post::PUBLISHED => PostTest::PUBLISHED,
             Post::PUBLISHED_AT => new \DateTime(),
-            Post::UPDATED_AT => new \DateTime()
         ];
+    }
+
+    public static function createPostFromArray($array)
+    {
+        return Post::publish(
+            $array[Post::ID],
+            $array[Post::TITLE],
+            $array[Post::CONTENT],
+            $array[Post::STATE],
+            $array[Post::PUBLISHED],
+            $array[Post::PUBLISHED_AT]
+            );
     }
 }

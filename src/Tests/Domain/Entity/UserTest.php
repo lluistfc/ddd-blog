@@ -16,18 +16,18 @@ class UserTest extends TestCase
     /**
      * @access public
      * @test
+     * @expectedException \Exception
      */
-    public function userIsCreatedEmpty()
+    public function postCannotBeEmpty()
     {
-        $user = new User();
-        $this->assertInstanceOf(User::class, $user);
-        $this->assertEmpty($user->getId());
-        $this->assertEmpty($user->getFullName());
-        $this->assertEmpty($user->getUserName());
-        $this->assertEmpty($user->getEmail());
-        $this->assertEmpty($user->getCreatedAt());
-        $this->assertEmpty($user->getUpdatedAt());
+        try {
+            User::register(...array(null, null, null));
+        } catch (\Error $e) {
+            $this->assertInstanceOf(\Error::class, $e);
+            throw new \Exception('This exception is thrown to ensure that this test fails if Post::register() implementation changes');
+        }
     }
+
 
     /**
      * @access public
@@ -36,13 +36,14 @@ class UserTest extends TestCase
     public function userHasAllFieldsFilled()
     {
         $user = FakeUserCreator::create();
+        $expectedDateFormat = (new \DateTime())->format('Y-m-d');
 
         $this->assertEquals(FakeUserCreator::ID, $user->getId());
         $this->assertEquals(FakeUserCreator::PERSON_FIRSTNAME, $user->getFirstName());
         $this->assertEquals(FakeUserCreator::PERSON_LASTNAME, $user->getLastName());
         $this->assertEquals(FakeUserCreator::PERSON_FULLNAME, $user->getFullName());
         $this->assertEquals(FakeUserCreator::USER_NAME, $user->getUserName());
-        $this->assertInstanceOf(\DateTime::class, $user->getCreatedAt());
-        $this->assertInstanceOf(\DateTime::class, $user->getUpdatedAt());
+        $this->assertEquals($expectedDateFormat, $user->getCreatedAt());
+        $this->assertEquals($expectedDateFormat, $user->getUpdatedAt());
     }
 }
