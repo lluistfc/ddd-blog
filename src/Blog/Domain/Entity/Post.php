@@ -15,7 +15,8 @@ class Post extends Entity
     const CONTENT       = 'content';
     const STATE         = 'state';
     const PUBLISHED     = 'published';
-    const PUBLISHEDAT  = 'publishedAt';
+    const PUBLISHEDAT   = 'publishedAt';
+    const AUTHOR        = 'author';
 
     /**
      * @access private
@@ -37,6 +38,12 @@ class Post extends Entity
 
     /**
      * @access private
+     * @var User
+     */
+    private $author;
+
+    /**
+     * @access private
      * @var boolean
      */
     private $published;
@@ -47,18 +54,19 @@ class Post extends Entity
      */
     private $publishedAt;
 
-    public static function publish($id, string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
+    public static function publish($id, string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
     {
         (new CreatePostValidator())->validate(func_get_args());
-        return new Post($id, $title, $content, $state, $published, $publishedAt);
+        return new Post($id, $title, $content, $state, $author, $published, $publishedAt);
     }
 
-    protected function __construct($id, string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
+    protected function __construct($id, string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
     {
         $this->setId($id);
         $this->setTitle($title);
         $this->setContent($content);
         $this->setState($state);
+        $this->setAuthor($author);
         $this->setPublished($published);
         $this->setPublishedAt($publishedAt);
 
@@ -114,6 +122,22 @@ class Post extends Entity
     }
 
     /**
+     * @return User
+     */
+    public function getAuthor(): User
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param User $author
+     */
+    private function setAuthor(User $author)
+    {
+        $this->author = $author;
+    }
+
+    /**
      * @return bool
      */
     public function isPublished(): bool
@@ -144,5 +168,21 @@ class Post extends Entity
     private function setPublishedAt(\DateTime $publishedAt)
     {
         $this->publishedAt = $publishedAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function writtenByAuthorName()
+    {
+        return $this->author->getFullName();
+    }
+
+    /**
+     * @return string
+     */
+    public function writtenByAuthorAlias()
+    {
+        return $this->author->getUserName();
     }
 }

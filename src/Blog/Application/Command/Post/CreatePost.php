@@ -23,6 +23,7 @@ class CreatePost extends Command
             $postValues[Post::TITLE],
             $postValues[Post::CONTENT],
             $postValues[Post::STATE],
+            $postValues[Post::AUTHOR],
             $postValues[Post::PUBLISHED],
             $postValues[Post::PUBLISHEDAT]
         ));
