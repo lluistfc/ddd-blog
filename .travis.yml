@@ -25,6 +25,7 @@ addons:
     branches:
           - master
           - develop
+          - feature/PostMustHaveAnAuthor
 script:
   # other script steps might be done before running the actual SonarQube analysis
   - sonar-scanner
