@@ -1,9 +1,12 @@
 <?php
 namespace Blog\Application\Command;
 
+use Blog\Application\Repository\EntityPersistRepository;
 
-use Blog\Domain\Repository\EntityPersistRepository;
-
+/**
+ * Class Command
+ * @package Blog\Application\Command
+ */
 abstract class Command implements CommandInterface
 {
     /**

@@ -1,11 +1,11 @@
 <?php
-namespace Blog\Domain\Repository;
+namespace Blog\Application\Repository;
 
 use Blog\Domain\Entity\Entity;
 
 /**
  * Interface EntityPersistRepository
- * @package Blog\Domain\Repository
+ * @package Blog\Application\Repository
  */
 interface EntityPersistRepository
 {

@@ -3,7 +3,7 @@ namespace Blog\Application\Queries\Post;
 
 use Blog\Application\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
-use Blog\Domain\Repository\PostQueriesInterface;
+use Blog\Application\Repository\PostQueriesInterface;
 
 /**
  * Class PostQueries

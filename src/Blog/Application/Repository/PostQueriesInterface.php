@@ -1,12 +1,12 @@
 <?php
-namespace Blog\Domain\Repository;
+namespace Blog\Application\Repository;
 
 use Blog\Application\Collections\PostCollection;
 use Blog\Domain\Entity\Post;
 
 /**
  * Interface PostQueriesInterface
- * @package Blog\Domain\Repository
+ * @package Blog\Application\Repository
  */
 interface PostQueriesInterface
 {
@@ -32,7 +32,7 @@ interface PostQueriesInterface
 
     /**
      * @access public
-     * @return mixed
+     * @return PostCollection
      */
     public function findAllPublishedPosts();
 }

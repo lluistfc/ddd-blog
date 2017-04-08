@@ -5,6 +5,10 @@ use Blog\Domain\Entity\Post;
 use Tests\Domain\Entity\PostTest;
 use Tests\Stubs\User\FakeUserCreator;
 
+/**
+ * Class FakePostCreator
+ * @package Tests\Stubs\Post
+ */
 class FakePostCreator
 {
     /**

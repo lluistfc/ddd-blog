@@ -2,8 +2,12 @@
 namespace Tests\Stubs\Post;
 
 use Blog\Domain\Entity\Entity;
-use Blog\Domain\Repository\EntityPersistRepository;
+use Blog\Application\Repository\EntityPersistRepository;
 
+/**
+ * Class FakePersistRepository
+ * @package Tests\Stubs\Post
+ */
 class FakePersistRepository implements EntityPersistRepository
 {
     private $entityWasPersisted = false;
