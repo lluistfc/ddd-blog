@@ -29,6 +29,14 @@ class User extends Entity
      */
     private $email;
 
+    /**
+     * @access public
+     * @param $id
+     * @param PersonName $personNamem
+     * @param UserName $userName
+     * @param Email $email
+     * @return User
+     */
     public static function register($id, PersonName $personNamem, UserName $userName, Email $email)
     {
         return new User($id, $personNamem, $userName, $email);
@@ -37,28 +45,18 @@ class User extends Entity
     /**
      * User constructor.
      * @access public
-     * @param PersonName $personNamem
+     * @param PersonName $personName
      * @param UserName $userName
      * @param Email $email
      */
-    protected function __construct($id, PersonName $personNamem, UserName $userName, Email $email)
+    protected function __construct($id, PersonName $personName, UserName $userName, Email $email)
     {
         $this->setId($id);
-        $this->setRealName($personNamem);
+        $this->setRealName($personName);
         $this->setUserName($userName);
         $this->setEmail($email);
 
         parent::__construct();
-    }
-
-    protected function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
