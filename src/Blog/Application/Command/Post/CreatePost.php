@@ -2,9 +2,7 @@
 namespace Blog\Application\Command\Post;
 
 use Blog\Application\Command\Command;
-use Blog\Domain\Entity\Entity;
 use Blog\Domain\Entity\Post;
-use Blog\Domain\Validators\Post\CreatePostValidator;
 
 /**
  * Class CreatePost
