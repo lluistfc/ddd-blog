@@ -21,13 +21,7 @@ class CreatePostValidator implements ValidatorInterface
      */
     public function validate($postValues)
     {
-        if (empty($postValues[Post::TITLE])) {
-            throw new PostNeedsTitleException();
-        }
 
-        if (empty($postValues[Post::CONTENT])) {
-            throw new PostNeedsContentException();
-        }
 
         return true;
     }
