@@ -1,0 +1,29 @@
+<?php
+namespace Blog\Application\Command\Post;
+
+use Blog\Application\Command\Command;
+use Blog\Domain\Entity\Entity;
+use Blog\Domain\Entity\Post;
+use Blog\Domain\Entity\User;
+use Blog\Domain\Validators\Post\CreatePostValidator;
+
+/**
+ * Class CreateUser
+ * @package Blog\Application\Command\Post
+ */
+class CreateUser extends Command
+{
+    /**
+     * @access public
+     * @param $userValues
+     */
+    public function execute($userValues)
+    {
+        $this->entityRepository->persistEntity(User::register(
+            $userValues[User::ID],
+            $userValues[User::PERSON_NAME],
+            $userValues[User::USER_NAME],
+            $userValues[User::EMAIL]
+        ));
+    }
+}

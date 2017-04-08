@@ -34,4 +34,32 @@ class FakeUserCreator
             Email::create(UserName::create(self::USER_NAME), EmailTest::HOST)
         );
     }
+
+    /**
+     * @param int $id
+     * @return array
+     */
+    public static function createUserDefaultArrayValues($id = 1)
+    {
+        return [
+            User::ID => $id,
+            User::PERSON_NAME => PersonName::create(self::PERSON_FIRSTNAME, self::PERSON_LASTNAME),
+            User::USER_NAME => UserName::create(self::USER_NAME),
+            User::EMAIL => Email::create(UserName::create(self::USER_NAME), EmailTest::HOST)
+        ];
+    }
+
+    /**
+     * @param $userData
+     * @return User
+     */
+    public static function createFromArray($userData)
+    {
+        return User::register(
+            $userData[User::ID],
+            $userData[User::PERSON_NAME],
+            $userData[User::USER_NAME],
+            $userData[User::EMAIL]
+        );
+    }
 }

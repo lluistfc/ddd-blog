@@ -84,6 +84,18 @@ class CreatePostValidatorTest extends TestCase
      /**
      * @access public
      * @test
+     * @expectedException \Blog\Domain\Exceptions\Validation\PostMustBeCreatedByAnAuthorException
+     */
+    public function validationFailsIfNoAuthor()
+    {
+        $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
+        unset($valuesToValidate[Post::AUTHOR]);
+        (new CreatePostValidator())->validate($valuesToValidate);
+    }
+
+     /**
+     * @access public
+     * @test
      * @expectedException \Blog\Domain\Exceptions\Validation\InvalidArgumentException
      */
     public function validationFailsIfNoPublished()

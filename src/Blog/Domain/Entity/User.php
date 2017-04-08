@@ -11,6 +11,10 @@ use Blog\Domain\DataObject\Name\UserName;
  */
 class User extends Entity
 {
+    const PERSON_NAME = 'personName';
+    const USER_NAME = 'userName';
+    const EMAIL = 'email';
+
     /**
      * @access private
      * @var PersonName
