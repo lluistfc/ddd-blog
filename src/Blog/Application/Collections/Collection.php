@@ -9,7 +9,7 @@ use Blog\Application\Validators\Collection\CollectionCreationValidator;
  * Class Collection
  * @package Blog\Domain\Collections
  */
-abstract class Collection extends \ArrayObject
+abstract class Collection
 {
     /**
      * @var Entity[]
@@ -153,7 +153,7 @@ abstract class Collection extends \ArrayObject
      * @param $elements
      * @return bool
      */
-    private function validateInput($elements)
+    private function validateInput($elements): bool
     {
         return (new CollectionCreationValidator())->validate($elements);
     }

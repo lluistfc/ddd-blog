@@ -15,13 +15,13 @@ use PHPUnit\Framework\TestCase;
  * @group application_command
  * @group application_command_handler
  */
-class CreatePostCommandHandlerTest extends TestCase
+class CreatePostHandlerTest extends TestCase
 {
     /**
      * @access public
      * @test
      */
-    public function createPostCommandWasHandled()
+    public function createPostWasHandled()
     {
         $fakeRepository = new FakePersistRepository();
         $createPostCommand = new CreatePost($fakeRepository);
@@ -40,10 +40,6 @@ class CreatePostCommandHandlerTest extends TestCase
      */
     public function invalidDataThrowsValidationException()
     {
-        $fakeRepository = new FakePersistRepository();
-        $createPostCommand = new CreatePost($fakeRepository);
-        $handler = new CreatePostHandler(array());
-
-        $handler->handle($createPostCommand);
+        new CreatePostHandler(array());
     }
 }

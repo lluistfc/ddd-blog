@@ -1,8 +1,9 @@
 <?php
 
 namespace Blog\Domain\Entity;
-use Blog\Domain\Exceptions\Validation\PostNeedsContentException;
-use Blog\Domain\Exceptions\Validation\PostNeedsTitleException;
+
+use Blog\Domain\Exceptions\Validation\InvalidArgumentException;
+use Blog\Domain\Validators\Post\CreatePostValidator;
 
 /**
  * Class Post
@@ -46,19 +47,13 @@ class Post extends Entity
      */
     private $publishedAt;
 
-    public static function register($id, string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
+    public static function publish($id, string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
     {
-        foreach (func_get_args() as $argument) {
-            if (empty($argument) && $argument !== false) {
-                var_dump(func_get_args(), $argument);
-                throw new PostNeedsContentException();
-            }
-        }
-
+        (new CreatePostValidator())->validate(func_get_args());
         return new Post($id, $title, $content, $state, $published, $publishedAt);
     }
 
-    private function __construct($id, string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
+    protected function __construct($id, string $title, string $content, string $state, bool $published, \DateTime $publishedAt)
     {
         $this->setId($id);
         $this->setTitle($title);
@@ -67,37 +62,7 @@ class Post extends Entity
         $this->setPublished($published);
         $this->setPublishedAt($publishedAt);
 
-        parent::construct();
-    }
-
-    protected function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    protected function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    public function getCreatedAt($format = 'Y-m-d')
-    {
-        return $this->createdAt->format($format);
-    }
-
-    protected function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    public function getUpdatedAt($format = 'Y-m-d')
-    {
-        return $this->updatedAt->format($format);
+        parent::__construct();
     }
 
     /**

@@ -13,7 +13,7 @@ class FakePostCreator
      */
     public static function createPost($id = 1): Post
     {
-        return Post::register(
+        return Post::publish(
             $id,
             'Fake Title',
             'fake content',
@@ -42,7 +42,7 @@ class FakePostCreator
 
     public static function createPostFromArray($array)
     {
-        return Post::register(
+        return Post::publish(
             $array[Post::ID],
             $array[Post::TITLE],
             $array[Post::CONTENT],

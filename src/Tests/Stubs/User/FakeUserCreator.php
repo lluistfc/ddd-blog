@@ -27,14 +27,11 @@ class FakeUserCreator
      */
     public static function create($id = 1)
     {
-        $user = new User();
-        $user->setId($id);
-        $user->setRealName(PersonName::create(self::PERSON_FIRSTNAME, self::PERSON_LASTNAME));
-        $user->setUserName(UserName::create(self::USER_NAME));
-        $user->setEmail(Email::create(UserName::create(self::USER_NAME), EmailTest::HOST));
-        $user->setCreatedAt(new \DateTime());
-        $user->setUpdatedAt(new \DateTime());
-
-        return $user;
+        return User::register(
+            $id,
+            PersonName::create(self::PERSON_FIRSTNAME, self::PERSON_LASTNAME),
+            UserName::create(self::USER_NAME),
+            Email::create(UserName::create(self::USER_NAME), EmailTest::HOST)
+        );
     }
 }

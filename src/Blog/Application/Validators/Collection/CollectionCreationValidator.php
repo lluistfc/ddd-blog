@@ -14,12 +14,8 @@ class CollectionCreationValidator implements ValidatorInterface
      */
     public function validate($elements)
     {
-        if (empty($elements) || !is_array($elements)) {
-            return true;
-        }
-
         foreach ($elements as $element) {
-            if (!array_search(Entity::class, class_implements($element))) {
+            if (!$element instanceof Entity) {
                 throw new InvalidElementInCollectionException();
             }
         }

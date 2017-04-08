@@ -28,7 +28,7 @@ class PostTest extends TestCase
     public function postCannotBeEmpty($invalidValues)
     {
         try {
-            Post::register(...$invalidValues);
+            Post::publish(...$invalidValues);
         } catch (\Error $e) {
             $this->assertInstanceOf(\Error::class, $e);
             throw new \Exception('This exception is thrown to ensure that this test fails if Post::register() implementation changes');
@@ -71,6 +71,7 @@ class PostTest extends TestCase
             array(array(null, null, null, null, null, null)),
             array(array(false, false, false, false, false, false)),
             array(array(true, true, true, true, true, true)),
+            array(array(0, 0, 0, 0, 0, 0)),
         );
     }
 }

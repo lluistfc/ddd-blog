@@ -29,14 +29,38 @@ abstract class Entity
      */
     protected $updatedAt;
 
-    protected abstract function setId($id);
-    public abstract function getId();
-    protected abstract function setCreatedAt(\DateTime $createdAt);
-    public abstract function getCreatedAt();
-    protected abstract function setUpdatedAt(\DateTime $updatedAt);
-    public abstract function getUpdatedAt();
 
-    protected function construct()
+    protected function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    protected function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    public function getCreatedAt($format = 'Y-m-d')
+    {
+        return $this->createdAt->format($format);
+    }
+
+    protected function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    public function getUpdatedAt($format = 'Y-m-d')
+    {
+        return $this->updatedAt->format($format);
+    }
+
+    protected function __construct()
     {
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());

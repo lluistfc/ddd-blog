@@ -18,14 +18,12 @@ class CreatePostHandler implements HandlerInterface
 
     public function __construct(array $postValues)
     {
-        if ((new CreatePostValidator())->validate($postValues)) {
-            $this->postValues = $postValues;
-        }
-
+        (new CreatePostValidator())->validate($postValues);
+        $this->postValues = $postValues;
     }
+
     public function handle(CommandInterface $command)
     {
         $command->execute($this->postValues);
-
     }
 }

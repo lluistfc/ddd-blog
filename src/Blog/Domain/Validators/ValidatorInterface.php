@@ -7,9 +7,5 @@ namespace Blog\Domain\Validators;
  */
 interface ValidatorInterface
 {
-    /**
-     * @param $data
-     * @return bool
-     */
     public function validate($data);
 }
