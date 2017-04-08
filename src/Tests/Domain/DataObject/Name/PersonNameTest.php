@@ -2,7 +2,7 @@
 namespace Tests\Domain\DataObject\Name;
 
 use Blog\Domain\DataObject\Name\PersonName;
-use Blog\Domain\Helper\BString;
+use Blog\Domain\Tools\BString;
 use PHPUnit\Framework\TestCase;
 use Tests\Stubs\User\FakeUserCreator;
 

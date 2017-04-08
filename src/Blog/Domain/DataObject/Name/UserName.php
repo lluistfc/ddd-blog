@@ -2,7 +2,7 @@
 namespace Blog\Domain\DataObject\Name;
 
 use Blog\Domain\Exceptions\Validation\FirstNameCannotBeEmptyInUserNameException;
-use Blog\Domain\Helper\BString;
+use Blog\Domain\Tools\BString;
 
 /**
  * Class UserName

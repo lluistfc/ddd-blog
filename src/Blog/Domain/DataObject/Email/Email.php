@@ -4,7 +4,7 @@ namespace Blog\Domain\DataObject\Email;
 use Blog\Domain\DataObject\Name\UserName;
 use Blog\Domain\Exceptions\DataObject\Email\InvalidEmailHostException;
 use Blog\Domain\Exceptions\Validation\InvalidEmailFormatException;
-use Blog\Domain\Helper\BString;
+use Blog\Domain\Tools\BString;
 
 /**
  * Class Email

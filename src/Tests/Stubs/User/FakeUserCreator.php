@@ -5,7 +5,7 @@ use Blog\Domain\DataObject\Email\Email;
 use Blog\Domain\DataObject\Name\PersonName;
 use Blog\Domain\DataObject\Name\UserName;
 use Blog\Domain\Entity\User;
-use Blog\Domain\Helper\BString;
+use Blog\Domain\Tools\BString;
 use Tests\Domain\DataObject\Email\EmailTest;
 
 /**

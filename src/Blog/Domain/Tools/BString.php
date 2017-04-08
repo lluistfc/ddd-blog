@@ -1,5 +1,5 @@
 <?php
-namespace Blog\Domain\Helper;
+namespace Blog\Domain\Tools;
 
 /**
  * Class String
