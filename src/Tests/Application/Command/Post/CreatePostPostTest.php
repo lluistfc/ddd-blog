@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Application\Command\Post;
 
-use Blog\Application\Command\Post\CreatePostCommand;
+use Blog\Application\Command\Post\CreatePost;
 use Tests\Stubs\Post\FakePersistRepository;
 use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @group application
  * @group application_command
  */
-class CreateTest extends TestCase
+class CreatePostTest extends TestCase
 {
     /**
      * @test
@@ -20,7 +20,7 @@ class CreateTest extends TestCase
     public function postWasCreated()
     {
         $repository = new FakePersistRepository();
-        (new CreatePostCommand($repository))->execute(FakePostCreator::createPost());
+        (new CreatePost($repository))->execute(FakePostCreator::createPostDefaultArrayValues());
 
         $this->assertTrue($repository->getEntityWasPersisted());
     }

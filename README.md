@@ -2,7 +2,22 @@ README
 ===
 ## SonarQube
 
-Dockerfiles and enviroment for sonarqube are working only for SonarServer, still working on scaner-script
+* SonarQube Server included in the docker-compose.yml
+
+* SonarQube Scanner not included but you can get it here: https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
+
+To execute sonar-scanner cd to this project root and:
+
+* Linux & Windows
+
+```bash 
+# with sonar-scanner added into your path
+$ sonar-scanner
+
+# without sonar-scanner added into your path
+
+$ /<dir to sonar-scanner download>/bin/sonar-scanner
+```
 
 ## Start enviroment
 ```bash

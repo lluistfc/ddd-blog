@@ -1,32 +1,21 @@
 <?php
 namespace Blog\Application\Validators\Collection;
 
-use Blog\Domain\Entity\EntityInterface;
+use Blog\Domain\Entity\Entity;
 use Blog\Domain\Exceptions\Collection\InvalidElementInCollectionException;
 use Blog\Domain\Validators\ValidatorInterface;
 
 class CollectionCreationValidator implements ValidatorInterface
 {
-    /** @var  array */
-    private $elements;
-
     /**
-     * CollectionCreationValidator constructor.
-     * @param array $elements
-     */
-    public function __construct(array $elements)
-    {
-        $this->elements = $elements;
-    }
-
-    /**
-     * @returns bool
+     * @param $elements
+     * @return bool
      * @throws InvalidElementInCollectionException
      */
-    public function validate()
+    public function validate($elements)
     {
-        foreach ($this->elements as $element) {
-            if (!array_search(EntityInterface::class, class_implements($element))) {
+        foreach ($elements as $element) {
+            if (!$element instanceof Entity) {
                 throw new InvalidElementInCollectionException();
             }
         }

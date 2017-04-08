@@ -32,7 +32,7 @@ interface PostQueriesInterface
 
     /**
      * @access public
-     * @return PostCollection
+     * @return mixed
      */
     public function findAllPublishedPosts();
 }

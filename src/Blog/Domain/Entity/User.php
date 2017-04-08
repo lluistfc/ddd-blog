@@ -4,20 +4,13 @@ namespace Blog\Domain\Entity;
 use Blog\Domain\DataObject\Email\Email;
 use Blog\Domain\DataObject\Name\PersonName;
 use Blog\Domain\DataObject\Name\UserName;
-use Blog\Domain\Helper\BString;
 
 /**
  * Class User
  * @package Domain\Entity
  */
-class User implements EntityInterface
+class User extends Entity
 {
-    /**
-     * @access private
-     * @var integer
-     */
-    private $id;
-
     /**
      * @access private
      * @var PersonName
@@ -36,90 +29,57 @@ class User implements EntityInterface
      */
     private $email;
 
-    /**
-     * @access private
-     * @var \DateTime
-     */
-    private $createdAt;
-
-    /**
-     * @access private
-     * @var \DateTime
-     */
-    private $updatedAt;
+    public static function register($id, PersonName $personNamem, UserName $userName, Email $email)
+    {
+        return new User($id, $personNamem, $userName, $email);
+    }
 
     /**
      * User constructor.
      * @access public
+     * @param PersonName $personNamem
+     * @param UserName $userName
+     * @param Email $email
      */
-    public function __construct()
+    protected function __construct($id, PersonName $personNamem, UserName $userName, Email $email)
     {
-        $this->realName = PersonName::create();
-        $this->userName = UserName::create();
-        $this->email = Email::create($this->userName, BString::BLANK);
+        $this->setId($id);
+        $this->setRealName($personNamem);
+        $this->setUserName($userName);
+        $this->setEmail($email);
+
+        parent::__construct();
     }
 
-    /**
-     * @access public
-     * @param $id
-     */
-    public function setId($id)
+    protected function setId($id)
     {
         $this->id = $id;
     }
 
-    /**
-     * @access public
-     * @param PersonName $personName
-     */
-    public function setRealName(PersonName $personName)
-    {
-        $this->realName = $personName;
-    }
-
-    /**
-     * @access public
-     * @param UserName $userName
-     */
-    public function setUserName(UserName $userName)
-    {
-        $this->userName = $userName;
-    }
-
-    /**
-     * @access public
-     * @param Email $email
-     */
-    public function setEmail(Email $email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @access public
-     * @param \DateTime $createdAt
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * @access public
-     * @param \DateTime $updatedAt
-     */
-    public function setUpdatedAt(\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * @access public
-     * @return int
-     */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return PersonName
+     */
+    public function getRealName(): PersonName
+    {
+        return $this->realName;
+    }
+
+    /**
+     * @param PersonName $realName
+     */
+    private function setRealName(PersonName $realName)
+    {
+        $this->realName = $realName;
+    }
+
+    private function setUserName(UserName $userName)
+    {
+        $this->userName = $userName;
     }
 
     /**
@@ -164,25 +124,11 @@ class User implements EntityInterface
      */
     public function getEmail()
     {
-        $emailAddress = $this->email->get();
-        return BString::AT === $emailAddress ? BString::BLANK : $emailAddress;
+        return $this->email->get();
     }
 
-    /**
-     * @access public
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    private function setEmail(Email $email)
     {
-        return $this->createdAt;
-    }
-
-    /**
-     * @access public
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
+        $this->email = $email;
     }
 }

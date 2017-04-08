@@ -3,46 +3,105 @@ namespace Tests\Domain\Validators\Post;
 
 use Blog\Domain\Entity\Post;
 use Blog\Domain\Validators\Post\CreatePostValidator;
-use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
+use Tests\Stubs\Post\FakePostCreator;
 
 /**
- * Class CreatePostValidatorsTest
+ * Class CreatePostValidatorTest
  * @package Tests\Domain\Validators\Post
  * @group domain
- * @group domain_validator
+ * @group domain_validators
  */
 class CreatePostValidatorTest extends TestCase
 {
     /**
+     * @access public
      * @test
      */
-    public function postIsValidated()
+    public function validationPasses()
     {
-        $postValues = FakePostCreator::createPost();
-
-        $this->assertTrue((new CreatePostValidator($postValues))->validate());
+        (new CreatePostValidator())->validate(FakePostCreator::createPostDefaultArrayValues());
     }
 
     /**
+     * @access public
+     * @test
+     * @expectedException \Blog\Domain\Exceptions\Validation\InvalidArgumentException
+     */
+    public function validationFailsIfDataIsNotArray()
+    {
+        (new CreatePostValidator())->validate(null);
+    }
+
+    /**
+     * @access public
+     * @test
+     * @expectedException \Blog\Domain\Exceptions\Validation\MissingIdentifierException
+     */
+    public function validationFailsIfNoId()
+    {
+        $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
+        unset($valuesToValidate[Post::ID]);
+        (new CreatePostValidator())->validate($valuesToValidate);
+    }
+
+    /**
+     * @access public
      * @test
      * @expectedException \Blog\Domain\Exceptions\Validation\PostNeedsTitleException
      */
-    public function postNeedsTitleToBeCreated()
+    public function validationFailsIfNoTitle()
     {
-        $post = new Post();
-        (new CreatePostValidator($post))->validate();
+        $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
+        unset($valuesToValidate[Post::TITLE]);
+        (new CreatePostValidator())->validate($valuesToValidate);
     }
 
     /**
+     * @access public
      * @test
      * @expectedException \Blog\Domain\Exceptions\Validation\PostNeedsContentException
      */
-    public function postNeedsContentToBeCreated()
+    public function validationFailsIfNoContent()
     {
-        $post = FakePostCreator::createPost();
-        $post->setContent('');
+        $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
+        unset($valuesToValidate[Post::CONTENT]);
+        (new CreatePostValidator())->validate($valuesToValidate);
+    }
 
-        (new CreatePostValidator($post))->validate();
+     /**
+     * @access public
+     * @test
+     * @expectedException \Blog\Domain\Exceptions\Validation\PostNeedsStateException
+     */
+    public function validationFailsIfNoState()
+    {
+        $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
+        unset($valuesToValidate[Post::STATE]);
+        (new CreatePostValidator())->validate($valuesToValidate);
+    }
+
+     /**
+     * @access public
+     * @test
+     * @expectedException \Blog\Domain\Exceptions\Validation\InvalidArgumentException
+     */
+    public function validationFailsIfNoPublished()
+    {
+        $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
+        unset($valuesToValidate[Post::PUBLISHED]);
+        (new CreatePostValidator())->validate($valuesToValidate);
+    }
+
+     /**
+     * @access public
+     * @test
+     * @expectedException \Blog\Domain\Exceptions\Validation\InvalidArgumentException
+     */
+    public function validationFailsIfNoPublishedAt()
+    {
+        $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
+        unset($valuesToValidate[Post::PUBLISHED_AT]);
+        (new CreatePostValidator())->validate($valuesToValidate);
     }
 }
