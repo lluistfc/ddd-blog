@@ -84,6 +84,18 @@ class CreatePostValidatorTest extends TestCase
      /**
      * @access public
      * @test
+     * @expectedException \Blog\Domain\Exceptions\Validation\PostMustBeCreatedByAnAuthorException
+     */
+    public function validationFailsIfNoAuthor()
+    {
+        $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
+        unset($valuesToValidate[Post::AUTHOR]);
+        (new CreatePostValidator())->validate($valuesToValidate);
+    }
+
+     /**
+     * @access public
+     * @test
      * @expectedException \Blog\Domain\Exceptions\Validation\InvalidArgumentException
      */
     public function validationFailsIfNoPublished()
@@ -101,7 +113,7 @@ class CreatePostValidatorTest extends TestCase
     public function validationFailsIfNoPublishedAt()
     {
         $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
-        unset($valuesToValidate[Post::PUBLISHED_AT]);
+        unset($valuesToValidate[Post::PUBLISHEDAT]);
         (new CreatePostValidator())->validate($valuesToValidate);
     }
 }

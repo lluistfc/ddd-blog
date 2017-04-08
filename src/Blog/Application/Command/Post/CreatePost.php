@@ -2,12 +2,10 @@
 namespace Blog\Application\Command\Post;
 
 use Blog\Application\Command\Command;
-use Blog\Domain\Entity\Entity;
 use Blog\Domain\Entity\Post;
-use Blog\Domain\Validators\Post\CreatePostValidator;
 
 /**
- * Class CreatePostCommand
+ * Class CreatePost
  * @package Blog\Application\Command\Post
  */
 class CreatePost extends Command
@@ -23,8 +21,9 @@ class CreatePost extends Command
             $postValues[Post::TITLE],
             $postValues[Post::CONTENT],
             $postValues[Post::STATE],
+            $postValues[Post::AUTHOR],
             $postValues[Post::PUBLISHED],
-            $postValues[Post::PUBLISHED_AT]
+            $postValues[Post::PUBLISHEDAT]
         ));
     }
 }

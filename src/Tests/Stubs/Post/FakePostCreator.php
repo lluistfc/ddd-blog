@@ -3,6 +3,7 @@ namespace Tests\Stubs\Post;
 
 use Blog\Domain\Entity\Post;
 use Tests\Domain\Entity\PostTest;
+use Tests\Stubs\User\FakeUserCreator;
 
 class FakePostCreator
 {
@@ -18,6 +19,7 @@ class FakePostCreator
             'Fake Title',
             'fake content',
             'published',
+            FakeUserCreator::create($id),
             true,
             new \DateTime()
         );
@@ -35,8 +37,9 @@ class FakePostCreator
             Post::TITLE => PostTest::FAKE_TITLE,
             Post::CONTENT => PostTest::FAKE_CONTENT,
             Post::STATE => PostTest::FAKE_STATE,
+            Post::AUTHOR => FakeUserCreator::create($id),
             Post::PUBLISHED => PostTest::PUBLISHED,
-            Post::PUBLISHED_AT => new \DateTime(),
+            Post::PUBLISHEDAT => new \DateTime(),
         ];
     }
 
@@ -47,8 +50,9 @@ class FakePostCreator
             $array[Post::TITLE],
             $array[Post::CONTENT],
             $array[Post::STATE],
+            $array[Post::AUTHOR],
             $array[Post::PUBLISHED],
-            $array[Post::PUBLISHED_AT]
+            $array[Post::PUBLISHEDAT]
             );
     }
 }
