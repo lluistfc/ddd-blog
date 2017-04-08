@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Stubs\Post;
 
-use Blog\Domain\Entity\EntityInterface;
+use Blog\Domain\Entity\Entity;
 use Blog\Domain\Repository\EntityPersistRepository;
 
 class FakePersistRepository implements EntityPersistRepository
@@ -9,16 +9,16 @@ class FakePersistRepository implements EntityPersistRepository
     private $entityWasPersisted = false;
     private $entityWasUpdated = false;
 
-    public function persistEntity(EntityInterface $baseEntity)
+    public function persistEntity(Entity $baseEntity)
     {
         $this->entityWasPersisted = true;
     }
 
-    public function removeEntity(EntityInterface $baseEntity)
+    public function removeEntity(Entity $baseEntity)
     {
     }
 
-    public function updateEntity(EntityInterface $baseEntity)
+    public function updateEntity(Entity $baseEntity)
     {
         $this->entityWasUpdated = true;
     }
