@@ -21,9 +21,10 @@ addons:
     branches:
           - master
           - develop
+          - feature/PostMustHaveAnAuthor
 script:
   - php vendor/phpunit/phpunit/phpunit -c phpunit.xml --group=application,domain
-  - sonar-scanner -X
+  - sonar-scanner
 
 # configure notifications (email, IRC, campfire etc)
 notifications:
