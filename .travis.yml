@@ -23,7 +23,7 @@ addons:
           - develop
           - feature/PostMustHaveAnAuthor
 script:
-  - php vendor/phpunit/phpunit/phpunit -c phpunit.xml --group=application,domain
+  - php vendor/phpunit/phpunit/phpunit -c phpunit_travis.xml --group=application,domain
   - sonar-scanner
 
 # configure notifications (email, IRC, campfire etc)
