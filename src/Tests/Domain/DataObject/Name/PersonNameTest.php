@@ -2,7 +2,9 @@
 namespace Tests\Domain\DataObject\Name;
 
 use Blog\Domain\DataObject\Name\PersonName;
+use Blog\Domain\Helper\BString;
 use PHPUnit\Framework\TestCase;
+use Tests\Stubs\User\FakeUserCreator;
 
 /**
  * Class PersonNameTest
@@ -18,8 +20,8 @@ class PersonNameTest extends TestCase
      */
     public function personCanHaveOnlyFirstName()
     {
-        $expectedName = 'John';
-        $personName = PersonName::create($expectedName, '');
+        $expectedName = FakeUserCreator::PERSON_FIRSTNAME;
+        $personName = PersonName::create($expectedName, BString::BLANK);
 
         $this->assertEquals($expectedName, $personName->getFirstName());
         $this->assertEquals($expectedName, $personName->get());
@@ -31,8 +33,8 @@ class PersonNameTest extends TestCase
      */
     public function personHasLastName()
     {
-        $expectedLastName = 'Doh';
-        $personName = PersonName::create('', 'Doh');
+        $expectedLastName = FakeUserCreator::PERSON_LASTNAME;
+        $personName = PersonName::create(FakeUserCreator::PERSON_FIRSTNAME, $expectedLastName);
 
         $this->assertEquals($expectedLastName, $personName->getLastName());
     }

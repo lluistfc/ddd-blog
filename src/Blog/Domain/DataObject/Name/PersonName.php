@@ -1,6 +1,7 @@
 <?php
 namespace Blog\Domain\DataObject\Name;
 
+use Blog\Domain\Exceptions\Validation\FirstNameCannotBeEmptyInPersonNameException;
 use Blog\Domain\Helper\BString;
 
 /**
@@ -22,13 +23,16 @@ class PersonName extends Name
     protected $lastName;
 
     /**
-     * @access public
      * @param string $firstName
      * @param string $lastName
      * @return PersonName
+     * @throws FirstNameCannotBeEmptyInPersonNameException
      */
-    public static function create(string $firstName = BString::BLANK, string $lastName = BString::BLANK):PersonName
+    public static function create(string $firstName, string $lastName = BString::BLANK):PersonName
     {
+        if (empty($firstName)) {
+            throw new FirstNameCannotBeEmptyInPersonNameException();
+        }
         return new PersonName($firstName, $lastName);
     }
 
