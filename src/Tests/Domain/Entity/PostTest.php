@@ -2,8 +2,11 @@
 namespace Tests\Domain\Entity;
 
 use Blog\Domain\Entity\Post;
+use Blog\Domain\Tools\BString;
 use PHPUnit\Framework\TestCase;
+use Tests\Domain\DataObject\Name\PersonNameTest;
 use Tests\Stubs\Post\FakePostCreator;
+use Tests\Stubs\User\FakeUserCreator;
 
 /**
  * Class PostTest
@@ -24,6 +27,8 @@ class PostTest extends TestCase
      * @test
      * @dataProvider invalidDataProvider
      * @expectedException \Exception
+     * @param $invalidValues
+     * @throws \Exception
      */
     public function postCannotBeEmpty($invalidValues)
     {
@@ -47,6 +52,7 @@ class PostTest extends TestCase
         $this->assertEquals(self::FAKE_TITLE, $post->getTitle());
         $this->assertEquals(self::FAKE_CONTENT, $post->getContent());
         $this->assertEquals(self::FAKE_STATE, $post->getState());
+        $this->assertEquals(FakeUserCreator::create(), $post->getAuthor());
         $this->assertTrue($post->isPublished());
         $this->assertEquals($expectedDateFormat, $post->getCreatedAt());
         $this->assertEquals($expectedDateFormat, $post->getPublishedAt());
@@ -65,13 +71,40 @@ class PostTest extends TestCase
         $this->assertFalse($post->isPublished());
     }
 
+    /**
+     * @access public
+     * @test
+     */
+    public function postIsWrittenByAnAuthorKnowsByItsRealName()
+    {
+        $post = FakePostCreator::createPost();
+        $expectedName = FakeUserCreator::PERSON_FIRSTNAME . BString::SPACE . FakeUserCreator::PERSON_LASTNAME;
+
+        $this->assertEquals($expectedName, $post->writtenByAuthorName());
+    }
+
+    /**
+     * @access public
+     * @test
+     */
+    public function postIsWrittenByAnAuthorKnowsByItsUserName()
+    {
+        $post = FakePostCreator::createPost();
+        $expectedName = FakeUserCreator::USER_NAME;
+
+        $this->assertEquals($expectedName, $post->writtenByAuthorAlias());
+    }
+
+    /**
+     * @return array
+     */
     public function invalidDataProvider()
     {
         return array(
-            array(array(null, null, null, null, null, null)),
-            array(array(false, false, false, false, false, false)),
-            array(array(true, true, true, true, true, true)),
-            array(array(0, 0, 0, 0, 0, 0)),
+            array(array(null, null, null, null, null, null, null)),
+            array(array(false, false, false, false, false, false, false)),
+            array(array(true, true, true, true, true, true, true)),
+            array(array(0, 0, 0, 0, 0, 0, 0)),
         );
     }
 }

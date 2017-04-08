@@ -11,6 +11,10 @@ use Blog\Domain\DataObject\Name\UserName;
  */
 class User extends Entity
 {
+    const PERSON_NAME = 'personName';
+    const USER_NAME = 'userName';
+    const EMAIL = 'email';
+
     /**
      * @access private
      * @var PersonName
@@ -29,36 +33,33 @@ class User extends Entity
      */
     private $email;
 
-    public static function register($id, PersonName $personNamem, UserName $userName, Email $email)
+    /**
+     * @param $id
+     * @param PersonName $personName
+     * @param UserName $userName
+     * @param Email $email
+     * @return User
+     */
+    public static function register($id, PersonName $personName, UserName $userName, Email $email)
     {
-        return new User($id, $personNamem, $userName, $email);
+        return new User($id, $personName, $userName, $email);
     }
 
     /**
      * User constructor.
      * @access public
-     * @param PersonName $personNamem
+     * @param PersonName $personName
      * @param UserName $userName
      * @param Email $email
      */
-    protected function __construct($id, PersonName $personNamem, UserName $userName, Email $email)
+    protected function __construct($id, PersonName $personName, UserName $userName, Email $email)
     {
         $this->setId($id);
-        $this->setRealName($personNamem);
+        $this->setRealName($personName);
         $this->setUserName($userName);
         $this->setEmail($email);
 
         parent::__construct();
-    }
-
-    protected function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

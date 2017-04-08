@@ -12,11 +12,6 @@ before_install:
 before_script:
   - composer install -o
   - cp sonar-project.properties.dist sonar-project.properties
-
-# omitting "script:" will default to phpunit
-# use the $DB env variable to determine the phpunit.xml to use
-script: phpunit --configuration phpunit.xml
-
 addons:
   apt:
     packages:
@@ -26,8 +21,9 @@ addons:
     branches:
           - master
           - develop
+          - feature/PostMustHaveAnAuthor
 script:
-  # other script steps might be done before running the actual SonarQube analysis
+  - php vendor/phpunit/phpunit/phpunit -c phpunit_travis.xml --group=application,domain
   - sonar-scanner
 
 # configure notifications (email, IRC, campfire etc)
