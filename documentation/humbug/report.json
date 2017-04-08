@@ -343,7 +343,15 @@
                 "19": "Application\\Queries\\Post\\PostQueriesTest::queryReturnsNewestPost",
                 "20": "Tests\\Application\\Validators\\Collection\\CollectionCreationValidatorTest::collectionCreationtValidatesInput",
                 "21": "Tests\\Domain\\Entity\\PostTest::postAttributesAreSet",
-                "22": "Tests\\Domain\\Entity\\PostTest::postIsNotPublished"
+                "22": "Tests\\Domain\\Entity\\PostTest::postIsNotPublished",
+                "23": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationPasses",
+                "24": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfDataIsNotArray",
+                "25": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoId",
+                "26": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoTitle",
+                "27": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoContent",
+                "28": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoState",
+                "29": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoPublished",
+                "30": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoPublishedAt"
             },
             "stderr": "",
             "stdout": "TAP version 13"
@@ -376,7 +384,14 @@
                 "19": "Application\\Queries\\Post\\PostQueriesTest::queryReturnsNewestPost",
                 "20": "Tests\\Application\\Validators\\Collection\\CollectionCreationValidatorTest::collectionCreationtValidatesInput",
                 "21": "Tests\\Domain\\Entity\\PostTest::postAttributesAreSet",
-                "22": "Tests\\Domain\\Entity\\PostTest::postIsNotPublished"
+                "22": "Tests\\Domain\\Entity\\PostTest::postIsNotPublished",
+                "23": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationPasses",
+                "24": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoId",
+                "25": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoTitle",
+                "26": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoContent",
+                "27": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoState",
+                "28": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoPublished",
+                "29": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoPublishedAt"
             },
             "stderr": "",
             "stdout": "TAP version 13"
@@ -408,7 +423,10 @@
                 "18": "Application\\Queries\\Post\\PostQueriesTest::queryReturnsNewestPost",
                 "19": "Tests\\Application\\Validators\\Collection\\CollectionCreationValidatorTest::collectionCreationtValidatesInput",
                 "20": "Tests\\Domain\\Entity\\PostTest::postAttributesAreSet",
-                "21": "Tests\\Domain\\Entity\\PostTest::postIsNotPublished"
+                "21": "Tests\\Domain\\Entity\\PostTest::postIsNotPublished",
+                "22": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationPasses",
+                "23": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoPublished",
+                "24": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoPublishedAt"
             },
             "stderr": "",
             "stdout": "TAP version 13"
@@ -440,7 +458,9 @@
                 "18": "Application\\Queries\\Post\\PostQueriesTest::queryReturnsNewestPost",
                 "19": "Tests\\Application\\Validators\\Collection\\CollectionCreationValidatorTest::collectionCreationtValidatesInput",
                 "20": "Tests\\Domain\\Entity\\PostTest::postAttributesAreSet",
-                "21": "Tests\\Domain\\Entity\\PostTest::postIsNotPublished"
+                "21": "Tests\\Domain\\Entity\\PostTest::postIsNotPublished",
+                "22": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationPasses",
+                "23": "Tests\\Domain\\Validators\\Post\\CreatePostValidatorTest::validationFailsIfNoPublishedAt"
             },
             "stderr": "",
             "stdout": "TAP version 13"

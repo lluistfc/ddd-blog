@@ -56,3 +56,13 @@ s\Domain\Entity\User
  [x] Post cannot be empty
  [x] User has all fields filled
 
+s\Domain\Validators\Post\CreatePostValidator
+ [x] Validation passes
+ [x] Validation fails if data is not array
+ [x] Validation fails if no id
+ [x] Validation fails if no title
+ [x] Validation fails if no content
+ [x] Validation fails if no state
+ [x] Validation fails if no published
+ [x] Validation fails if no published at
+
