@@ -15,7 +15,7 @@ s\Application\Collections\PostCollection
  [x] Collection returns prev element
  [x] Collection prev element does not exist
 
-s\Application\Command\Post\Create
+s\Application\Command\Post\CreatePost
  [x] Post was created
 
 s\Application\Handler\Post\CreatePostHandler
@@ -45,7 +45,7 @@ s\Domain\DataObject\Name\PersonName
 
 s\Domain\DataObject\Name\UserName
  [x] User has name
- [x] Person name data object can be printed
+ [x] User name data object can be printed
 
 s\Domain\Entity\Post
  [x] Post cannot be empty 

@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @group application
  * @group application_command
  */
-class CreateTest extends TestCase
+class CreatePostTest extends TestCase
 {
     /**
      * @test

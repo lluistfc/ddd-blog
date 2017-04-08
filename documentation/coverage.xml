@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1491640493">
-  <project timestamp="1491640493">
+<coverage generated="1491640853">
+  <project timestamp="1491640853">
     <package name="Blog\Application\Collections">
       <file name="/opt/project/src/Blog/Application/Collections/Collection.php">
         <class name="Collection" namespace="Blog\Application\Collections" fullPackage="Blog" package="Blog">
