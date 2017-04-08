@@ -1,5 +1,8 @@
 README
 ===
+
+[![Build Status](https://travis-ci.org/lluistfc/ddd-blog.svg?branch=master)](https://travis-ci.org/lluistfc/ddd-blog)
+
 ## SonarQube
 
 * SonarQube Server included in the docker-compose.yml
