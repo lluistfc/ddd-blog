@@ -30,16 +30,15 @@ class User extends Entity
     private $email;
 
     /**
-     * @access public
      * @param $id
-     * @param PersonName $personNamem
+     * @param PersonName $personName
      * @param UserName $userName
      * @param Email $email
      * @return User
      */
-    public static function register($id, PersonName $personNamem, UserName $userName, Email $email)
+    public static function register($id, PersonName $personName, UserName $userName, Email $email)
     {
-        return new User($id, $personNamem, $userName, $email);
+        return new User($id, $personName, $userName, $email);
     }
 
     /**
