@@ -15,7 +15,7 @@ class Post extends Entity
     const CONTENT       = 'content';
     const STATE         = 'state';
     const PUBLISHED     = 'published';
-    const PUBLISHED_AT  = 'publishedAt';
+    const PUBLISHEDAT  = 'publishedAt';
 
     /**
      * @access private

@@ -36,7 +36,7 @@ class FakePostCreator
             Post::CONTENT => PostTest::FAKE_CONTENT,
             Post::STATE => PostTest::FAKE_STATE,
             Post::PUBLISHED => PostTest::PUBLISHED,
-            Post::PUBLISHED_AT => new \DateTime(),
+            Post::PUBLISHEDAT => new \DateTime(),
         ];
     }
 
@@ -48,7 +48,7 @@ class FakePostCreator
             $array[Post::CONTENT],
             $array[Post::STATE],
             $array[Post::PUBLISHED],
-            $array[Post::PUBLISHED_AT]
+            $array[Post::PUBLISHEDAT]
             );
     }
 }

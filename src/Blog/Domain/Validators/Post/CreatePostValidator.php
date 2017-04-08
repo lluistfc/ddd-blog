@@ -20,7 +20,7 @@ class CreatePostValidator implements ValidatorInterface
     const EXPECTED_CONTENT_INDEX = 2;
     const EXPECTED_STATE_INDEX = 3;
     const EXPECTED_PUBLISHED_INDEX = 4;
-    const EXPECTED_PUBLISHED_AT_INDEX = 5;
+    const EXPECTED_PUBLISHEDAT_INDEX = 5;
 
     /**
      * @param $valuesToValidate
@@ -37,24 +37,12 @@ class CreatePostValidator implements ValidatorInterface
         }
 
         $postValues = [
-            Post::ID => isset($valuesToValidate[Post::ID])
-                ? $valuesToValidate[Post::ID]
-                : $valuesToValidate[self::EXPECTED_ID_INDEX],
-            Post::TITLE => isset($valuesToValidate[Post::TITLE])
-                ? $valuesToValidate[Post::TITLE]
-                : $valuesToValidate[self::EXPECTED_TITLE_INDEX],
-            Post::CONTENT => isset($valuesToValidate[Post::CONTENT])
-                ? $valuesToValidate[Post::CONTENT]
-                : $valuesToValidate[self::EXPECTED_CONTENT_INDEX],
-            Post::STATE => isset($valuesToValidate[Post::STATE])
-                ? $valuesToValidate[Post::STATE]
-                : $valuesToValidate[self::EXPECTED_STATE_INDEX],
-            Post::PUBLISHED => isset($valuesToValidate[Post::PUBLISHED])
-                ? $valuesToValidate[Post::PUBLISHED]
-                : $valuesToValidate[self::EXPECTED_PUBLISHED_INDEX],
-            Post::PUBLISHED_AT => isset($valuesToValidate[Post::PUBLISHED_AT])
-                ? $valuesToValidate[Post::PUBLISHED_AT]
-                : $valuesToValidate[self::EXPECTED_PUBLISHED_AT_INDEX],
+            Post::ID => $this->getValue($valuesToValidate, Post::ID, self::EXPECTED_ID_INDEX),
+            Post::TITLE => $this->getValue($valuesToValidate, Post::TITLE, self::EXPECTED_TITLE_INDEX),
+            Post::CONTENT => $this->getValue($valuesToValidate, Post::CONTENT, self::EXPECTED_CONTENT_INDEX),
+            Post::STATE => $this->getValue($valuesToValidate, Post::STATE, self::EXPECTED_STATE_INDEX),
+            Post::PUBLISHED => $this->getValue($valuesToValidate, Post::PUBLISHED, self::EXPECTED_PUBLISHED_INDEX),
+            Post::PUBLISHEDAT => $this->getValue($valuesToValidate, Post::PUBLISHEDAT, self::EXPECTED_PUBLISHEDAT_INDEX)
         ];
 
         if (!is_integer($postValues[Post::ID])) {
@@ -77,8 +65,26 @@ class CreatePostValidator implements ValidatorInterface
             throw new InvalidArgumentException();
         }
 
-        if (!$postValues[Post::PUBLISHED_AT] instanceof \DateTime) {
+        if (!$postValues[Post::PUBLISHEDAT] instanceof \DateTime) {
             throw new InvalidArgumentException();
         }
+    }
+
+    /**
+     * @param $valuesToValidate
+     * @param $associativeKey
+     * @param $numericKey
+     * @return bool|null
+     */
+    private function getValue($valuesToValidate, $associativeKey, $numericKey)
+    {
+        if (isset($valuesToValidate[$associativeKey])) {
+            return $valuesToValidate[$associativeKey];
+        }
+        if (isset($valuesToValidate[$numericKey])) {
+            return $valuesToValidate[$numericKey];
+        }
+
+        return null;
     }
 }

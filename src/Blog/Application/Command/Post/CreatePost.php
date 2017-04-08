@@ -24,7 +24,7 @@ class CreatePost extends Command
             $postValues[Post::CONTENT],
             $postValues[Post::STATE],
             $postValues[Post::PUBLISHED],
-            $postValues[Post::PUBLISHED_AT]
+            $postValues[Post::PUBLISHEDAT]
         ));
     }
 }

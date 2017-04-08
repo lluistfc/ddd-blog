@@ -101,7 +101,7 @@ class CreatePostValidatorTest extends TestCase
     public function validationFailsIfNoPublishedAt()
     {
         $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
-        unset($valuesToValidate[Post::PUBLISHED_AT]);
+        unset($valuesToValidate[Post::PUBLISHEDAT]);
         (new CreatePostValidator())->validate($valuesToValidate);
     }
 }
