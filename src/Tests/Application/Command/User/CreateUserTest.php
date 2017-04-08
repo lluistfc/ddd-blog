@@ -1,5 +1,5 @@
 <?php
-namespace Tests\Application\Command\Post;
+namespace Tests\Application\Command\User;
 
 use Blog\Application\Command\Post\CreateUser;
 use PHPUnit\Framework\TestCase;
@@ -8,7 +8,7 @@ use Tests\Stubs\User\FakeUserCreator;
 
 /**
  * Class CreateUserTest
- * @package Tests\Application\Command\Post
+ * @package Tests\Application\Command\User
  */
 class CreateUserTest extends TestCase
 {

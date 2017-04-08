@@ -1,11 +1,8 @@
 <?php
-namespace Blog\Application\Command\Post;
+namespace Blog\Application\Command\User;
 
 use Blog\Application\Command\Command;
-use Blog\Domain\Entity\Entity;
-use Blog\Domain\Entity\Post;
 use Blog\Domain\Entity\User;
-use Blog\Domain\Validators\Post\CreatePostValidator;
 
 /**
  * Class CreateUser

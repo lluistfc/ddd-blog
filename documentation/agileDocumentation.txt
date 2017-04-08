@@ -1,3 +1,4 @@
-s\Application\Command\Post\CreateUser
- [x] User was registered
+s\Application\Handler\Post\CreateUserHandler
+ [x] Register user was handled
+ [x] Invalid data throws validation exception
 

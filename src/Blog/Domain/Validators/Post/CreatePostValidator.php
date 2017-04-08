@@ -8,6 +8,7 @@ use Blog\Domain\Exceptions\Validation\PostMustBeCreatedByAnAuthorException;
 use Blog\Domain\Exceptions\Validation\PostNeedsContentException;
 use Blog\Domain\Exceptions\Validation\PostNeedsStateException;
 use Blog\Domain\Exceptions\Validation\PostNeedsTitleException;
+use Blog\Domain\Validators\SingleRules\VerifyValueInAssociativeAndNormalArray;
 use Blog\Domain\Validators\ValidatorInterface;
 
 /**
@@ -16,6 +17,8 @@ use Blog\Domain\Validators\ValidatorInterface;
  */
 class CreatePostValidator implements ValidatorInterface
 {
+    use VerifyValueInAssociativeAndNormalArray;
+
     const EXPECTED_ID_INDEX = 0;
     const EXPECTED_TITLE_INDEX = 1;
     const EXPECTED_CONTENT_INDEX = 2;
@@ -76,23 +79,5 @@ class CreatePostValidator implements ValidatorInterface
         if (!$postValues[Post::PUBLISHEDAT] instanceof \DateTime) {
             throw new InvalidArgumentException();
         }
-    }
-
-    /**
-     * @param $valuesToValidate
-     * @param $associativeKey
-     * @param $numericKey
-     * @return bool|null
-     */
-    private function getValue($valuesToValidate, $associativeKey, $numericKey)
-    {
-        if (isset($valuesToValidate[$associativeKey])) {
-            return $valuesToValidate[$associativeKey];
-        }
-        if (isset($valuesToValidate[$numericKey])) {
-            return $valuesToValidate[$numericKey];
-        }
-
-        return null;
     }
 }
