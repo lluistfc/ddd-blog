@@ -12,15 +12,10 @@ before_install:
 before_script:
   - composer install -o
   - cp sonar-project.properties.dist sonar-project.properties
-
-# omitting "script:" will default to phpunit
-# use the $DB env variable to determine the phpunit.xml to use
-script: php vendor/phpunit/phpunit/phpunit -c phpunit.xml --group=application,domain
-
 addons:
-  apt:
-    packages:
-      - oracle-java8-set-default
+#  apt:
+#    packages:
+#      - oracle-java8-set-default
   sonarqube:
     organization: "patorojomareado" # the key of the org you chose at step #3
     branches:
@@ -28,7 +23,8 @@ addons:
           - develop
 script:
   # other script steps might be done before running the actual SonarQube analysis
-  - sonar-scanner
+  - php vendor/phpunit/phpunit/phpunit -c phpunit.xml --group=application,domain
+  - sonar-scanner -X
 
 # configure notifications (email, IRC, campfire etc)
 notifications:
