@@ -7,7 +7,7 @@ use Blog\Domain\Entity\Post;
 use Blog\Domain\Validators\Post\CreatePostValidator;
 
 /**
- * Class CreatePostCommand
+ * Class CreatePost
  * @package Blog\Application\Command\Post
  */
 class CreatePost extends Command
