@@ -3,6 +3,7 @@ namespace Blog\Domain\DataObject\Email;
 
 use Blog\Domain\DataObject\Name\UserName;
 use Blog\Domain\Exceptions\DataObject\Email\InvalidEmailHostException;
+use Blog\Domain\Exceptions\Validation\InvalidEmailFormatException;
 use Blog\Domain\Helper\BString;
 
 /**
@@ -27,9 +28,13 @@ class Email
      * @param UserName $userName
      * @param string $host
      * @return Email
+     * @throws InvalidEmailFormatException
      */
-    public static function create(UserName $userName, string $host = ''): Email
+    public static function create(UserName $userName, string $host): Email
     {
+        if (!filter_var($userName->getFirstName() . BString::AT . $host, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidEmailFormatException();
+        }
         return new Email($userName, $host);
     }
 
