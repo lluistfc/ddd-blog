@@ -17,6 +17,9 @@ before_script:
 script: phpunit --configuration phpunit.xml
 
 addons:
+  apt:
+    packages:
+      - oracle-java8-set-default
   sonarqube:
     organization: "patorojomareado" # the key of the org you chose at step #3
     branches:
