@@ -1,0 +1,35 @@
+# see http://about.travis-ci.org/docs/user/languages/php/ for more hints
+language: php
+
+# list any PHP version you want to test against
+php:
+  # aliased to a recent 7.x version
+  - 7.0
+#
+before_install:
+  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+# execute any number of scripts before the test run, custom env's are available as variables
+before_script:
+  - composer install -o
+  - cp sonar-project.properties.dist sonar-project.properties
+
+# omitting "script:" will default to phpunit
+# use the $DB env variable to determine the phpunit.xml to use
+script: phpunit --configuration phpunit.xml
+
+addons:
+  apt:
+    packages:
+      - oracle-java8-set-default
+  sonarqube:
+    organization: "patorojomareado" # the key of the org you chose at step #3
+    branches:
+          - master
+          - develop
+script:
+  # other script steps might be done before running the actual SonarQube analysis
+  - sonar-scanner
+
+# configure notifications (email, IRC, campfire etc)
+notifications:
+  slack: lfalco:3CDaRvutpUXYzfSnirZlepcs
