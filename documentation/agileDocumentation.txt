@@ -18,6 +18,9 @@ s\Application\Collections\PostCollection
 s\Application\Command\Post\CreatePost
  [x] Post was created
 
+s\Application\Command\User\CreateUser
+ [x] User was registered
+
 s\Application\Handler\Post\CreatePostHandler
  [x] Create post was handled
  [x] Invalid data throws validation exception
