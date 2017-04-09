@@ -18,6 +18,10 @@ s\Application\Collections\PostCollection
 s\Application\Command\Post\CreatePostCommand
  [x] Post was created
 
+s\Application\Command\Post\ShowPostCommand
+ [x] Post was retrieved
+ [x] Valid identifier needed to execute
+
 s\Application\Command\User\RegisterUserCommand
  [x] User was registered
 
