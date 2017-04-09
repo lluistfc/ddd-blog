@@ -38,7 +38,7 @@ class UserTest extends TestCase
         $user = FakeUserCreator::create();
         $expectedDateFormat = (new \DateTime())->format('Y-m-d');
 
-        $this->assertEquals(FakeUserCreator::ID, $user->getId());
+        $this->assertEquals(1, $user->getId());
         $this->assertEquals(FakeUserCreator::PERSON_FIRSTNAME, $user->getFirstName());
         $this->assertEquals(FakeUserCreator::PERSON_LASTNAME, $user->getLastName());
         $this->assertEquals(FakeUserCreator::PERSON_FULLNAME, $user->getFullName());

@@ -52,7 +52,7 @@ class CreatePostValidator implements ValidatorInterface
             Post::PUBLISHEDAT => $this->getValue($valuesToValidate, Post::PUBLISHEDAT, self::EXPECTED_PUBLISHEDAT_INDEX)
         ];
 
-        if (!is_integer($postValues[Post::ID])) {
+        if (empty($postValues[Post::ID])) {
             throw new MissingIdentifierException();
         }
 

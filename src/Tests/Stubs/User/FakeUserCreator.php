@@ -2,6 +2,7 @@
 namespace Tests\Stubs\User;
 
 use Blog\Domain\DataObject\Email\Email;
+use Blog\Domain\DataObject\Identifier\Identifier;
 use Blog\Domain\DataObject\Name\PersonName;
 use Blog\Domain\DataObject\Name\UserName;
 use Blog\Domain\Entity\User;
@@ -14,7 +15,6 @@ use Tests\Domain\DataObject\Email\EmailTest;
  */
 class FakeUserCreator
 {
-    const ID = 1;
     const PERSON_FIRSTNAME = 'John';
     const PERSON_LASTNAME = 'Doh';
     const PERSON_FULLNAME = self::PERSON_FIRSTNAME . BString::SPACE . self::PERSON_LASTNAME;
@@ -28,7 +28,7 @@ class FakeUserCreator
     public static function create($id = 1)
     {
         return User::register(
-            $id,
+            Identifier::create($id),
             PersonName::create(self::PERSON_FIRSTNAME, self::PERSON_LASTNAME),
             UserName::create(self::USER_NAME),
             Email::create(UserName::create(self::USER_NAME), EmailTest::HOST)
@@ -42,7 +42,7 @@ class FakeUserCreator
     public static function createUserDefaultArrayValues($id = 1)
     {
         return [
-            User::ID => $id,
+            User::ID => Identifier::create($id),
             User::PERSON_NAME => PersonName::create(self::PERSON_FIRSTNAME, self::PERSON_LASTNAME),
             User::USER_NAME => UserName::create(self::USER_NAME),
             User::EMAIL => Email::create(UserName::create(self::USER_NAME), EmailTest::HOST)

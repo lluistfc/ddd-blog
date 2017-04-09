@@ -1,6 +1,7 @@
 <?php
 namespace Tests\Stubs\Post;
 
+use Blog\Domain\DataObject\Identifier\Identifier;
 use Blog\Domain\Entity\Post;
 use Tests\Domain\Entity\PostTest;
 use Tests\Stubs\User\FakeUserCreator;
@@ -19,7 +20,7 @@ class FakePostCreator
     public static function createPost($id = 1): Post
     {
         return Post::publish(
-            $id,
+            Identifier::create($id),
             'Fake Title',
             'fake content',
             'published',
@@ -37,7 +38,7 @@ class FakePostCreator
     public static function createPostDefaultArrayValues($id = 1): array
     {
         return [
-            Post::ID => $id,
+            Post::ID => Identifier::create($id),
             Post::TITLE => PostTest::FAKE_TITLE,
             Post::CONTENT => PostTest::FAKE_CONTENT,
             Post::STATE => PostTest::FAKE_STATE,

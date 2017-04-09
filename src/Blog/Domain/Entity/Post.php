@@ -2,6 +2,7 @@
 
 namespace Blog\Domain\Entity;
 
+use Blog\Domain\DataObject\Identifier\Identifier;
 use Blog\Domain\Exceptions\Validation\InvalidArgumentException;
 use Blog\Domain\Validators\Post\CreatePostValidator;
 
@@ -54,13 +55,13 @@ class Post extends Entity
      */
     private $publishedAt;
 
-    public static function publish($id, string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
+    public static function publish(Identifier $id, string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
     {
         (new CreatePostValidator())->validate(func_get_args());
         return new Post($id, $title, $content, $state, $author, $published, $publishedAt);
     }
 
-    protected function __construct($id, string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
+    protected function __construct(Identifier $id, string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
     {
         $this->setId($id);
         $this->setTitle($title);
