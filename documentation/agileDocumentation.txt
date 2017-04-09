@@ -1,5 +1,3 @@
-s\Domain\DataObject\Identifier\Identifier
- [x] Identifier is created
- [x] Identifier value can be retrieved
- [x] Invalid values cause exception 
+s\Domain\Entity\Post
+ [x] Post attributes are set
 
