@@ -9,10 +9,5 @@ use Blog\Application\Command\CommandInterface;
  */
 Interface HandlerInterface
 {
-    /**
-     * @access public
-     * @param CommandInterface $command
-     * @return void
-     */
     public function handle(CommandInterface $command);
 }

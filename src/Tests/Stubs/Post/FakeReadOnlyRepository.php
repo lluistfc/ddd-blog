@@ -30,4 +30,9 @@ class FakeReadOnlyRepository implements PostQueriesInterface
     {
         return new EntityCollection();
     }
+
+    public function findThisPost(Identifier $id)
+    {
+        return FakePostCreator::createPost($id->get());
+    }
 }

@@ -7,9 +7,5 @@ namespace Blog\Application\Command;
  */
 interface CommandInterface
 {
-    /**
-     * @param $data
-     * @return void
-     */
     public function execute($data);
 }

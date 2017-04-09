@@ -18,11 +18,19 @@ s\Application\Collections\PostCollection
 s\Application\Command\Post\CreatePostCommand
  [x] Post was created
 
+s\Application\Command\Post\RetrievePostCommand
+ [x] Post was retrieved
+ [x] Valid identifier needed to execute
+
 s\Application\Command\User\RegisterUserCommand
  [x] User was registered
 
 s\Application\Handler\Post\CreatePost
  [x] Create post was handled
+ [x] Invalid data throws validation exception
+
+s\Application\Handler\Post\RetrievePost
+ [x] Retrieve post was handled
  [x] Invalid data throws validation exception
 
 s\Application\Handler\Post\RegisterUser
