@@ -2,6 +2,7 @@
 namespace Blog\Domain\Entity;
 
 use Blog\Domain\DataObject\Email\Email;
+use Blog\Domain\DataObject\Identifier\Identifier;
 use Blog\Domain\DataObject\Name\PersonName;
 use Blog\Domain\DataObject\Name\UserName;
 
@@ -40,7 +41,7 @@ class User extends Entity
      * @param Email $email
      * @return User
      */
-    public static function register($id, PersonName $personName, UserName $userName, Email $email)
+    public static function register(Identifier $id, PersonName $personName, UserName $userName, Email $email)
     {
         return new User($id, $personName, $userName, $email);
     }
@@ -48,11 +49,12 @@ class User extends Entity
     /**
      * User constructor.
      * @access public
+     * @param Identifier $id
      * @param PersonName $personName
      * @param UserName $userName
      * @param Email $email
      */
-    protected function __construct($id, PersonName $personName, UserName $userName, Email $email)
+    protected function __construct(Identifier $id, PersonName $personName, UserName $userName, Email $email)
     {
         $this->setId($id);
         $this->setRealName($personName);
