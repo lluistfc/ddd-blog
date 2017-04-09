@@ -9,7 +9,7 @@ use Blog\Domain\Validators\User\CreateUserValidator;
  * Class CreateUserHandler
  * @package Blog\Application\Handler\User
  */
-class CreateUserHandler implements HandlerInterface
+class RegisterUser implements HandlerInterface
 {
     /**
      * @var array

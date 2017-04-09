@@ -1,7 +1,8 @@
 <?php
 namespace Tests\Application\Collections;
 
-use Blog\Application\Collections\PostCollection;
+use Blog\Application\Collections\EntityCollection;
+use Blog\Domain\DataObject\Identifier\Identifier;
 use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
@@ -18,9 +19,9 @@ class PostCollectionTest extends TestCase
      */
     public function collectionCanOnlyStorePosts()
     {
-        $collection = new PostCollection();
+        $collection = new EntityCollection();
         try {
-            $collection->addPost(new class {});
+            $collection->add(new class {});
         } catch (\Error $e) {
             $this->assertInstanceOf(\Error::class, $e);
         }
@@ -31,11 +32,11 @@ class PostCollectionTest extends TestCase
      */
     public function collectionStoresOnePost()
     {
-        $collection = new PostCollection();
+        $collection = new EntityCollection();
         $post = FakePostCreator::createPost();
 
-        $collection->addPost($post);
-        $this->assertCount(1, $collection->getAllPosts());
+        $collection->add($post);
+        $this->assertCount(1, $collection->toArray());
     }
 
     /**
@@ -45,13 +46,13 @@ class PostCollectionTest extends TestCase
      */
     public function collectionStoresNPosts($maxPosts)
     {
-        $collection = new PostCollection();
+        $collection = new EntityCollection();
 
         for($i = 1; $i <= $maxPosts; $i++) {
-            $collection->addPost(FakePostCreator::createPost($i));
+            $collection->add(FakePostCreator::createPost($i));
         }
 
-        $this->assertCount($maxPosts, $collection->getAllPosts());
+        $this->assertCount($maxPosts, $collection->toArray());
     }
 
     /**
@@ -61,11 +62,11 @@ class PostCollectionTest extends TestCase
     {
         $firstPost = FakePostCreator::createPost();
         $secondPost = FakePostCreator::createPost(2);
-        $collection = new PostCollection();
-        $collection->addPost($firstPost);
-        $collection->addPost($secondPost);
+        $collection = new EntityCollection();
+        $collection->add($firstPost);
+        $collection->add($secondPost);
 
-        $this->assertEquals($firstPost, $collection->getFirstPost());
+        $this->assertEquals($firstPost, $collection->first());
     }
 
     /**
@@ -74,10 +75,10 @@ class PostCollectionTest extends TestCase
     public function collectionReturnsSpecifiedPost()
     {
         $post = FakePostCreator::createPost(1337);
-        $collection = new PostCollection();
-        $collection->addPost($post);
+        $collection = new EntityCollection();
+        $collection->add($post);
 
-        $this->assertEquals($post, $collection->getPost(1337));
+        $this->assertEquals($post, $collection->get(Identifier::create(1337)));
     }
 
     /**
@@ -86,8 +87,8 @@ class PostCollectionTest extends TestCase
      */
     public function collectionThrowsExceptionIfPostDoesNotExists()
     {
-        $collection = new PostCollection();
-        $collection->getPost(1337);
+        $collection = new EntityCollection();
+        $collection->get(Identifier::create(1337));
     }
 
     /**
@@ -96,11 +97,11 @@ class PostCollectionTest extends TestCase
     public function shiftWithOneElementLeavesCollectionEmpty()
     {
         $post = FakePostCreator::createPost(1337);
-        $collection = new PostCollection();
-        $collection->addPost($post);
+        $collection = new EntityCollection();
+        $collection->add($post);
 
         $this->assertEquals($post, $collection->shift());
-        $this->assertEmpty($collection->getAllPosts());
+        $this->assertEmpty($collection->toArray());
     }
 
     /**
@@ -109,11 +110,11 @@ class PostCollectionTest extends TestCase
     public function popWithOneElementLeavesCollectionEmpty()
     {
         $post = FakePostCreator::createPost(1337);
-        $collection = new PostCollection();
-        $collection->addPost($post);
+        $collection = new EntityCollection();
+        $collection->add($post);
 
         $this->assertEquals($post, $collection->pop());
-        $this->assertEmpty($collection->getAllPosts());
+        $this->assertEmpty($collection->toArray());
     }
 
     /**
@@ -123,13 +124,13 @@ class PostCollectionTest extends TestCase
     {
         $firstPost = FakePostCreator::createPost();
         $secondPost = FakePostCreator::createPost(2);
-        $collection = new PostCollection();
-        $collection->addPost($firstPost);
-        $collection->addPost($secondPost);
+        $collection = new EntityCollection();
+        $collection->add($firstPost);
+        $collection->add($secondPost);
 
         $this->assertEquals($firstPost, $collection->shift());
-        $this->assertCount(1, $collection->getAllPosts());
-        $this->assertEquals($secondPost, $collection->getFirstPost());
+        $this->assertCount(1, $collection->toArray());
+        $this->assertEquals($secondPost, $collection->first());
     }
 
     /**
@@ -139,13 +140,13 @@ class PostCollectionTest extends TestCase
     {
         $firstPost = FakePostCreator::createPost();
         $secondPost = FakePostCreator::createPost(2);
-        $collection = new PostCollection();
-        $collection->addPost($firstPost);
-        $collection->addPost($secondPost);
+        $collection = new EntityCollection();
+        $collection->add($firstPost);
+        $collection->add($secondPost);
 
         $this->assertEquals($secondPost, $collection->pop());
-        $this->assertCount(1, $collection->getAllPosts());
-        $this->assertEquals($firstPost, $collection->getLastPost());
+        $this->assertCount(1, $collection->toArray());
+        $this->assertEquals($firstPost, $collection->first());
     }
 
     /**
@@ -155,11 +156,11 @@ class PostCollectionTest extends TestCase
     {
         $firstPost = FakePostCreator::createPost();
         $secondPost = FakePostCreator::createPost(2);
-        $collection = new PostCollection();
-        $collection->addPost($firstPost);
-        $collection->addPost($secondPost);
+        $collection = new EntityCollection();
+        $collection->add($firstPost);
+        $collection->add($secondPost);
 
-        $this->assertCount(2, $collection->getAllPosts());
+        $this->assertCount(2, $collection->toArray());
     }
 
     /**
@@ -170,11 +171,11 @@ class PostCollectionTest extends TestCase
     {
         $firstPost = FakePostCreator::createPost();
         $secondPost = FakePostCreator::createPost(2);
-        $collection = new PostCollection();
-        $collection->addPost($firstPost);
-        $collection->addPost($secondPost);
+        $collection = new EntityCollection();
+        $collection->add($firstPost);
+        $collection->add($secondPost);
 
-        $this->assertEquals($secondPost, $collection->getNextPost());
+        $this->assertEquals($secondPost, $collection->next());
     }
 
     /**
@@ -184,10 +185,10 @@ class PostCollectionTest extends TestCase
     public function collectionNextElementDoesNotExist()
     {
         $firstPost = FakePostCreator::createPost();
-        $collection = new PostCollection();
-        $collection->addPost($firstPost);
+        $collection = new EntityCollection();
+        $collection->add($firstPost);
 
-        $this->assertFalse($collection->getNextPost());
+        $this->assertFalse($collection->next());
     }
 
     /**
@@ -198,13 +199,13 @@ class PostCollectionTest extends TestCase
     {
         $firstPost = FakePostCreator::createPost();
         $secondPost = FakePostCreator::createPost(2);
-        $collection = new PostCollection();
-        $collection->addPost($firstPost);
-        $collection->addPost($secondPost);
+        $collection = new EntityCollection();
+        $collection->add($firstPost);
+        $collection->add($secondPost);
 
-        $collection->getNextPost();
+        $collection->next();
 
-        $this->assertEquals($firstPost, $collection->getPrevPost());
+        $this->assertEquals($firstPost, $collection->prev());
     }
 
     /**
@@ -214,10 +215,10 @@ class PostCollectionTest extends TestCase
     public function collectionPrevElementDoesNotExist()
     {
         $firstPost = FakePostCreator::createPost();
-        $collection = new PostCollection();
-        $collection->addPost($firstPost);
+        $collection = new EntityCollection();
+        $collection->add($firstPost);
 
-        $this->assertFalse($collection->getPrevPost());
+        $this->assertFalse($collection->prev());
     }
 
     /**

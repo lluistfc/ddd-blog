@@ -2,8 +2,6 @@
 namespace Blog\Application\Handler;
 
 use Blog\Application\Command\CommandInterface;
-use Blog\Domain\Entity\Entity;
-use Blog\Domain\Validators\ValidatorInterface;
 
 /**
  * Class Handler

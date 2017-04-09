@@ -1,7 +1,8 @@
 <?php
 namespace Blog\Application\Repository;
 
-use Blog\Application\Collections\PostCollection;
+use Blog\Application\Collections\EntityCollection;
+use Blog\Domain\DataObject\Identifier\Identifier;
 use Blog\Domain\Entity\Post;
 
 /**
@@ -12,10 +13,10 @@ interface PostQueriesInterface
 {
     /**
      * @access public
-     * @param int $id
+     * @param Identifier $id
      * @return Post|null
      */
-    public function findOneById(int $id);
+    public function findOneById(Identifier $id);
 
     /**
      * @access public
@@ -32,7 +33,7 @@ interface PostQueriesInterface
 
     /**
      * @access public
-     * @return PostCollection
+     * @return EntityCollection
      */
     public function findAllPublishedPosts();
 }

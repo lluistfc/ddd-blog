@@ -1,8 +1,9 @@
 <?php
 namespace Tests\Stubs\Post;
 
-use Blog\Application\Collections\PostCollection;
+use Blog\Application\Collections\EntityCollection;
 use Blog\Application\Repository\PostQueriesInterface;
+use Blog\Domain\DataObject\Identifier\Identifier;
 
 /**
  * Class FakeReadOnlyRepository
@@ -10,14 +11,11 @@ use Blog\Application\Repository\PostQueriesInterface;
  */
 class FakeReadOnlyRepository implements PostQueriesInterface
 {
-    public function findOneById(int $id)
+    public function findOneById(Identifier $id)
     {
-        return FakePostCreator::createPost($id);
+        return FakePostCreator::createPost($id->get());
     }
 
-    /**
-     * @inheritdoc
-     */
     public function findPostByTitle($title)
     {
         return null;
@@ -30,6 +28,6 @@ class FakeReadOnlyRepository implements PostQueriesInterface
 
     public function findAllPublishedPosts()
     {
-        return new PostCollection();
+        return new EntityCollection();
     }
 }

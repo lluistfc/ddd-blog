@@ -8,7 +8,7 @@ use Blog\Domain\Entity\User;
  * Class CreateUser
  * @package Blog\Application\Command\Post
  */
-class CreateUser extends Command
+class RegisterUserCommand extends Command
 {
     /**
      * @access public

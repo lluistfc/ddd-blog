@@ -8,7 +8,7 @@ use Blog\Domain\Entity\Post;
  * Class CreatePost
  * @package Blog\Application\Command\Post
  */
-class CreatePost extends Command
+class CreatePostCommand extends Command
 {
     /**
      * @access public

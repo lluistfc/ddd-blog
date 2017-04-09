@@ -9,7 +9,7 @@ use Blog\Domain\Validators\Post\CreatePostValidator;
  * Class CreatePostCommandHandler
  * @package Blog\Application\Handler
  */
-class CreatePostHandler implements HandlerInterface
+class CreatePost implements HandlerInterface
 {
     /**
      * @var array
