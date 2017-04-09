@@ -6,7 +6,7 @@ use Blog\Application\Handler\HandlerInterface;
 use Blog\Domain\Validators\Post\CreatePostValidator;
 
 /**
- * Class CreatePostCommandHandler
+ * Class CreatePost
  * @package Blog\Application\Handler
  */
 class CreatePost implements HandlerInterface

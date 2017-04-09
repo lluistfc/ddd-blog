@@ -8,7 +8,7 @@ use Blog\Domain\DataObject\Identifier\Identifier;
 use Blog\Domain\Entity\Post;
 use Blog\Domain\Exceptions\Validation\InvalidArgumentException;
 
-class ShowPostCommand implements CommandInterface
+class RetrievePostCommand implements CommandInterface
 {
     /**
      * @var PostQueries

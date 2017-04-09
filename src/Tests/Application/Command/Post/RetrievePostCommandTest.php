@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Application\Command\Post;
 
-use Blog\Application\Command\Post\ShowPostCommand;
+use Blog\Application\Command\Post\RetrievePostCommand;
 use Blog\Domain\DataObject\Identifier\Identifier;
 use PHPUnit\Framework\TestCase;
 use Tests\Stubs\Post\FakePostCreator;
@@ -14,7 +14,7 @@ use Tests\Stubs\Post\FakeReadOnlyRepository;
  * @group application_command
  * @group application_command_post
  */
-class ShowPostCommandTest extends TestCase
+class RetrievePostCommandTest extends TestCase
 {
     /**
      * @test
@@ -22,7 +22,7 @@ class ShowPostCommandTest extends TestCase
     public function postWasRetrieved()
     {
         $repository = new FakeReadOnlyRepository();
-        (new ShowPostCommand($repository))->execute(Identifier::create(1));
+        (new RetrievePostCommand($repository))->execute(Identifier::create(1));
 
         $this->assertEquals(
             FakePostCreator::createPost(1),
@@ -37,6 +37,6 @@ class ShowPostCommandTest extends TestCase
     public function validIdentifierNeededToExecute()
     {
         $repository = new FakeReadOnlyRepository();
-        (new ShowPostCommand($repository))->execute(1);
+        (new RetrievePostCommand($repository))->execute(1);
     }
 }
