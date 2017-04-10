@@ -56,6 +56,8 @@ class PostQueriesTest extends TestCase
     {
         $expectedPost = FakePostCreator::createPost();
         $postQuery = new PostQueries(new FakeReadOnlyRepository());
-        $this->assertEquals($expectedPost, $postQuery->findNewestPost());
+
+        $newestPost = $postQuery->findNewestPost();
+        $this->assertEquals($expectedPost->getCreatedAt(), $newestPost->getCreatedAt());
     }
 }

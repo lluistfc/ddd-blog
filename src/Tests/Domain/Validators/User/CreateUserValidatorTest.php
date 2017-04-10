@@ -36,18 +36,6 @@ class CreateUserValidatorTest extends TestCase
     /**
      * @access public
      * @test
-     * @expectedException \Blog\Domain\Exceptions\Validation\MissingIdentifierException
-     */
-    public function validationFailsIfNoId()
-    {
-        $valuesToValidate = FakeUserCreator::createUserDefaultArrayValues();
-        unset($valuesToValidate[User::ID]);
-        (new CreateUserValidator())->validate($valuesToValidate);
-    }
-
-    /**
-     * @access public
-     * @test
      * @expectedException \Blog\Domain\Exceptions\Validation\UserNeedsRealNameException
      */
     public function validationFailsIfNoRealName()

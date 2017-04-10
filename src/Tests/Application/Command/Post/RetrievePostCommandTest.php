@@ -3,8 +3,8 @@ namespace Tests\Application\Command\Post;
 
 use Blog\Application\Command\Post\RetrievePostCommand;
 use Blog\Domain\DataObject\Identifier\Identifier;
+use Blog\Domain\Entity\Post;
 use PHPUnit\Framework\TestCase;
-use Tests\Stubs\Post\FakePostCreator;
 use Tests\Stubs\Post\FakeReadOnlyRepository;
 
 /**
@@ -22,21 +22,16 @@ class RetrievePostCommandTest extends TestCase
     public function postWasRetrieved()
     {
         $repository = new FakeReadOnlyRepository();
-        (new RetrievePostCommand($repository))->execute(Identifier::create(1));
-
-        $this->assertEquals(
-            FakePostCreator::createPost(1),
-            $repository->findOneById(Identifier::create(1))
-        );
+        $this->assertInstanceOf(Post::class, (new RetrievePostCommand($repository))->execute(Identifier::create()));
     }
 
     /**
      * @test
      * @expectedException \Blog\Domain\Exceptions\Validation\InvalidArgumentException
      */
-    public function validIdentifierNeededToExecute()
+    public function invalidIdentifierCausesException()
     {
         $repository = new FakeReadOnlyRepository();
-        (new RetrievePostCommand($repository))->execute(1);
+        $this->assertInstanceOf(Post::class, (new RetrievePostCommand($repository))->execute(1));
     }
 }

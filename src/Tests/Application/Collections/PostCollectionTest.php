@@ -49,9 +49,8 @@ class PostCollectionTest extends TestCase
         $collection = new EntityCollection();
 
         for($i = 1; $i <= $maxPosts; $i++) {
-            $collection->add(FakePostCreator::createPost($i));
+            $collection->add(FakePostCreator::createPost());
         }
-
         $this->assertCount($maxPosts, $collection->toArray());
     }
 
@@ -61,7 +60,7 @@ class PostCollectionTest extends TestCase
     public function collectionCanReturnItsFirstElement()
     {
         $firstPost = FakePostCreator::createPost();
-        $secondPost = FakePostCreator::createPost(2);
+        $secondPost = FakePostCreator::createPost();
         $collection = new EntityCollection();
         $collection->add($firstPost);
         $collection->add($secondPost);
@@ -74,11 +73,15 @@ class PostCollectionTest extends TestCase
      */
     public function collectionReturnsSpecifiedPost()
     {
-        $post = FakePostCreator::createPost(1337);
+        $post = FakePostCreator::createPost();
         $collection = new EntityCollection();
         $collection->add($post);
 
-        $this->assertEquals($post, $collection->get(Identifier::create(1337)));
+        $this->assertEquals($post, $collection->get(
+            Identifier::createFromValue(
+                $post->getId()
+            ))
+        );
     }
 
     /**

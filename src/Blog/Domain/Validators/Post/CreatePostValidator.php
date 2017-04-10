@@ -3,7 +3,6 @@ namespace Blog\Domain\Validators\Post;
 
 use Blog\Domain\Entity\Post;
 use Blog\Domain\Exceptions\Validation\InvalidArgumentException;
-use Blog\Domain\Exceptions\Validation\MissingIdentifierException;
 use Blog\Domain\Exceptions\Validation\PostMustBeCreatedByAnAuthorException;
 use Blog\Domain\Exceptions\Validation\PostNeedsContentException;
 use Blog\Domain\Exceptions\Validation\PostNeedsStateException;
@@ -19,18 +18,16 @@ class CreatePostValidator implements ValidatorInterface
 {
     use VerifyValueInAssociativeAndNormalArray;
 
-    const EXPECTED_ID_INDEX = 0;
-    const EXPECTED_TITLE_INDEX = 1;
-    const EXPECTED_CONTENT_INDEX = 2;
-    const EXPECTED_STATE_INDEX = 3;
-    const EXPECTED_AUTHOR_INDEX = 4;
-    const EXPECTED_PUBLISHED_INDEX = 5;
-    const EXPECTED_PUBLISHEDAT_INDEX = 6;
+    const EXPECTED_TITLE_INDEX = 0;
+    const EXPECTED_CONTENT_INDEX = 1;
+    const EXPECTED_STATE_INDEX = 2;
+    const EXPECTED_AUTHOR_INDEX = 3;
+    const EXPECTED_PUBLISHED_INDEX = 4;
+    const EXPECTED_PUBLISHEDAT_INDEX = 5;
 
     /**
      * @param $valuesToValidate
      * @throws InvalidArgumentException
-     * @throws MissingIdentifierException
      * @throws PostMustBeCreatedByAnAuthorException
      * @throws PostNeedsContentException
      * @throws PostNeedsStateException
@@ -43,7 +40,6 @@ class CreatePostValidator implements ValidatorInterface
         }
 
         $postValues = [
-            Post::ID => $this->getValue($valuesToValidate, Post::ID, self::EXPECTED_ID_INDEX),
             Post::TITLE => $this->getValue($valuesToValidate, Post::TITLE, self::EXPECTED_TITLE_INDEX),
             Post::CONTENT => $this->getValue($valuesToValidate, Post::CONTENT, self::EXPECTED_CONTENT_INDEX),
             Post::STATE => $this->getValue($valuesToValidate, Post::STATE, self::EXPECTED_STATE_INDEX),
@@ -51,10 +47,6 @@ class CreatePostValidator implements ValidatorInterface
             Post::PUBLISHED => $this->getValue($valuesToValidate, Post::PUBLISHED, self::EXPECTED_PUBLISHED_INDEX),
             Post::PUBLISHEDAT => $this->getValue($valuesToValidate, Post::PUBLISHEDAT, self::EXPECTED_PUBLISHEDAT_INDEX)
         ];
-
-        if (empty($postValues[Post::ID])) {
-            throw new MissingIdentifierException();
-        }
 
         if (empty($postValues[Post::TITLE])) {
             throw new PostNeedsTitleException();

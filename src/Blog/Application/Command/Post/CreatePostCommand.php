@@ -17,7 +17,6 @@ class CreatePostCommand extends Command
     public function execute($postValues)
     {
         $this->entityRepository->persistEntity(Post::publish(
-            $postValues[Post::ID],
             $postValues[Post::TITLE],
             $postValues[Post::CONTENT],
             $postValues[Post::STATE],

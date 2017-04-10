@@ -2,6 +2,7 @@
 namespace Tests\Domain\Entity;
 
 use Blog\Domain\Entity\Post;
+use Blog\Domain\Entity\User;
 use Blog\Domain\Tools\BString;
 use PHPUnit\Framework\TestCase;
 use Tests\Domain\DataObject\Name\PersonNameTest;
@@ -49,10 +50,11 @@ class PostTest extends TestCase
         $expectedDateFormat = (new \DateTime())->format('Y-m-d');
         $postData = FakePostCreator::createPostDefaultArrayValues();
         $post = FakePostCreator::createPostFromArray($postData);
+        $this->assertTrue(is_string($post->getId()));
         $this->assertEquals(self::FAKE_TITLE, $post->getTitle());
         $this->assertEquals(self::FAKE_CONTENT, $post->getContent());
         $this->assertEquals(self::FAKE_STATE, $post->getState());
-        $this->assertEquals(FakeUserCreator::create(), $post->getAuthor());
+        $this->assertInstanceOf(User::class, $post->getAuthor());
         $this->assertTrue($post->isPublished());
         $this->assertEquals($expectedDateFormat, $post->getCreatedAt());
         $this->assertEquals($expectedDateFormat, $post->getPublishedAt());
@@ -101,10 +103,10 @@ class PostTest extends TestCase
     public function invalidDataProvider()
     {
         return array(
-            array(array(null, null, null, null, null, null, null)),
-            array(array(false, false, false, false, false, false, false)),
-            array(array(true, true, true, true, true, true, true)),
-            array(array(0, 0, 0, 0, 0, 0, 0)),
+            array(array(null, null, null, null, null, null)),
+            array(array(false, false, false, false, false, false)),
+            array(array(true, true, true, true, true, true)),
+            array(array(0, 0, 0, 0, 0, 0)),
         );
     }
 }

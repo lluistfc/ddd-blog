@@ -19,7 +19,7 @@ class CollectionCreationValidatorTest extends TestCase
      */
     public function collectionCreationtValidatesInput()
     {
-        $this->assertTrue((new CollectionCreationValidator())->validate(array(FakePostCreator::createPost(1))));
+        $this->assertTrue((new CollectionCreationValidator())->validate(array(FakePostCreator::createPost())));
     }
 
     /**
@@ -29,7 +29,6 @@ class CollectionCreationValidatorTest extends TestCase
     public function collectionThrowsExceptionIfInvalidElementsInInput()
     {
         $collectionCreationValidator = new CollectionCreationValidator();
-
-        var_dump($collectionCreationValidator->validate(array(new class{})));exit();
+        $collectionCreationValidator->validate(array(new class{}));
     }
 }

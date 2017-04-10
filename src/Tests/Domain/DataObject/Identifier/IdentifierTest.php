@@ -18,7 +18,7 @@ class IdentifierTest extends \PHPUnit_Framework_TestCase
      */
     public function identifierIsCreated()
     {
-        $this->assertInstanceOf(Identifier::class, Identifier::create(1));
+        $this->assertInstanceOf(Identifier::class, Identifier::create());
     }
 
     /**
@@ -27,32 +27,16 @@ class IdentifierTest extends \PHPUnit_Framework_TestCase
      */
     public function identifierValueCanBeRetrieved()
     {
-        $this->assertEquals(1, (Identifier::create(1))->get());
+        $this->assertTrue(is_string((Identifier::create())->get()));
     }
 
     /**
      * @access public
      * @test
-     * @dataProvider invalidDataProvider
      * @expectedException \Blog\Domain\Exceptions\Validation\InvalidArgumentException
      */
-    public function invalidValuesCauseException($value)
+    public function invalidValueCausesException()
     {
-        $this->assertInstanceOf(Identifier::class, Identifier::create($value));
-    }
-
-    /**
-     * @return array
-     */
-    public function invalidDataProvider()
-    {
-        return [
-            [null],
-            [true],
-            [false],
-            [array(1)],
-            [new class{}],
-            [new class{public $a=0;}]
-        ];
+        Identifier::createFromValue(new class{});
     }
 }

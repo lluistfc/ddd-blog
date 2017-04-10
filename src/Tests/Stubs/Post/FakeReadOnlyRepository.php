@@ -13,7 +13,7 @@ class FakeReadOnlyRepository implements PostQueriesInterface
 {
     public function findOneById(Identifier $id)
     {
-        return FakePostCreator::createPost($id->get());
+        return FakePostCreator::createPost();
     }
 
     public function findPostByTitle($title)
@@ -33,6 +33,6 @@ class FakeReadOnlyRepository implements PostQueriesInterface
 
     public function findThisPost(Identifier $id)
     {
-        return FakePostCreator::createPost($id->get());
+        return FakePostCreator::createPost();
     }
 }

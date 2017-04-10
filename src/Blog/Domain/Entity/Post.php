@@ -55,15 +55,16 @@ class Post extends Entity
      */
     private $publishedAt;
 
-    public static function publish(Identifier $id, string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
+    public static function publish(string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
     {
         (new CreatePostValidator())->validate(func_get_args());
-        return new Post($id, $title, $content, $state, $author, $published, $publishedAt);
+        return new Post($title, $content, $state, $author, $published, $publishedAt);
     }
 
-    protected function __construct(Identifier $id, string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
+    protected function __construct(string $title, string $content, string $state, User $author, bool $published, \DateTime $publishedAt)
     {
-        $this->setId($id);
+        parent::__construct();
+        $this->setId(Identifier::create());
         $this->setTitle($title);
         $this->setContent($content);
         $this->setState($state);
@@ -71,7 +72,6 @@ class Post extends Entity
         $this->setPublished($published);
         $this->setPublishedAt($publishedAt);
 
-        parent::__construct();
     }
 
     /**

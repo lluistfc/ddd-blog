@@ -17,14 +17,13 @@ class FakePostCreator
      * @param int $id
      * @return Post
      */
-    public static function createPost($id = 1): Post
+    public static function createPost(): Post
     {
         return Post::publish(
-            Identifier::create($id),
             'Fake Title',
             'fake content',
             'published',
-            FakeUserCreator::create($id),
+            FakeUserCreator::create(),
             true,
             new \DateTime()
         );
@@ -32,17 +31,15 @@ class FakePostCreator
 
     /**
      * @access public
-     * @param int $id
      * @return array
      */
-    public static function createPostDefaultArrayValues($id = 1): array
+    public static function createPostDefaultArrayValues(): array
     {
         return [
-            Post::ID => Identifier::create($id),
             Post::TITLE => PostTest::FAKE_TITLE,
             Post::CONTENT => PostTest::FAKE_CONTENT,
             Post::STATE => PostTest::FAKE_STATE,
-            Post::AUTHOR => FakeUserCreator::create($id),
+            Post::AUTHOR => FakeUserCreator::create(),
             Post::PUBLISHED => PostTest::PUBLISHED,
             Post::PUBLISHEDAT => new \DateTime(),
         ];
@@ -51,7 +48,6 @@ class FakePostCreator
     public static function createPostFromArray($array)
     {
         return Post::publish(
-            $array[Post::ID],
             $array[Post::TITLE],
             $array[Post::CONTENT],
             $array[Post::STATE],

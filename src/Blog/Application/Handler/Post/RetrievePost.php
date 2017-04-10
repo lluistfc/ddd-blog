@@ -20,10 +20,6 @@ class RetrievePost implements HandlerInterface
 
     public function __construct(Identifier $identifier)
     {
-        if (!is_numeric($identifier->get())) {
-            throw new InvalidArgumentException();
-        }
-
         $this->postIdentifier = $identifier;
     }
 

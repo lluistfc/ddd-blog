@@ -71,7 +71,7 @@ class EntityCollection
     public function add(Entity $element)
     {
         $this->elements[$element->getId()] = $element;
-        return $this->exists(Identifier::create($element->getId()));
+        return $this->exists(Identifier::createFromValue($element->getId()));
     }
 
     /**
@@ -113,7 +113,7 @@ class EntityCollection
     public function shift()
     {
         $element = $this->first();
-        $this->remove(Identifier::create($element->getId()));
+        $this->remove(Identifier::createFromValue($element->getId()));
 
         return $element;
     }
@@ -125,7 +125,7 @@ class EntityCollection
     public function pop()
     {
         $element = $this->last();
-        $this->remove(Identifier::create($element->getId()));
+        $this->remove(Identifier::createFromValue($element->getId()));
 
         return $element;
     }

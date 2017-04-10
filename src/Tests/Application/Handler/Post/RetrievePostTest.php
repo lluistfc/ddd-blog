@@ -2,11 +2,9 @@
 namespace Tests\Application\Handler\Post;
 
 use Blog\Application\Command\CommandInterface;
-use Blog\Application\Command\Post\CreatePostCommand;
-use Blog\Application\Handler\Post\CreatePost;
 use Blog\Application\Handler\Post\RetrievePost;
 use Blog\Domain\DataObject\Identifier\Identifier;
-use Tests\Stubs\Post\FakePersistRepository;
+use Blog\Domain\Entity\Post;
 use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
 
@@ -30,23 +28,10 @@ class RetrievePostTest extends TestCase
             public function execute($id)
             {
                 /** @var Identifier $id */
-                return FakePostCreator::createPost($id->get());
+                return FakePostCreator::createPost();
             }
         };
 
-        $this->assertEquals(
-            FakePostCreator::createPost(1),
-            (new RetrievePost(Identifier::create(1)))->handle($fakeCommand)
-        );
-    }
-
-    /**
-     * @access public
-     * @test
-     * @expectedException \Blog\Domain\Exceptions\Validation\ValidationException
-     */
-    public function invalidDataThrowsValidationException()
-    {
-        new RetrievePost(Identifier::create('a'));
+        $this->assertInstanceOf(Post::class, (new RetrievePost(Identifier::create()))->handle($fakeCommand));
     }
 }

@@ -17,7 +17,6 @@ class RegisterUserCommand extends Command
     public function execute($userValues)
     {
         $this->entityRepository->persistEntity(User::register(
-            $userValues[User::ID],
             $userValues[User::PERSON_NAME],
             $userValues[User::USER_NAME],
             $userValues[User::EMAIL]

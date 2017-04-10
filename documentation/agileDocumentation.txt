@@ -20,7 +20,7 @@ s\Application\Command\Post\CreatePostCommand
 
 s\Application\Command\Post\RetrievePostCommand
  [x] Post was retrieved
- [x] Valid identifier needed to execute
+ [x] Invalid identifier causes exception
 
 s\Application\Command\User\RegisterUserCommand
  [x] User was registered
@@ -31,7 +31,6 @@ s\Application\Handler\Post\CreatePost
 
 s\Application\Handler\Post\RetrievePost
  [x] Retrieve post was handled
- [x] Invalid data throws validation exception
 
 s\Application\Handler\Post\RegisterUser
  [x] Register user was handled
@@ -55,7 +54,7 @@ s\Domain\DataObject\Email\Email
 s\Domain\DataObject\Identifier\Identifier
  [x] Identifier is created
  [x] Identifier value can be retrieved
- [x] Invalid values cause exception 
+ [x] Invalid value causes exception
 
 s\Domain\DataObject\Name\PersonName
  [x] Person can have only first name
@@ -81,7 +80,6 @@ s\Domain\Entity\User
 s\Domain\Validators\Post\CreatePostValidator
  [x] Validation passes
  [x] Validation fails if data is not array
- [x] Validation fails if no id
  [x] Validation fails if no title
  [x] Validation fails if no content
  [x] Validation fails if no state
@@ -92,7 +90,6 @@ s\Domain\Validators\Post\CreatePostValidator
 s\Domain\Validators\User\CreateUserValidator
  [x] Validation passes
  [x] Validation fails if data is not array
- [x] Validation fails if no id
  [x] Validation fails if no real name
  [x] Validation fails if no user name
  [x] Validation fails if no email

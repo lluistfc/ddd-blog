@@ -10,6 +10,8 @@ use Blog\Domain\Exceptions\Validation\ValidationException;
  */
 class Identifier
 {
+    const SALT = '3q$r9dYUl';
+
     /**
      * @access private
      * @var mixed
@@ -18,31 +20,34 @@ class Identifier
 
     /**
      * @access private
-     * @param $value
      * @return Identifier
-     * @throws ValidationException
+     * @throws InvalidArgumentException
+     * @internal param $value
      */
-    public static function create($value)
+    public static function create()
     {
-        if (empty($value)) {
-            throw new InvalidArgumentException();
-        }
+        return new self();
+    }
 
-        if (!is_string($value) && !is_integer($value)) {
-            throw new InvalidArgumentException();
-        }
-
+    public static function createFromValue($value)
+    {
         return new self($value);
     }
 
     /**
      * Identifier constructor.
-     * @access private
      * @param $value
+     * @throws InvalidArgumentException
      */
-    private function __construct($value)
+    private function __construct($value = null)
     {
-        $this->value = $value;
+        if (empty($value)) {
+            $this->value = uniqid(crypt(time(), self::SALT));
+        } elseif (!is_string($value) && !is_numeric($value)) {
+            throw new InvalidArgumentException();
+        } else {
+            $this->value = $value;
+        }
     }
 
     /**
