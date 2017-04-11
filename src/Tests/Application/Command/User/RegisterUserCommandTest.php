@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Application\Command\User;
 
-use Blog\Application\Command\User\CreateUser;
+use Blog\Application\Command\User\RegisterUserCommand;
 use PHPUnit\Framework\TestCase;
 use Tests\Stubs\Post\FakePersistRepository;
 use Tests\Stubs\User\FakeUserCreator;
@@ -13,7 +13,7 @@ use Tests\Stubs\User\FakeUserCreator;
  * @group application_command
  * @group application_command_user
  */
-class CreateUserTest extends TestCase
+class RegisterUserCommandTest extends TestCase
 {
     /**
      * @test
@@ -21,7 +21,7 @@ class CreateUserTest extends TestCase
     public function userWasRegistered()
     {
         $repository = new FakePersistRepository();
-        (new CreateUser($repository))->execute(FakeUserCreator::createUserDefaultArrayValues());
+        (new RegisterUserCommand($repository))->execute(FakeUserCreator::createUserDefaultArrayValues());
 
         $this->assertTrue($repository->getEntityWasPersisted());
     }

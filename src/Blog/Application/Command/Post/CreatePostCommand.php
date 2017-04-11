@@ -8,7 +8,7 @@ use Blog\Domain\Entity\Post;
  * Class CreatePost
  * @package Blog\Application\Command\Post
  */
-class CreatePost extends Command
+class CreatePostCommand extends Command
 {
     /**
      * @access public
@@ -17,7 +17,6 @@ class CreatePost extends Command
     public function execute($postValues)
     {
         $this->entityRepository->persistEntity(Post::publish(
-            $postValues[Post::ID],
             $postValues[Post::TITLE],
             $postValues[Post::CONTENT],
             $postValues[Post::STATE],

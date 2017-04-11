@@ -1,6 +1,7 @@
 <?php
 namespace Blog\Application\Collections;
 
+use Blog\Domain\DataObject\Identifier\Identifier;
 use Blog\Domain\Entity\Entity;
 use Blog\Domain\Exceptions\Collection\ElementDoesNotExistsInCollectionException;
 use Blog\Application\Validators\Collection\CollectionCreationValidator;
@@ -9,7 +10,7 @@ use Blog\Application\Validators\Collection\CollectionCreationValidator;
  * Class Collection
  * @package Blog\Domain\Collections
  */
-abstract class Collection
+class EntityCollection
 {
     /**
      * @var Entity[]
@@ -27,37 +28,37 @@ abstract class Collection
     }
 
     /**
-     * @access protected
+     * @access public
      * @return Entity|bool
      */
-    protected function first()
+    public function first()
     {
         return reset($this->elements);
     }
 
     /**
-     * @access protected
+     * @access public
      * @return Entity|bool
      */
-    protected function next()
+    public function next()
     {
         return next($this->elements);
     }
 
     /**
-     * @access protected
+     * @access public
      * @return Entity|bool
      */
-    protected function prev()
+    public function prev()
     {
         return prev($this->elements);
     }
 
     /**
-     * @access protected
+     * @access public
      * @return Entity
      */
-    protected function last()
+    public function last()
     {
         return end($this->elements);
     }
@@ -67,22 +68,22 @@ abstract class Collection
      * @return bool
      * @throws ElementDoesNotExistsInCollectionException
      */
-    protected function add(Entity $element)
+    public function add(Entity $element)
     {
         $this->elements[$element->getId()] = $element;
-        return $this->exists(($element->getId()));
+        return $this->exists(Identifier::createFromValue($element->getId()));
     }
 
     /**
-     * @access protected
+     * @access public
      * @param $index
      * @return Entity
      * @throws ElementDoesNotExistsInCollectionException
      */
-    protected function get($index)
+    public function get(Identifier $index)
     {
         $this->checkIfElementExists($index);
-        return $this->elements[$index];
+        return $this->elements[$index->get()];
     }
 
     /**
@@ -90,20 +91,19 @@ abstract class Collection
      * @param $index
      * @return bool
      */
-    public function exists($index):bool
+    public function exists(Identifier $index):bool
     {
-        return !empty($this->elements[$index]);
+        return !empty($this->elements[$index->get()]);
     }
 
     /**
-     * @access protected
-     * @param int|string $index
-     * @throws ElementDoesNotExistsInCollectionException
+     * @access public
+     * @param Identifier $index
      */
-    protected function remove($index)
+    public function remove(Identifier $index)
     {
         $this->checkIfElementExists($index);
-        unset($this->elements[$index]);
+        unset($this->elements[$index->get()]);
     }
 
     /**
@@ -113,7 +113,7 @@ abstract class Collection
     public function shift()
     {
         $element = $this->first();
-        $this->remove($element->getId());
+        $this->remove(Identifier::createFromValue($element->getId()));
 
         return $element;
     }
@@ -125,7 +125,7 @@ abstract class Collection
     public function pop()
     {
         $element = $this->last();
-        $this->remove($element->getId());
+        $this->remove(Identifier::createFromValue($element->getId()));
 
         return $element;
     }
@@ -133,7 +133,7 @@ abstract class Collection
     /**
      * @return array|Entity[]
      */
-    protected function toArray()
+    public function toArray()
     {
         return $this->elements;
     }
@@ -142,7 +142,7 @@ abstract class Collection
      * @param $index
      * @throws ElementDoesNotExistsInCollectionException
      */
-    private function checkIfElementExists($index)
+    private function checkIfElementExists(Identifier $index)
     {
         if (!$this->exists($index)) {
             throw new ElementDoesNotExistsInCollectionException();

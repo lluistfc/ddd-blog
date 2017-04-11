@@ -1,6 +1,8 @@
 <?php
 namespace Blog\Domain\Entity;
 
+use Blog\Domain\DataObject\Identifier\Identifier;
+
 /**
  * Class BaseEntity
  * @package Blog\Domain\Entity
@@ -13,7 +15,7 @@ abstract class Entity
 
     /**
      * @access private
-     * @var integer
+     * @var Identifier
      */
     protected $id;
 
@@ -30,14 +32,14 @@ abstract class Entity
     protected $updatedAt;
 
 
-    protected function setId($id)
+    protected function setId(Identifier $id)
     {
         $this->id = $id;
     }
 
     public function getId()
     {
-        return $this->id;
+        return $this->id->get();
     }
 
     protected function setCreatedAt(\DateTime $createdAt)

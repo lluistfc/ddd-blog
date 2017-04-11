@@ -8,7 +8,7 @@ use Blog\Domain\Entity\User;
  * Class CreateUser
  * @package Blog\Application\Command\Post
  */
-class CreateUser extends Command
+class RegisterUserCommand extends Command
 {
     /**
      * @access public
@@ -17,7 +17,6 @@ class CreateUser extends Command
     public function execute($userValues)
     {
         $this->entityRepository->persistEntity(User::register(
-            $userValues[User::ID],
             $userValues[User::PERSON_NAME],
             $userValues[User::USER_NAME],
             $userValues[User::EMAIL]

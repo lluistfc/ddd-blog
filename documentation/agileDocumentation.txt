@@ -15,17 +15,24 @@ s\Application\Collections\PostCollection
  [x] Collection returns prev element
  [x] Collection prev element does not exist
 
-s\Application\Command\Post\CreatePost
+s\Application\Command\Post\CreatePostCommand
  [x] Post was created
 
-s\Application\Command\User\CreateUser
+s\Application\Command\Post\RetrievePostCommand
+ [x] Post was retrieved
+ [x] Invalid identifier causes exception
+
+s\Application\Command\User\RegisterUserCommand
  [x] User was registered
 
-s\Application\Handler\Post\CreatePostHandler
+s\Application\Handler\Post\CreatePost
  [x] Create post was handled
  [x] Invalid data throws validation exception
 
-s\Application\Handler\Post\CreateUserHandler
+s\Application\Handler\Post\RetrievePost
+ [x] Retrieve post was handled
+
+s\Application\Handler\Post\RegisterUser
  [x] Register user was handled
  [x] Invalid data throws validation exception
 
@@ -43,6 +50,11 @@ s\Domain\DataObject\Email\Email
  [x] Invalid data throws exception 
  [x] Email is created with user name and host
  [x] Email data object can be printed
+
+s\Domain\DataObject\Identifier\Identifier
+ [x] Identifier is created
+ [x] Identifier value can be retrieved
+ [x] Invalid value causes exception
 
 s\Domain\DataObject\Name\PersonName
  [x] Person can have only first name
@@ -68,7 +80,6 @@ s\Domain\Entity\User
 s\Domain\Validators\Post\CreatePostValidator
  [x] Validation passes
  [x] Validation fails if data is not array
- [x] Validation fails if no id
  [x] Validation fails if no title
  [x] Validation fails if no content
  [x] Validation fails if no state
@@ -79,7 +90,6 @@ s\Domain\Validators\Post\CreatePostValidator
 s\Domain\Validators\User\CreateUserValidator
  [x] Validation passes
  [x] Validation fails if data is not array
- [x] Validation fails if no id
  [x] Validation fails if no real name
  [x] Validation fails if no user name
  [x] Validation fails if no email

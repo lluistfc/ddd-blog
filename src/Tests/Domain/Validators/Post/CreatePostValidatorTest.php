@@ -36,18 +36,6 @@ class CreatePostValidatorTest extends TestCase
     /**
      * @access public
      * @test
-     * @expectedException \Blog\Domain\Exceptions\Validation\MissingIdentifierException
-     */
-    public function validationFailsIfNoId()
-    {
-        $valuesToValidate = FakePostCreator::createPostDefaultArrayValues();
-        unset($valuesToValidate[Post::ID]);
-        (new CreatePostValidator())->validate($valuesToValidate);
-    }
-
-    /**
-     * @access public
-     * @test
      * @expectedException \Blog\Domain\Exceptions\Validation\PostNeedsTitleException
      */
     public function validationFailsIfNoTitle()

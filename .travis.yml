@@ -21,7 +21,6 @@ addons:
     branches:
           - master
           - develop
-          - feature/PostMustHaveAnAuthor
 script:
   - php vendor/phpunit/phpunit/phpunit -c phpunit_travis.xml --group=application,domain
   - sonar-scanner

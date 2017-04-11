@@ -2,7 +2,8 @@
 namespace Application\Queries\Post;
 
 use Blog\Application\Queries\Post\PostQueries;
-use Blog\Application\Collections\PostCollection;
+use Blog\Application\Collections\EntityCollection;
+use Blog\Domain\DataObject\Identifier\Identifier;
 use Blog\Domain\Entity\Post;
 use Tests\Stubs\Post\FakeReadOnlyRepository;
 use Tests\Stubs\Post\FakePostCreator;
@@ -23,7 +24,7 @@ class PostQueriesTest extends TestCase
     public function queryReturnsPostById()
     {
         $postQuery = new PostQueries(new FakeReadOnlyRepository());
-        $this->assertInstanceOf(Post::class, $postQuery->findPostById(1));
+        $this->assertInstanceOf(Post::class, $postQuery->findThisPost(Identifier::create(1)));
     }
 
     /**
@@ -42,7 +43,7 @@ class PostQueriesTest extends TestCase
      */
     public function queryReturnsEmptyCollectionWhenWeHaveNoPosts()
     {
-        $emptyCollection = new PostCollection();
+        $emptyCollection = new EntityCollection();
         $postQuery = new PostQueries(new FakeReadOnlyRepository());
         $this->assertEquals($emptyCollection, $postQuery->findAllPublishedPosts());
     }
@@ -55,6 +56,8 @@ class PostQueriesTest extends TestCase
     {
         $expectedPost = FakePostCreator::createPost();
         $postQuery = new PostQueries(new FakeReadOnlyRepository());
-        $this->assertEquals($expectedPost, $postQuery->findNewestPost());
+
+        $newestPost = $postQuery->findNewestPost();
+        $this->assertEquals($expectedPost->getCreatedAt(), $newestPost->getCreatedAt());
     }
 }

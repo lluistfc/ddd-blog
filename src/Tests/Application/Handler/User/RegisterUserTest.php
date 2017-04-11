@@ -1,32 +1,32 @@
 <?php
 namespace Tests\Application\Handler\Post;
 
-use Blog\Application\Command\Post\CreatePost;
-use Blog\Application\Handler\Post\CreatePostHandler;
+use Blog\Application\Command\User\RegisterUserCommand;
+use Blog\Application\Handler\User\RegisterUser;
 use Tests\Stubs\Post\FakePersistRepository;
-use Tests\Stubs\Post\FakePostCreator;
 use PHPUnit\Framework\TestCase;
+use Tests\Stubs\User\FakeUserCreator;
 
 /**
- * Class CreatePostCommandHandlerTest
+ * Class CreateUserCommandHandlerTest
  * @access public
  * @package Tests\Application\Handler\Post
  * @group application
  * @group application_command
  * @group application_command_handler
  */
-class CreatePostHandlerTest extends TestCase
+class RegisterUserTest extends TestCase
 {
     /**
      * @access public
      * @test
      */
-    public function createPostWasHandled()
+    public function registerUserWasHandled()
     {
         $fakeRepository = new FakePersistRepository();
-        $createPostCommand = new CreatePost($fakeRepository);
-        $newPostToValidate = FakePostCreator::createPostDefaultArrayValues();
-        $handler = new CreatePostHandler($newPostToValidate);
+        $createPostCommand = new RegisterUserCommand($fakeRepository);
+        $newPostToValidate = FakeUserCreator::createUserDefaultArrayValues();
+        $handler = new RegisterUser($newPostToValidate);
 
         $handler->handle($createPostCommand);
 
@@ -40,6 +40,6 @@ class CreatePostHandlerTest extends TestCase
      */
     public function invalidDataThrowsValidationException()
     {
-        new CreatePostHandler(array());
+        new RegisterUser(array());
     }
 }

@@ -1,9 +1,10 @@
 <?php
 namespace Blog\Application\Queries\Post;
 
-use Blog\Application\Collections\PostCollection;
+use Blog\Application\Collections\EntityCollection;
+use Blog\Domain\DataObject\Identifier\Identifier;
 use Blog\Domain\Entity\Post;
-use Blog\Domain\Repository\PostQueriesInterface;
+use Blog\Application\Repository\PostQueriesInterface;
 
 /**
  * Class PostQueries
@@ -32,7 +33,7 @@ class PostQueries
      * @param $id
      * @return Post|null
      */
-    public function findPostById($id)
+    public function findThisPost(Identifier $id)
     {
         return $this->entityRepository->findOneById($id);
     }
@@ -58,7 +59,7 @@ class PostQueries
 
     /**
      * @access public
-     * @return PostCollection
+     * @return EntityCollection
      */
     public function findAllPublishedPosts()
     {
