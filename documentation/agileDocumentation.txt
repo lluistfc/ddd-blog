@@ -36,6 +36,10 @@ s\Application\Handler\Post\RegisterUser
  [x] Register user was handled
  [x] Invalid data throws validation exception
 
+s\Blog\Application\Hydrator\Post\PostHydrator
+ [x] Post is hydrated from non associative array
+ [x] Post is hydrated from associative array
+
 Application\Queries\Post\PostQueries
  [x] Query returns post by id
  [x] Query found nothing by title
