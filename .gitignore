@@ -8,3 +8,5 @@ coverage
 /humbug.json
 /documentation/coverage-html/
 !/documentation/coverage-html/.gitkeep
+/documentation/humbug/report.txt
+/documentation/humbug/report.json
