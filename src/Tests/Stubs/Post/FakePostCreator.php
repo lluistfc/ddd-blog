@@ -29,6 +29,18 @@ class FakePostCreator
         );
     }
 
+    public static function createPostWithoutKeys():array
+    {
+        $values = self::createPostDefaultArrayValues();
+
+        foreach($values as $k => $value) {
+            $values[] = $value;
+            unset($values[$k]);
+        }
+
+        return $values;
+    }
+
     /**
      * @access public
      * @return array
