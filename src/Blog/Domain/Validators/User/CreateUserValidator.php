@@ -7,12 +7,13 @@ use Blog\Domain\Exceptions\Validation\UserNeedsEmailException;
 use Blog\Domain\Exceptions\Validation\UserNeedsRealNameException;
 use Blog\Domain\Exceptions\Validation\UserNeedsUserNameException;
 use Blog\Domain\Validators\SingleRules\VerifyValueInAssociativeAndNormalArray;
+use Blog\Domain\Validators\ValidatorInterface;
 
 /**
  * Class CreateUserValidation
  * @package Blog\Domain\Validators\User
  */
-class CreateUserValidator
+class CreateUserValidator implements ValidatorInterface
 {
     use VerifyValueInAssociativeAndNormalArray;
 
