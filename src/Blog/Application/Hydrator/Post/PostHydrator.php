@@ -50,7 +50,7 @@ class PostHydrator implements Hydrator
         $keys = array_keys($postHydrationValues);
 
         foreach ($keys as $key) {
-            $isAssoc &= is_string($key);
+            $isAssoc = $isAssoc && is_string($key);
         }
 
         return $isAssoc;

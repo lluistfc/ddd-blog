@@ -1,12 +1,12 @@
 Humbug running test suite to generate logs and code coverage data...
 Humbug has completed the initial test run successfully.
-Tests: 73 Line Coverage: 94.28%
+Tests: 75 Line Coverage: 93.64%
 Humbug is analysing source files...
-Mutation Testing is commencing on 47 files...
+Mutation Testing is commencing on 44 files...
 (.: killed, M: escaped, S: uncovered, E: fatal error, T: timed out)
-.............................
-29 mutations were generated:
-      29 mutants were killed
+........................
+24 mutations were generated:
+      24 mutants were killed
        0 mutants were not covered by tests
        0 covered mutants were not detected
        0 fatal errors were encountered
@@ -18,6 +18,6 @@ Metrics:
     Covered Code MSI: 100%
 
 Remember that some mutants will inevitably be harmless (i.e. false positives).
-Time: 8.54 seconds Memory: 6.00MB
+Time: 6.64 seconds Memory: 6.00MB
 Humbug results are being logged as JSON to: documentation/humbug/report.json
 Humbug results are being logged as TEXT to: documentation/humbug/report.txt
